@@ -18,7 +18,7 @@ public class SemanticButtonListener implements ActionListener {
 		SemanticFeatures frame_semantica = null;
 		frame_semantica = new SemanticFeatures();
 		frame_semantica.setTitle("Selecao de features semanticas");
-		frame_semantica.setSize(400,100);
+		frame_semantica.setSize(400,200);
 		frame_semantica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_semantica.setVisible(true);	
 	}

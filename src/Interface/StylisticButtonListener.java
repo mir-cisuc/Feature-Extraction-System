@@ -14,10 +14,10 @@ public class StylisticButtonListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		main_interface.dispose();
-		SemanticFeatures frame_stylistic = null;
-		frame_stylistic = new SemanticFeatures();
+		StylisticFeatures frame_stylistic = null;
+		frame_stylistic = new StylisticFeatures();
 		frame_stylistic.setTitle("Selecao de features estilisticas");
-		frame_stylistic.setSize(400,100);
+		frame_stylistic.setSize(400,160);
 		frame_stylistic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame_stylistic.setVisible(true);	
 	}
