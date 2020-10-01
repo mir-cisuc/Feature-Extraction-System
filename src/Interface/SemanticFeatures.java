@@ -12,13 +12,13 @@ public class SemanticFeatures extends JFrame{
 		panel_semantic.setLayout(null);
 		
 		allfeatures = new JButton("Todas as features");
-		features_Gl = new JButton("Features GL");
+		features_Gl = new JButton("Features GI");
 		featuresSynesketch = new JButton("Features Synesktech");
 		featuresDAL = new JButton("Features DAL");
 		featuresANEW = new JButton("Features ANEW");
 		featuresGazeteers = new JButton("Features Gazeteers");
 		
-		label = new JLabel("Quais features semânticas deseja extrair?");
+		label = new JLabel("Quais features semï¿½nticas deseja extrair?");
 		
 		label.setBounds(75,10,300,25);
 		allfeatures.setBounds(25,40,160,25);
