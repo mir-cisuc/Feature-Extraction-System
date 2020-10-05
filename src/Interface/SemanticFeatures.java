@@ -1,6 +1,12 @@
 package Interface;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.*;
+
+import Gazeteers.Initial_AV;
 @SuppressWarnings("serial")
 public class SemanticFeatures extends JFrame{
 	JPanel panel_semantic;
@@ -28,6 +34,8 @@ public class SemanticFeatures extends JFrame{
 		featuresANEW.setBounds(25,120,160,25);
 		featuresGazeteers.setBounds(200,120,160,25);
 		
+		featuresGazeteers.addActionListener(new SemanticFeatures.GazeteersButtonListener());
+		
 		panel_semantic.add(label);
 		panel_semantic.add(allfeatures);
 		panel_semantic.add(features_Gl);
@@ -37,6 +45,22 @@ public class SemanticFeatures extends JFrame{
 		panel_semantic.add(featuresGazeteers);
 		
 		this.add(panel_semantic);
+	}
+	private class GazeteersButtonListener implements ActionListener {
+	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try {
+				Initial_AV initial_AV = new Initial_AV();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
 	}
 	
 }
