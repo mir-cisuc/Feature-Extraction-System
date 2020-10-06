@@ -1,290 +1,418 @@
-src/Gazeteers/GazeteersFiles/GazQ1Q2Q3Q4-dal.txt into src/Gazeteers/GazeteersFiles/Origem - Details
+src/DAL_ANEW/DAL_ANEWFiles/dal-rsmal.txt into src/Origem - Details
 
 
 
 
 ###############################################
-src/Gazeteers/GazeteersFiles/Origem/L001-141.txt
+src/Origem/L001-141.txt
 ###############################################
 
 
 --------------------------------------------
 Linha -> Want to find out where the moon goes
 --------------------------------------------
-moon 2.78 1.33
+to 1.7778 1.5714 1.2
+find 2.3333 2.2000 1.6
+out 1.5000 1.9000 2.2
+where 1.9091 1.6000 1.2
+the 1.7500 1.1667 1.0
+moon 2.7778 1.3333 3.0
+goes 1.7500 2.0000 1.2
 
 
 
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 1.9711428571428573
+Arousal Line 1.6816285714285715
+Dominance Line 1.6285714285714283
 
 
 --------------------------------------------
 Linha -> When it leaves the western sky
 --------------------------------------------
-sky 3.00 1.60
+it 1.7000 1.3333 1.0
+leaves 2.0000 1.7273 2.2
+the 1.7500 1.1667 1.0
+western 1.5714 1.6667 1.8
+sky 3.0000 1.6000 3.0
 
 
 
- Valence Line 3.0
-Arousal Line 1.6
+ Valence Line 2.00428
+Arousal Line 1.4988
+Dominance Line 1.8
 
 
 --------------------------------------------
 Linha -> And night dissolves again to morning
 --------------------------------------------
+night 2.2857 1.7143 2.6
+again 1.8000 1.5000 1.4
+to 1.7778 1.5714 1.2
+morning 2.1250 1.5000 2.4
 
 
 
- Valence Line NaN
-Arousal Line NaN
-
-
---------------------------------------------
-Linha -> Azure turns to gold
---------------------------------------------
-
-
-
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.997125
+Arousal Line 1.5714249999999998
+Dominance Line 1.9
 
 
 --------------------------------------------
 Linha -> Azure turns to gold
 --------------------------------------------
+turns 1.7143 1.6667 2.4
+to 1.7778 1.5714 1.2
+gold 2.6364 1.9091 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0428333333333333
+Arousal Line 1.7157333333333333
+Dominance Line 2.1999999999999997
+
+
+--------------------------------------------
+Linha -> Azure turns to gold
+--------------------------------------------
+turns 1.7143 1.6667 2.4
+to 1.7778 1.5714 1.2
+gold 2.6364 1.9091 3.0
+
+
+
+ Valence Line 2.0428333333333333
+Arousal Line 1.7157333333333333
+Dominance Line 2.1999999999999997
 
 
 --------------------------------------------
 Linha -> Gonna sleep with one eye open
 --------------------------------------------
-sleep 2.71 1.38
+sleep 2.7143 1.3750 2.4
+with 1.8889 1.6250 1.0
+one 1.6667 1.5000 1.8
+eye 2.4286 1.2500 3.0
+open 1.9091 2.3636 2.8
 
 
 
- Valence Line 2.71
-Arousal Line 1.38
+ Valence Line 2.12152
+Arousal Line 1.62272
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Gonna keep the shades half drawn
 --------------------------------------------
+keep 1.7500 1.2500 1.2
+the 1.7500 1.1667 1.0
+shades 2.1667 1.0000 2.4
+half 1.3333 1.4286 1.6
+drawn 1.8889 1.8889 2.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.77778
+Arousal Line 1.3468399999999998
+Dominance Line 1.6799999999999997
 
 
 --------------------------------------------
 Linha -> Nearly silent dressed in shadows
 --------------------------------------------
+silent 1.3636 1.3333 1.6
+dressed 2.1000 1.8000 2.0
+in 1.5714 1.4444 2.2
+shadows 2.0000 1.0000 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
-
-
---------------------------------------------
-Linha -> Lines and colors fall
---------------------------------------------
-
-
-
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.75875
+Arousal Line 1.394425
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Lines and colors fall
 --------------------------------------------
+and 1.6667 1.5556 1.0
+colors 2.1667 2.0000 2.4
+fall 1.5833 2.1538 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.8055666666666668
+Arousal Line 1.9031333333333336
+Dominance Line 2.0
+
+
+--------------------------------------------
+Linha -> Lines and colors fall
+--------------------------------------------
+and 1.6667 1.5556 1.0
+colors 2.1667 2.0000 2.4
+fall 1.5833 2.1538 2.6
+
+
+
+ Valence Line 1.8055666666666668
+Arousal Line 1.9031333333333336
+Dominance Line 2.0
 
 
 --------------------------------------------
 Linha -> Gonna watch her through the window
 --------------------------------------------
+watch 2.1250 1.7143 2.8
+her 2.2857 1.4444 1.8
+through 1.7500 1.5000 1.2
+the 1.7500 1.1667 1.0
+window 2.4000 1.5556 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0621400000000003
+Arousal Line 1.4762
+Dominance Line 1.9600000000000002
 
 
 --------------------------------------------
 Linha -> Just as I watched you before
 --------------------------------------------
+as 1.5000 1.5000 1.0
+watched 1.6667 1.8750 2.0
+you 2.1429 1.5000 1.2
+before 1.8333 1.2500 1.4
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.7857249999999998
+Arousal Line 1.53125
+Dominance Line 1.4
 
 
 --------------------------------------------
 Linha -> Smile knows but just wont tell me
 --------------------------------------------
+knows 1.0000 1.2857 1.4
+but 1.6000 1.6364 1.0
+just 2.0000 1.4545 1.0
+tell 2.0000 1.8889 1.4
+me 2.1250 1.8182 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
-
-
---------------------------------------------
-Linha -> I just watch her go
---------------------------------------------
-
-
-
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.7449999999999999
+Arousal Line 1.61674
+Dominance Line 1.48
 
 
 --------------------------------------------
 Linha -> I just watch her go
 --------------------------------------------
+just 2.0000 1.4545 1.0
+watch 2.1250 1.7143 2.8
+her 2.2857 1.4444 1.8
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.071425
+Arousal Line 1.7158
+Dominance Line 1.7
+
+
+--------------------------------------------
+Linha -> I just watch her go
+--------------------------------------------
+just 2.0000 1.4545 1.0
+watch 2.1250 1.7143 2.8
+her 2.2857 1.4444 1.8
+go 1.8750 2.2500 1.2
+
+
+
+ Valence Line 2.071425
+Arousal Line 1.7158
+Dominance Line 1.7
 
 
 --------------------------------------------
 Linha -> Now I know just where the moon goes
 --------------------------------------------
-moon 2.78 1.33
+know 2.0000 1.4545 1.0
+just 2.0000 1.4545 1.0
+where 1.9091 1.6000 1.2
+the 1.7500 1.1667 1.0
+moon 2.7778 1.3333 3.0
+goes 1.7500 2.0000 1.2
 
 
 
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 2.0311500000000002
+Arousal Line 1.5015
+Dominance Line 1.4000000000000001
 
 
 --------------------------------------------
 Linha -> When it leaves the western sky
 --------------------------------------------
-sky 3.00 1.60
+it 1.7000 1.3333 1.0
+leaves 2.0000 1.7273 2.2
+the 1.7500 1.1667 1.0
+western 1.5714 1.6667 1.8
+sky 3.0000 1.6000 3.0
 
 
 
- Valence Line 3.0
-Arousal Line 1.6
+ Valence Line 2.00428
+Arousal Line 1.4988
+Dominance Line 1.8
 
 
 --------------------------------------------
 Linha -> And night dissolves again to morning
 --------------------------------------------
+night 2.2857 1.7143 2.6
+again 1.8000 1.5000 1.4
+to 1.7778 1.5714 1.2
+morning 2.1250 1.5000 2.4
 
 
 
- Valence Line NaN
-Arousal Line NaN
-
-
---------------------------------------------
-Linha -> The moon is in your eyes
---------------------------------------------
-moon 2.78 1.33
-
-
-
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 1.997125
+Arousal Line 1.5714249999999998
+Dominance Line 1.9
 
 
 --------------------------------------------
 Linha -> The moon is in your eyes
 --------------------------------------------
-moon 2.78 1.33
+moon 2.7778 1.3333 3.0
+is 1.8889 1.1818 1.0
+in 1.5714 1.4444 2.2
+your 1.7143 1.5000 1.4
+eyes 2.3333 1.4286 3.0
 
 
 
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 2.05714
+Arousal Line 1.37762
+Dominance Line 2.12
 
 
 --------------------------------------------
 Linha -> The moon is in your eyes
 --------------------------------------------
-moon 2.78 1.33
+moon 2.7778 1.3333 3.0
+is 1.8889 1.1818 1.0
+in 1.5714 1.4444 2.2
+your 1.7143 1.5000 1.4
+eyes 2.3333 1.4286 3.0
 
 
 
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 2.05714
+Arousal Line 1.37762
+Dominance Line 2.12
+
+
+--------------------------------------------
+Linha -> The moon is in your eyes
+--------------------------------------------
+moon 2.7778 1.3333 3.0
+is 1.8889 1.1818 1.0
+in 1.5714 1.4444 2.2
+your 1.7143 1.5000 1.4
+eyes 2.3333 1.4286 3.0
+
+
+
+ Valence Line 2.05714
+Arousal Line 1.37762
+Dominance Line 2.12
 
 
 --------------------------------------------
 Linha -> The moon is in your eyes 
 --------------------------------------------
-moon 2.78 1.33
+moon 2.7778 1.3333 3.0
+is 1.8889 1.1818 1.0
+in 1.5714 1.4444 2.2
+your 1.7143 1.5000 1.4
+eyes 2.3333 1.4286 3.0
 
 
 
- Valence Line 2.78
-Arousal Line 1.33
+ Valence Line 2.05714
+Arousal Line 1.37762
+Dominance Line 2.12
 
 
 
-Valence File 2.821111111111111
-Arousal File 1.3955555555555557
+Valence File 1.9749434343434369
+Arousal File 1.5489595959595956
+Dominance File 1.8707070707070705
 
 
 ###############################################
-src/Gazeteers/GazeteersFiles/Origem/L002-157.txt
+src/Origem/L002-157.txt
 ###############################################
 
 
 --------------------------------------------
 Linha -> Mother you had me 
 --------------------------------------------
+you 2.1429 1.5000 1.2
+had 1.3333 1.8333 1.0
+me 2.1250 1.8182 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.8670666666666669
+Arousal Line 1.7171666666666667
+Dominance Line 1.6000000000000003
 
 
 --------------------------------------------
 Linha -> But I never had you
 --------------------------------------------
+never 1.3333 1.7778 1.0
+had 1.3333 1.8333 1.0
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.6031666666666666
+Arousal Line 1.7037000000000002
+Dominance Line 1.0666666666666667
 
 
 --------------------------------------------
 Linha -> I wanted you 
 --------------------------------------------
+wanted 2.3000 2.1111 1.4
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.22145
+Arousal Line 1.80555
+Dominance Line 1.2999999999999998
 
 
 --------------------------------------------
 Linha -> But you didnt want me
 --------------------------------------------
+you 2.1429 1.5000 1.2
+want 2.0000 1.6000 1.4
+me 2.1250 1.8182 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0893
+Arousal Line 1.6394000000000002
+Dominance Line 1.7333333333333332
 
 
 --------------------------------------------
@@ -295,16 +423,22 @@ Linha -> So
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> I got to tell you
 --------------------------------------------
+got 1.5000 1.8750 1.2
+to 1.7778 1.5714 1.2
+tell 2.0000 1.8889 1.4
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.855175
+Arousal Line 1.708825
+Dominance Line 1.25
 
 
 --------------------------------------------
@@ -315,6 +449,7 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
@@ -325,46 +460,62 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> Father you left me 
 --------------------------------------------
+you 2.1429 1.5000 1.2
+left 1.7500 1.5000 2.2
+me 2.1250 1.8182 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0059666666666667
+Arousal Line 1.6060666666666668
+Dominance Line 2.0
 
 
 --------------------------------------------
 Linha -> But I never left you
 --------------------------------------------
+never 1.3333 1.7778 1.0
+left 1.7500 1.5000 2.2
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.7420666666666669
+Arousal Line 1.5926
+Dominance Line 1.4666666666666668
 
 
 --------------------------------------------
 Linha -> I needed you 
 --------------------------------------------
+needed 1.5714 2.0000 1.0
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.8571499999999999
+Arousal Line 1.75
+Dominance Line 1.1
 
 
 --------------------------------------------
 Linha -> But you didnt need me
 --------------------------------------------
+you 2.1429 1.5000 1.2
+need 1.6250 2.1250 1.0
+me 2.1250 1.8182 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.9643
+Arousal Line 1.8144
+Dominance Line 1.6000000000000003
 
 
 --------------------------------------------
@@ -375,16 +526,23 @@ Linha -> So
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> I just got to tell you
 --------------------------------------------
+just 2.0000 1.4545 1.0
+got 1.5000 1.8750 1.2
+to 1.7778 1.5714 1.2
+tell 2.0000 1.8889 1.4
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.88414
+Arousal Line 1.6579599999999999
+Dominance Line 1.2000000000000002
 
 
 --------------------------------------------
@@ -395,6 +553,7 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
@@ -405,47 +564,58 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> Children dont do 
 --------------------------------------------
-children 2.55 2.44
+do 1.5000 2.6250 1.2
 
 
 
- Valence Line 2.55
-Arousal Line 2.44
+ Valence Line 1.5
+Arousal Line 2.625
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> What I have done
 --------------------------------------------
+have 2.1111 2.0000 1.2
+done 2.2222 1.4444 1.4
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.1666499999999997
+Arousal Line 1.7222
+Dominance Line 1.2999999999999998
 
 
 --------------------------------------------
 Linha -> I couldnt walk 
 --------------------------------------------
+walk 2.0000 2.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0
+Arousal Line 2.125
+Dominance Line 3.0
 
 
 --------------------------------------------
 Linha -> And I tried to run
 --------------------------------------------
+tried 2.0000 1.6667 1.2
+to 1.7778 1.5714 1.2
+run 2.2222 2.7500 2.6
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.0
+Arousal Line 1.9960333333333333
+Dominance Line 1.6666666666666667
 
 
 --------------------------------------------
@@ -456,16 +626,22 @@ Linha -> So
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> I got to tell you
 --------------------------------------------
+got 1.5000 1.8750 1.2
+to 1.7778 1.5714 1.2
+tell 2.0000 1.8889 1.4
+you 2.1429 1.5000 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.855175
+Arousal Line 1.708825
+Dominance Line 1.25
 
 
 --------------------------------------------
@@ -476,6 +652,7 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
@@ -486,208 +663,260 @@ Linha -> Goodbye
 
  Valence Line NaN
 Arousal Line NaN
+Dominance Line NaN
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 --------------------------------------------
 Linha -> Mama dont go
 --------------------------------------------
+go 1.8750 2.2500 1.2
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 1.875
+Arousal Line 2.25
+Dominance Line 1.2
 
 
 --------------------------------------------
 Linha -> Daddy come home 
 --------------------------------------------
+come 1.6000 2.0000 1.4
+home 2.8333 1.1250 3.0
 
 
 
- Valence Line NaN
-Arousal Line NaN
+ Valence Line 2.21665
+Arousal Line 1.5625
+Dominance Line 2.2
 
 
 
-Valence File 2.55
-Arousal File 2.44
+Valence File 1.9882111111111098
+Arousal File 1.7670000000000001
+Dominance File 1.6250000000000013

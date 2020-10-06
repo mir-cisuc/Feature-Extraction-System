@@ -1,57 +1,72 @@
-package Gazeteers;
+package DAL_ANEW;
 
 import AuxiliarFiles.*;
+import Gazeteers.Initial_AV;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-
+import java.util.ArrayList;
 
 //import edu.stanford.nlp.ling.CoreAnnotations.DictAnnotation;
 
 /**
- * 1. ler a pasta com liricas 2. para cada file separar linha a linha 3. para
- * cada linha, percorrer o file de GazQ#-total.txt (ou outro) e linha a linha
- * deste verificar se a linha da lirica contem as lihas do file GazQ#-total.txt.
- * 4. contar as ocorrÃªncias e mandar para ficheiro o relatÃ³rio
- * 
- * @author rsmal
- * @date 21/04/2015
+ DAL
+ comment w=word, ee=pleasantness, aa=activation, ii=imagery
+ comment scores for pleasantness range from 1 (unpleasant) to 3 (pleasant)
+ scores for activation range from 1 (passive) to 3 (active)
+ scores for imagery range from 1 (difficult to form a meantal
+ picture of this word) to 3 (easy to form a mental picture)
+ comment pleasantness mean=1.84, sd=.44
+ activation mean=1.85, sd=.39
+ imagery (does word give you a clear mental picture) mean=1.94, sd=.63
+ comment these values have been tested on 348,000 words of natural language
+ the dictionary has a 90% matching rate for this corpus
+ mean ee is 1.85, with an sd of .36
+ mean aa is 1.67, with an sd of .36
+ mean ii is 1.52, with an sd of .63
  */
 
-public class Initial_AV {
+/**
+ * 1. ler a pasta com liricas <pasta origem>
+ *  2. para cada file da pasta origem separar linha a linha 
+ *  3. para cada linha, percorrer o file de anew-rsmal.txt ou dal-rsmal.txt (ou outro que insira) e linha a linha destem verificar se 
+ *  a linha da lirica contem as linhas do file selecionado (ex: anew-rsmal.txt) 
+ *  4. contar as ocorrencias e mandar para ficheiro o relatorio. 
+ *  Esse ficheiro será anew-rsmal.txtInorigem.txt ou dal-rsmal.txtInorigem.txt conforme o caso.
+ * O sistema cria ainda um relatório detalhado que armazena no ficheiro outputDetails.txt
+ * 
+ * @author rsmal
+ * @date
+ */
 
-	static final String Gazeteer_Q1Q2Q3Q4_dal = "GazQ1Q2Q3Q4-dal.txt";
-	static final String Gazeteer_Q2_dal = "GazQ2-dal.txt";
-	static final String Gazeteer_Q3_dal = "GazQ3-dal.txt";
-	static final String Gazeteer_Q4_dal = "GazQ4-dal.txt";
+public class Initial {
 
+	static final String dicFile1 = "dal-rsmal.txt";
+	static final String dicFile2 = "anew-rsmal.txt";
 	static final String sourceFolder = "src/Origem";
-	static final String gazeteerFolder = "src/Gazeteers/GazeteersFiles/";
-
-	static final String gazeteerFile = gazeteerFolder + Gazeteer_Q1Q2Q3Q4_dal;
-	static final String outputFile = gazeteerFolder  + "AVin" + Gazeteer_Q1Q2Q3Q4_dal + ".txt";
-	static final String str = gazeteerFile + " into " + sourceFolder + " - Details";
-			
+	static final String dalAnewFolder = "src/DAL_ANEW/DAL_ANEWFiles/";
+	
+	static final String dicFile = dalAnewFolder + dicFile1;
+	static final String outputFile = dalAnewFolder + "In" + dicFile1 + ".txt";
+	static final String str = dicFile + " into " + sourceFolder + " - Details";
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		Initial_AV initial  = new Initial_AV();
+		Initial initial  = new Initial();
 	}
-	
-	public Initial_AV() throws ClassNotFoundException, IOException{	
+	public Initial() throws ClassNotFoundException, IOException{	
+
 		// read the names of the files (lyrics) from a folder of lyrics and save
-		// them into a String[] (files)
-		System.out.println(sourceFolder);
+		// them into a
+		// String[] (files)
 		ReadOperations ro = new ReadOperations();
 		String[] files = ro.openDirectory(sourceFolder);
 		int numberFiles = ro.filesLenght(files);
-		
 
 		// ArrayList<String> listOfLinesFromTextFile = new ArrayList<String>();
 		// listOfLinesFromTextFile = ro.openTxtFile(dicFile); //the lines of dal
 		// or anew are in an arraylist
-		String[][] matrix = new String[numberFiles][3]; // matrix with 4 columns
+		String[][] matrix = new String[numberFiles][4]; // matrix with 4 columns
 
 		// ArrayList <String> outputDetails = new ArrayList<String>();
 		// write details in a specific file
@@ -65,11 +80,14 @@ public class Initial_AV {
 
 			double valenceFileValue = 0;
 			double arousalFileValue = 0;
+			double dominanceFileValue = 0;
 			double averageValenceFileValue = 0;
 			double averageArousalFileValue = 0;
+			double averageDominanceFileValue = 0;
 			int countFileValue = 0;
 
 			System.out.println("File Number: "+i);
+			
 			
 			String[] data = files[i].split("\\.");
 			matrix[i][0] = data[0];
@@ -95,8 +113,10 @@ public class Initial_AV {
 
 				double valenceLineValue = 0;
 				double arousalLineValue = 0;
+				double dominanceLineValue = 0;
 				double averageValenceLineValue = 0;
 				double averageArousalLineValue = 0;
+				double averageDominanceLineValue = 0;
 				int countLineValue = 0;
 
 				// Ignore empty lines.
@@ -121,7 +141,7 @@ public class Initial_AV {
 				for (int k = 0; k < dataLineLyric.length; k++) {
 
 					// open the dict for reading
-					FileReader dict = new FileReader(gazeteerFile);
+					FileReader dict = new FileReader(dicFile);
 					BufferedReader in2 = new BufferedReader(dict);
 					String dictLine;
 
@@ -130,20 +150,25 @@ public class Initial_AV {
 
 						// compare each word of the lyric to each word of the
 						// dict
-						if (dataLineLyric[k].toLowerCase().equals(dataDict[0])) {
+						if (dataLineLyric[k].equals(dataDict[0])) {
 							valenceFileValue = valenceFileValue
 									+ Double.parseDouble(dataDict[1]);
 							arousalFileValue = arousalFileValue
 									+ Double.parseDouble(dataDict[2]);
+							dominanceFileValue = dominanceFileValue
+									+ Double.parseDouble(dataDict[3]);
 							valenceLineValue = valenceLineValue
 									+ Double.parseDouble(dataDict[1]);
 							arousalLineValue = arousalLineValue
 									+ Double.parseDouble(dataDict[2]);
+							dominanceLineValue = dominanceLineValue
+									+ Double.parseDouble(dataDict[3]);
 							countFileValue++;
 							countLineValue++;
 							outputDetails = woDetails.writeLinesInList(
 									outputDetails, dataDict[0] + " "
-											+ dataDict[1] + " " + dataDict[2]);
+											+ dataDict[1] + " " + dataDict[2]
+											+ " " + dataDict[3]);
 						}
 
 					}
@@ -152,26 +177,34 @@ public class Initial_AV {
 				} // end for
 				averageValenceLineValue = valenceLineValue / countLineValue;
 				averageArousalLineValue = arousalLineValue / countLineValue;
-
-				outputDetails = woDetails.writeLinesInList(outputDetails, "\n");
+				averageDominanceLineValue = dominanceLineValue / countLineValue;
+				
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"\n");
 				outputDetails = woDetails.writeLinesInList(outputDetails,
 						"\n Valence Line " + averageValenceLineValue);
 				outputDetails = woDetails.writeLinesInList(outputDetails,
 						"Arousal Line " + averageArousalLineValue);
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"Dominance Line " + averageDominanceLineValue);
 
 			} // end while
 			averageValenceFileValue = valenceFileValue / countFileValue;
 			averageArousalFileValue = arousalFileValue / countFileValue;
-
-			outputDetails = woDetails.writeLinesInList(outputDetails, "\n\n");
+			averageDominanceFileValue = dominanceFileValue / countFileValue;
+			
+			outputDetails = woDetails.writeLinesInList(outputDetails,
+					"\n\n");
 			outputDetails = woDetails.writeLinesInList(outputDetails,
 					"Valence File " + averageValenceFileValue);
 			outputDetails = woDetails.writeLinesInList(outputDetails,
 					"Arousal File " + averageArousalFileValue);
-
+			outputDetails = woDetails.writeLinesInList(outputDetails,
+					"Dominance File " + averageDominanceFileValue);
+			
 			matrix[i][1] = Double.toString(averageValenceFileValue);
 			matrix[i][2] = Double.toString(averageArousalFileValue);
-
+			matrix[i][3] = Double.toString(averageDominanceFileValue);
 			in.close();
 
 		} // end for
@@ -182,8 +215,6 @@ public class Initial_AV {
 		wo.writeMatrixInConsole(matrix);
 		wo.writeMatrixInFile(matrix, outputFile);
 		wo.writeFile("outputDetails.txt", outputDetails);
-	
 	}
+
 }
-
-
