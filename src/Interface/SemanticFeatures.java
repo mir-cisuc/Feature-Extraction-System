@@ -6,12 +6,13 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-import DAL_ANEW.Initial;
-import Gazeteers.Initial_AV;
+import DAL_ANEW.Initial_ANEW;
+import GI.Initial_GI;
+import Gazeteers.Initial_Gazeteers;
 @SuppressWarnings("serial")
 public class SemanticFeatures extends JFrame{
 	JPanel panel_semantic;
-	JButton allfeatures, features_Gl, featuresSynesketch, featuresDAL_ANEW, featuresGazeteers;
+	JButton allfeatures, features_GI, featuresSynesketch, featuresDAL_ANEW, featuresGazeteers;
 	JLabel label;
 	public SemanticFeatures() {
 		super();
@@ -19,7 +20,7 @@ public class SemanticFeatures extends JFrame{
 		panel_semantic.setLayout(null);
 		
 		allfeatures = new JButton("Todas as features");
-		features_Gl = new JButton("Features GI");
+		features_GI = new JButton("Features GI");
 		featuresSynesketch = new JButton("Features Synesktech");
 		featuresDAL_ANEW = new JButton("Features DAL_ANEW");
 		featuresGazeteers = new JButton("Features Gazeteers");
@@ -28,17 +29,18 @@ public class SemanticFeatures extends JFrame{
 		
 		label.setBounds(75,10,300,25);
 		allfeatures.setBounds(25,40,160,25);
-		features_Gl.setBounds(200,40,160,25);
+		features_GI.setBounds(200,40,160,25);
 		featuresSynesketch.setBounds(25,80,160,25);
 		featuresDAL_ANEW.setBounds(200,80,160,25);
 		featuresGazeteers.setBounds(200,120,160,25);
 		
 		featuresGazeteers.addActionListener(new SemanticFeatures.GazeteersButtonListener());
 		featuresDAL_ANEW.addActionListener(new SemanticFeatures.DAL_ANEWButtonListener());
+		features_GI.addActionListener(new SemanticFeatures.GI_ButtonListener());
 		
 		panel_semantic.add(label);
 		panel_semantic.add(allfeatures);
-		panel_semantic.add(features_Gl);
+		panel_semantic.add(features_GI);
 		panel_semantic.add(featuresSynesketch);
 		panel_semantic.add(featuresDAL_ANEW);
 		panel_semantic.add(featuresGazeteers);
@@ -50,7 +52,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				Initial_AV initial_AV = new Initial_AV();
+				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -65,7 +67,22 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				Initial initial= new Initial();
+				Initial_ANEW initial= new Initial_ANEW();
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	private class GI_ButtonListener implements ActionListener {	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try {
+				Initial_GI initial= new Initial_GI();
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

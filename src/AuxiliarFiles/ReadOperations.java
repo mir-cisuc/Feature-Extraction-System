@@ -41,6 +41,7 @@ public class ReadOperations {
 	 */
 	public String[] openDirectory(String folder) {
 		File diretory = new File(folder);
+		System.out.println(diretory.getAbsolutePath());
 		files = diretory.list();
 		return files;
 	}
