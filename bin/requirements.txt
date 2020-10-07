@@ -1,0 +1,39 @@
+1ªa fase:
+GI:
+	-no ficheiro initial_AV tem paths e nomes de ficheiro hard coded
+	-no ficheiro initial_Tot tem paths e nomes de ficheiro hard coded
+	-no ficheiro initial tem paths e nomes de ficheiro hard coded
+
+Synesketch
+
+	-dentro da pasta Test os ficheiros tem nomes de ficheiro hard coded
+	-dentro da pasta ReadLyricsDirectoryToaString  tem nomes de ficheiro hard coded
+	-dentro da main java tem nomes de ficheiro hard coded
+
+DAL e ANEW (estao no mesmo projeto):
+
+	-no ficheiro initial tem paths e nomes de ficheiro hard coded
+
+Gazeteers:
+	-no ficheiro initial_AV tem paths e nomes de ficheiro hard coded
+	-no ficheiro initial_Tot tem paths e nomes de ficheiro hard coded
+
+Slang:
+	-no ficheiro initial tem paths e nomes de ficheiro hard coded
+
+
+FCL e ACL:
+	-no ficheiro initial tem paths e nomes de ficheiro hard coded
+
+2ªfase(estao no mesmo projeto):
+
+CBF:
+	- ao longo dos files existe alguns nomes de ficheiro hard coded
+	- existem alguns argumentos que precisamos de transformar em opções na interface antes de correr este código:
+		- dar a pasta onde estão as liricas .txt a processar (ex: origem) 
+		- escolher entre estes 3 valores : 'unig', 'big', 'trig'
+		- escolher entre estes 4 valores : 'nada', 'st', 'sw', 'st+sw'
+		- escolher entre estes 5 valores : 'freq', 'bool', 'tfidf', 'norm'
+
+POS(só projeto StanfordPOSTagger, o outro projeto daqui também está no CBF) :
+	-no ficheiro initial tem paths e nomes de ficheiro hard coded
