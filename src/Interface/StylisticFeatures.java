@@ -8,6 +8,7 @@ import javax.swing.*;
 
 import CapitalLetters.CapitalLetters_Initial;
 import Gazeteers.Initial_Gazeteers;
+import WordsDictionary.WordsDictionary_Initial;
 @SuppressWarnings("serial")
 public class StylisticFeatures extends JFrame{
 	JPanel panel_stylistic;
@@ -30,6 +31,8 @@ public class StylisticFeatures extends JFrame{
 		featuresCL.setBounds(90,80,200,25);
 		
 		featuresCL.addActionListener(new StylisticFeatures.CL_ButtonListener());
+		allfeatures.addActionListener(new StylisticFeatures.AllFeaturesButtonListener());
+		featuresSlang.addActionListener(new StylisticFeatures.SlangButtonListener());
 		
 		panel_stylistic.add(label);
 		panel_stylistic.add(allfeatures);
@@ -45,11 +48,42 @@ public class StylisticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
+				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		}
 	}
+	
+	private class SlangButtonListener implements ActionListener {	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try {
+				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
+				JOptionPane.showMessageDialog(null, "Features Slang extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+	
+	private class AllFeaturesButtonListener implements ActionListener {	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			try {
+				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
+				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
+				JOptionPane.showMessageDialog(null, "Todas features estilísticas extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
+
 	
 }

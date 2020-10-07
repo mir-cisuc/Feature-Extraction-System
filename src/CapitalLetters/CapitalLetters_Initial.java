@@ -23,7 +23,7 @@ public class CapitalLetters_Initial {
 													// liricas
 
 	static final String outputFolder = "src/Output/";
-	static final String outputFile = outputFolder + "CapitalLetters-M45";
+	static final String outputFile = outputFolder + "CapitalLetters_M45";
 	
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException {
