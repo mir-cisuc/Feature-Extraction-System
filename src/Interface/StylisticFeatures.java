@@ -12,7 +12,7 @@ import WordsDictionary.WordsDictionary_Initial;
 @SuppressWarnings("serial")
 public class StylisticFeatures extends JFrame{
 	JPanel panel_stylistic;
-	JButton allfeatures, featuresSlang, featuresCL;
+	JButton allfeatures, featuresSlang, featuresCL,back;
 	JLabel label;
 	public StylisticFeatures() {
 		super();
@@ -22,6 +22,7 @@ public class StylisticFeatures extends JFrame{
 		allfeatures = new JButton("Todas as features");
 		featuresSlang = new JButton("Features Slang");
 		featuresCL = new JButton("Features CapitalLetters");
+		back = new JButton("Back");
 
 		label = new JLabel("Quais features estilisticas deseja extrair?");
 		
@@ -29,16 +30,18 @@ public class StylisticFeatures extends JFrame{
 		allfeatures.setBounds(25,40,160,25);
 		featuresSlang.setBounds(200,40,160,25);
 		featuresCL.setBounds(90,80,200,25);
+		back.setBounds(200,130,160,25);
 		
 		featuresCL.addActionListener(new StylisticFeatures.CL_ButtonListener());
 		allfeatures.addActionListener(new StylisticFeatures.AllFeaturesButtonListener());
 		featuresSlang.addActionListener(new StylisticFeatures.SlangButtonListener());
-		
+		back.addActionListener(new BackStylisticButtonListener(this));
+
 		panel_stylistic.add(label);
 		panel_stylistic.add(allfeatures);
 		panel_stylistic.add(featuresSlang);
 		panel_stylistic.add(featuresCL);
-
+		panel_stylistic.add(back);
 		
 		this.add(panel_stylistic);
 	}
@@ -48,7 +51,7 @@ public class StylisticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
-				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -62,7 +65,7 @@ public class StylisticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
-				JOptionPane.showMessageDialog(null, "Features Slang extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features Slang extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -77,7 +80,7 @@ public class StylisticFeatures extends JFrame{
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
 				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
-				JOptionPane.showMessageDialog(null, "Todas features estilísticas extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Todas features estilï¿½sticas extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -14,7 +14,7 @@ import Synesketch.mainApp_Synesketch;
 @SuppressWarnings("serial")
 public class SemanticFeatures extends JFrame{
 	JPanel panel_semantic;
-	JButton allfeatures, features_GI, featuresSynesketch, featuresDAL_ANEW, featuresGazeteers;
+	JButton allfeatures, features_GI, featuresSynesketch, featuresDAL_ANEW, featuresGazeteers, back;
 	JLabel label;
 	public SemanticFeatures() {
 		super();
@@ -26,6 +26,7 @@ public class SemanticFeatures extends JFrame{
 		featuresSynesketch = new JButton("Features Synesktech");
 		featuresDAL_ANEW = new JButton("Features DAL_ANEW");
 		featuresGazeteers = new JButton("Features Gazeteers");
+		back = new JButton("Back");
 		
 		label = new JLabel("Quais features semanticas deseja extrair?");
 		
@@ -35,13 +36,14 @@ public class SemanticFeatures extends JFrame{
 		featuresSynesketch.setBounds(25,80,160,25);
 		featuresDAL_ANEW.setBounds(200,80,160,25);
 		featuresGazeteers.setBounds(200,120,160,25);
+		back.setBounds(200,180,160,25);
 		
 		featuresGazeteers.addActionListener(new SemanticFeatures.GazeteersButtonListener());
 		featuresDAL_ANEW.addActionListener(new SemanticFeatures.DAL_ANEWButtonListener());
 		features_GI.addActionListener(new SemanticFeatures.GI_ButtonListener());
 		featuresSynesketch.addActionListener(new SemanticFeatures.SynesketchButtonListener());
 		allfeatures.addActionListener(new SemanticFeatures.AllFeaturesListener());
-		
+		back.addActionListener(new BackSemanticButtonListener(this));
  
 		panel_semantic.add(label);
 		panel_semantic.add(allfeatures);
@@ -49,6 +51,7 @@ public class SemanticFeatures extends JFrame{
 		panel_semantic.add(featuresSynesketch);
 		panel_semantic.add(featuresDAL_ANEW);
 		panel_semantic.add(featuresGazeteers);
+		panel_semantic.add(back);
 		
 		this.add(panel_semantic);
 	}
@@ -58,7 +61,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
-				JOptionPane.showMessageDialog(null, "Features Gazeteers extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features Gazeteers extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -74,7 +77,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_ANEW initial= new Initial_ANEW();
-				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -90,7 +93,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_GI initial= new Initial_GI();
-				JOptionPane.showMessageDialog(null, "Features GI extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features GI extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -107,7 +110,7 @@ public class SemanticFeatures extends JFrame{
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				try {
 					ma.init_2();
-					JOptionPane.showMessageDialog(null, "Features Synesketch extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Features Synesketch extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -124,7 +127,7 @@ public class SemanticFeatures extends JFrame{
 				Initial_GI initial_GI = new Initial_GI();
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				ma.init_2();
-				JOptionPane.showMessageDialog(null, "Todas as features semânticas extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Todas as features semï¿½nticas extraï¿½das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
