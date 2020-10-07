@@ -40,6 +40,7 @@ public class SemanticFeatures extends JFrame{
 		featuresDAL_ANEW.addActionListener(new SemanticFeatures.DAL_ANEWButtonListener());
 		features_GI.addActionListener(new SemanticFeatures.GI_ButtonListener());
 		featuresSynesketch.addActionListener(new SemanticFeatures.SynesketchButtonListener());
+		allfeatures.addActionListener(new SemanticFeatures.AllFeaturesListener());
 		
  
 		panel_semantic.add(label);
@@ -57,6 +58,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
+				JOptionPane.showMessageDialog(null, "Features Gazeteers extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -72,6 +74,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_ANEW initial= new Initial_ANEW();
+				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -87,6 +90,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_GI initial= new Initial_GI();
+				JOptionPane.showMessageDialog(null, "Features GI extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -103,13 +107,30 @@ public class SemanticFeatures extends JFrame{
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				try {
 					ma.init_2();
+					JOptionPane.showMessageDialog(null, "Features Synesketch extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
+			}		
 		}
-			 
-				
+
+	private class AllFeaturesListener implements ActionListener {	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			try {
+				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
+				Initial_ANEW initial_ANEW = new Initial_ANEW();
+				Initial_GI initial_GI = new Initial_GI();
+				mainApp_Synesketch ma = new mainApp_Synesketch();
+				ma.init_2();
+				JOptionPane.showMessageDialog(null, "Todas as features semânticas extraídas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+			} catch (ClassNotFoundException | IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}		
+		}
 	}
+	
 	
 }
