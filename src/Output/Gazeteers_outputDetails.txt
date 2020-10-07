@@ -1,0 +1,693 @@
+src/Gazeteers/GazeteersFiles/GazQ1Q2Q3Q4-dal.txt into src/Origem - Details
+
+
+
+
+###############################################
+src/Origem/L001-141.txt
+###############################################
+
+
+--------------------------------------------
+Linha -> Want to find out where the moon goes
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+--------------------------------------------
+Linha -> When it leaves the western sky
+--------------------------------------------
+sky 3.00 1.60
+
+
+
+ Valence Line 3.0
+Arousal Line 1.6
+
+
+--------------------------------------------
+Linha -> And night dissolves again to morning
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Azure turns to gold
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Azure turns to gold
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Gonna sleep with one eye open
+--------------------------------------------
+sleep 2.71 1.38
+
+
+
+ Valence Line 2.71
+Arousal Line 1.38
+
+
+--------------------------------------------
+Linha -> Gonna keep the shades half drawn
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Nearly silent dressed in shadows
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Lines and colors fall
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Lines and colors fall
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Gonna watch her through the window
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Just as I watched you before
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Smile knows but just wont tell me
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I just watch her go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I just watch her go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Now I know just where the moon goes
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+--------------------------------------------
+Linha -> When it leaves the western sky
+--------------------------------------------
+sky 3.00 1.60
+
+
+
+ Valence Line 3.0
+Arousal Line 1.6
+
+
+--------------------------------------------
+Linha -> And night dissolves again to morning
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> The moon is in your eyes
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+--------------------------------------------
+Linha -> The moon is in your eyes
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+--------------------------------------------
+Linha -> The moon is in your eyes
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+--------------------------------------------
+Linha -> The moon is in your eyes 
+--------------------------------------------
+moon 2.78 1.33
+
+
+
+ Valence Line 2.78
+Arousal Line 1.33
+
+
+
+Valence File 2.821111111111111
+Arousal File 1.3955555555555557
+
+
+###############################################
+src/Origem/L002-157.txt
+###############################################
+
+
+--------------------------------------------
+Linha -> Mother you had me 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> But I never had you
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I wanted you 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> But you didnt want me
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> So 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I got to tell you
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Father you left me 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> But I never left you
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I needed you 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> But you didnt need me
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> So 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I just got to tell you
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Children dont do 
+--------------------------------------------
+children 2.55 2.44
+
+
+
+ Valence Line 2.55
+Arousal Line 2.44
+
+
+--------------------------------------------
+Linha -> What I have done
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I couldnt walk 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> And I tried to run
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> So
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> I got to tell you
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Goodbye
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Mama dont go
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+--------------------------------------------
+Linha -> Daddy come home 
+--------------------------------------------
+
+
+
+ Valence Line NaN
+Arousal Line NaN
+
+
+
+Valence File 2.55
+Arousal File 2.44

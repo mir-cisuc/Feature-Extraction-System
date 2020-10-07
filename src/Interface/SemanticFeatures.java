@@ -9,6 +9,8 @@ import javax.swing.*;
 import DAL_ANEW.Initial_ANEW;
 import GI.Initial_GI;
 import Gazeteers.Initial_Gazeteers;
+import Synesketch.mainApp_Synesketch;
+
 @SuppressWarnings("serial")
 public class SemanticFeatures extends JFrame{
 	JPanel panel_semantic;
@@ -37,7 +39,9 @@ public class SemanticFeatures extends JFrame{
 		featuresGazeteers.addActionListener(new SemanticFeatures.GazeteersButtonListener());
 		featuresDAL_ANEW.addActionListener(new SemanticFeatures.DAL_ANEWButtonListener());
 		features_GI.addActionListener(new SemanticFeatures.GI_ButtonListener());
+		featuresSynesketch.addActionListener(new SemanticFeatures.SynesketchButtonListener());
 		
+ 
 		panel_semantic.add(label);
 		panel_semantic.add(allfeatures);
 		panel_semantic.add(features_GI);
@@ -91,6 +95,21 @@ public class SemanticFeatures extends JFrame{
 				e1.printStackTrace();
 			}
 		}
+	}
+	private class SynesketchButtonListener implements ActionListener {	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+				mainApp_Synesketch ma = new mainApp_Synesketch();
+				try {
+					ma.init_2();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		}
+			 
+				
 	}
 	
 }
