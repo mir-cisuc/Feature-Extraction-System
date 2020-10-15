@@ -69,7 +69,9 @@ public class WriteOperations {
 	public void writeMatrixInConsole(String[][] matrix) {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				System.out.print(matrix[i][j] + " ");
+				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
+					System.out.print(matrix[i][j] + " ");
+				}
 			}
 			System.out.println();
 		}
@@ -98,7 +100,9 @@ public class WriteOperations {
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
-				out.write(matrix[i][j] + " ");
+				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
+					out.write(matrix[i][j] + " ");
+				}
 			}
 			out.newLine();
 		}
