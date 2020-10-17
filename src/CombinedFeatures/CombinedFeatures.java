@@ -1,15 +1,10 @@
 package CombinedFeatures;
 
-
 import AuxiliarFiles.*;
-import Gazeteers.Initial_Gazeteers;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
-//import edu.stanford.nlp.ling.CoreAnnotations.DictAnnotation;
 
 /**
  DAL
@@ -44,35 +39,42 @@ import java.util.ArrayList;
 public class CombinedFeatures {
 	boolean gazeteersFeatures;
 	boolean DAL_ANEWFeatures;
+	boolean WordsDictionaryFeatures;
+	
+	static final String originFolder = "src/CombinedFeatures/";
 	
 	// gazeteers
-	static final String Gazeteer_Q1Q2Q3Q4_dal = "GazQ1Q2Q3Q4-dal.txt";
-	static final String Gazeteer_Q2_dal = "GazQ2-dal.txt";
-	static final String Gazeteer_Q3_dal = "GazQ3-dal.txt";
-	static final String Gazeteer_Q4_dal = "GazQ4-dal.txt";
+	static final String Gazeteer_Q1Q2Q3Q4_dal = "Gazeteers.txt";
+	//static final String Gazeteer_Q2_dal = "GazQ2-dal.txt";
+	//static final String Gazeteer_Q3_dal = "GazQ3-dal.txt";
+	//static final String Gazeteer_Q4_dal = "GazQ4-dal.txt";
 
-	static final String gazeteerFolder = "src/Gazeteers/GazeteersFiles/";
-	static final String gazeteerFile = gazeteerFolder + Gazeteer_Q1Q2Q3Q4_dal;
-	
+	//static final String gazeteerFolder = "src/Gazeteers/GazeteersFiles/";
+	static final String gazeteerFile = originFolder + Gazeteer_Q1Q2Q3Q4_dal;
 	
 	// DAL_ANEW
 
-	static final String dicFile1 = "dal-rsmal.txt";
-	static final String dicFile2 = "anew-rsmal.txt";
+	static final String dicFile1 = "DAL_ANEW.txt";
+	//static final String dicFile2 = "anew-rsmal.txt";
 	static final String sourceFolder = "src/Origem";
-	static final String dalAnewFolder = "src/DAL_ANEW/DAL_ANEWFiles/";
+	//static final String dalAnewFolder = "src/DAL_ANEW/DAL_ANEWFiles/";
+	
+	//Words Dictionary
+	
+	static final String wordsDictionaryFile = "src/AuxiliarFiles/slang.txt";
+	
 	
 	static final String outputFolder = "src/Output/";
 	
-	static final String dicFile = dalAnewFolder + dicFile1;
-	static final String outputFile = outputFolder + "Combined_Features_Indal-rsmal";
+	static final String dicFile = originFolder + dicFile1;
+	static String outputFile = outputFolder;
 	static final String str = dicFile + " into " + sourceFolder + " - Details";
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		CombinedFeatures initial_anew  = new CombinedFeatures(false, true);
+		CombinedFeatures initial_anew  = new CombinedFeatures(false, false,true);
 		// por default vamos buscar as DAL_ANEW
 	}
-	public CombinedFeatures(boolean gazeteersFeatures, boolean DAL_ANEWFeatures) throws ClassNotFoundException, IOException{	
+	public CombinedFeatures(boolean gazeteersFeatures, boolean DAL_ANEWFeatures, boolean WordsDictionaryFeatures) throws ClassNotFoundException, IOException{	
 
 		// read the names of the files (lyrics) from a folder of lyrics and save
 		// them into a
@@ -108,6 +110,9 @@ public class CombinedFeatures {
 			double dominanceFileValue = 0;
 			double averageDominanceFileValue = 0;
 			
+			// Words Dictionary 
+			int count = 0;
+			
 
 			System.out.println("File Number: "+i);
 			
@@ -126,6 +131,8 @@ public class CombinedFeatures {
 			outputDetails = woDetails.writeLinesInList(outputDetails,
 					"###############################################");
 
+			
+			
 			// open the file (lyric) for reading
 			FileReader fileReader = new FileReader(filename_path);
 			BufferedReader in = new BufferedReader(fileReader);
@@ -159,104 +166,137 @@ public class CombinedFeatures {
 				outputDetails = woDetails.writeLinesInList(outputDetails,
 						"--------------------------------------------");
 
-				// thisLine = " " + thisLine + " ";
-				String[] dataLineLyric = thisLine.split(" ");
-
-				// for each word of the line of the lyric
-				for (int k = 0; k < dataLineLyric.length; k++) {
-					FileReader dict = null;
-					// open the dict for reading
-					if (DAL_ANEWFeatures) {
-						dict = new FileReader(dicFile);
-					}
-					else if (gazeteersFeatures) {
-						dict = new FileReader(gazeteerFile);
-					}
-					
+				
+				if (WordsDictionaryFeatures) {
+					thisLine = " " + thisLine + " ";
+					FileReader dict = new FileReader(wordsDictionaryFile);
 					BufferedReader in2 = new BufferedReader(dict);
 					String dictLine;
-
+					
 					while ((dictLine = in2.readLine()) != null) {
-						String[] dataDict = dictLine.split("\t");
+						// if (dictLine.equals(""))
+						// continue;
 
-						// compare each word of the lyric to each word of the
-						String linha = dataLineLyric[k];
-						
-						if (gazeteersFeatures) {
-							linha = linha.toLowerCase();
-						}
-						
-						if (linha.equals(dataDict[0])) {
-							valenceFileValue = valenceFileValue
-									+ Double.parseDouble(dataDict[1]);
-							arousalFileValue = arousalFileValue
-									+ Double.parseDouble(dataDict[2]);
-							if (DAL_ANEWFeatures) {
-								dominanceFileValue = dominanceFileValue
-										+ Double.parseDouble(dataDict[3]);
-							}
+						dictLine = " " + dictLine + " ";
+						int index = thisLine.indexOf(dictLine);
 
-							valenceLineValue = valenceLineValue
-									+ Double.parseDouble(dataDict[1]);
-							arousalLineValue = arousalLineValue
-									+ Double.parseDouble(dataDict[2]);
-							if (DAL_ANEWFeatures) {
-								dominanceLineValue = dominanceLineValue
-										+ Double.parseDouble(dataDict[3]);
-							}
-							countFileValue++;
-							countLineValue++;
-							String write=	dataDict[0] + " "
-									+ dataDict[1] + " " + dataDict[2];
-							if (DAL_ANEWFeatures) {
-								write.concat(" " + dataDict[3]);
-							}
+						while (index >= 0) {
+							index++;
+							count++;
+							String str2 = dictLine;
 							outputDetails = woDetails.writeLinesInList(
-									outputDetails,write);
-							
+									outputDetails, str2);
+							index = thisLine.indexOf(dictLine, index);
+
 						}
 
 					}
-
-					in2.close();
-				} // end for
-				averageValenceLineValue = valenceLineValue / countLineValue;
-				averageArousalLineValue = arousalLineValue / countLineValue;
-				if (DAL_ANEWFeatures) {
-					averageDominanceLineValue = dominanceLineValue / countLineValue;
 				}
-				
-				outputDetails = woDetails.writeLinesInList(outputDetails,
-						"\n");
-				outputDetails = woDetails.writeLinesInList(outputDetails,
-						"\n Valence Line " + averageValenceLineValue);
-				outputDetails = woDetails.writeLinesInList(outputDetails,
-						"Arousal Line " + averageArousalLineValue);
-				if (DAL_ANEWFeatures) {
-				outputDetails = woDetails.writeLinesInList(outputDetails,
-						"Dominance Line " + averageDominanceLineValue);
+				else {
+					String[] dataLineLyric = thisLine.split(" ");
+	
+					// for each word of the line of the lyric
+					for (int k = 0; k < dataLineLyric.length; k++) {
+						FileReader dict = null;
+						// open the dict for reading
+						if (DAL_ANEWFeatures) {
+							dict = new FileReader(dicFile);
+						}
+						else if (gazeteersFeatures) {
+							dict = new FileReader(gazeteerFile);
+						}
+						else if (WordsDictionaryFeatures) {
+							dict = new FileReader(wordsDictionaryFile);
+						}
+						
+						BufferedReader in2 = new BufferedReader(dict);
+						String dictLine;
+						
+						while ((dictLine = in2.readLine()) != null) {					
+							String[] dataDict = dictLine.split("\t");
+	
+							// compare each word of the lyric to each word of the
+							String linha = dataLineLyric[k];
+							
+							if (gazeteersFeatures) {
+								linha = linha.toLowerCase();
+							}
+							
+							if (linha.equals(dataDict[0])) {
+								valenceFileValue = valenceFileValue
+										+ Double.parseDouble(dataDict[1]);
+								arousalFileValue = arousalFileValue
+										+ Double.parseDouble(dataDict[2]);
+								if (DAL_ANEWFeatures) {
+									dominanceFileValue = dominanceFileValue
+											+ Double.parseDouble(dataDict[3]);
+								}
+	
+								valenceLineValue = valenceLineValue
+										+ Double.parseDouble(dataDict[1]);
+								arousalLineValue = arousalLineValue
+										+ Double.parseDouble(dataDict[2]);
+								if (DAL_ANEWFeatures) {
+									dominanceLineValue = dominanceLineValue
+											+ Double.parseDouble(dataDict[3]);
+								}
+								countFileValue++;
+								countLineValue++;
+								String write=	dataDict[0] + " "
+										+ dataDict[1] + " " + dataDict[2];
+								if (DAL_ANEWFeatures) {
+									write.concat(" " + dataDict[3]);
+								}
+								outputDetails = woDetails.writeLinesInList(
+										outputDetails,write);								
+							}
+						}
+					}// end for
+				} 
+				if (!WordsDictionaryFeatures) {
+					averageValenceLineValue = valenceLineValue / countLineValue;
+					averageArousalLineValue = arousalLineValue / countLineValue;
+					if (DAL_ANEWFeatures) {
+						averageDominanceLineValue = dominanceLineValue / countLineValue;
+					}
+					
+					outputDetails = woDetails.writeLinesInList(outputDetails,
+							"\n");
+					outputDetails = woDetails.writeLinesInList(outputDetails,
+							"\n Valence Line " + averageValenceLineValue);
+					outputDetails = woDetails.writeLinesInList(outputDetails,
+							"Arousal Line " + averageArousalLineValue);
+					if (DAL_ANEWFeatures) {
+					outputDetails = woDetails.writeLinesInList(outputDetails,
+							"Dominance Line " + averageDominanceLineValue);
+					}
 				}
 
 			} // end while
-			averageValenceFileValue = valenceFileValue / countFileValue;
-			averageArousalFileValue = arousalFileValue / countFileValue;
-			if (DAL_ANEWFeatures) {
-				averageDominanceFileValue = dominanceFileValue / countFileValue;
+			if (!WordsDictionaryFeatures) {
+				averageValenceFileValue = valenceFileValue / countFileValue;
+				averageArousalFileValue = arousalFileValue / countFileValue;
+				if (DAL_ANEWFeatures) {
+					averageDominanceFileValue = dominanceFileValue / countFileValue;
+				}
+				
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"\n\n");
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"Valence File " + averageValenceFileValue);
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"Arousal File " + averageArousalFileValue);
+				outputDetails = woDetails.writeLinesInList(outputDetails,
+						"Dominance File " + averageDominanceFileValue);
+				
+				matrix[i][1] = Double.toString(averageValenceFileValue);
+				matrix[i][2] = Double.toString(averageArousalFileValue);
+				if (DAL_ANEWFeatures) {
+					matrix[i][3] = Double.toString(averageDominanceFileValue);
+				}
 			}
-			
-			outputDetails = woDetails.writeLinesInList(outputDetails,
-					"\n\n");
-			outputDetails = woDetails.writeLinesInList(outputDetails,
-					"Valence File " + averageValenceFileValue);
-			outputDetails = woDetails.writeLinesInList(outputDetails,
-					"Arousal File " + averageArousalFileValue);
-			outputDetails = woDetails.writeLinesInList(outputDetails,
-					"Dominance File " + averageDominanceFileValue);
-			
-			matrix[i][1] = Double.toString(averageValenceFileValue);
-			matrix[i][2] = Double.toString(averageArousalFileValue);
-			if (DAL_ANEWFeatures) {
-				matrix[i][3] = Double.toString(averageDominanceFileValue);
+			else {
+				matrix[i][1] = Integer.toString(count);
 			}
 			in.close();
 
@@ -266,6 +306,16 @@ public class CombinedFeatures {
 
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(matrix);
+		if (gazeteersFeatures) {
+			outputFile += "Gazeteers";
+		}
+		if (DAL_ANEWFeatures) {
+			outputFile += "DAL_ANEW";
+		}
+		if (WordsDictionaryFeatures) {
+			outputFile += "WordsDictionary";
+		}
+		
 		wo.writeMatrixInFile(matrix, outputFile);
 		wo.writeFile(outputFolder + "Combined_Features_outputDetails.txt", outputDetails);
 	}

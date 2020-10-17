@@ -6,9 +6,8 @@ import java.io.IOException;
 
 import javax.swing.*;
 
-import DAL_ANEW.Initial_ANEW;
+import CombinedFeatures.CombinedFeatures;
 import GI.Initial_GI;
-import Gazeteers.Initial_Gazeteers;
 import Synesketch.mainApp_Synesketch;
 
 @SuppressWarnings("serial")
@@ -60,8 +59,8 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
-				JOptionPane.showMessageDialog(null, "Features Gazeteers extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				CombinedFeatures initial_gazeteers  = new CombinedFeatures(true, false,false); // false true vai ser gazeteers
+				JOptionPane.showMessageDialog(null, "Features Gazeteers extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -76,8 +75,8 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				Initial_ANEW initial= new Initial_ANEW();
-				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				CombinedFeatures initial  = new CombinedFeatures(false, true,false); // false true vai ser gazeteers
+				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -93,7 +92,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				Initial_GI initial= new Initial_GI();
-				JOptionPane.showMessageDialog(null, "Features GI extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features GI extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -110,7 +109,7 @@ public class SemanticFeatures extends JFrame{
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				try {
 					ma.init_2();
-					JOptionPane.showMessageDialog(null, "Features Synesketch extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Features Synesketch extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -122,12 +121,12 @@ public class SemanticFeatures extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Initial_Gazeteers initial_AV = new Initial_Gazeteers();
-				Initial_ANEW initial_ANEW = new Initial_ANEW();
+				CombinedFeatures initial_GAZ  = new CombinedFeatures(true, false,false);
+				CombinedFeatures initial_ANEW  = new CombinedFeatures(false, true,false);
 				Initial_GI initial_GI = new Initial_GI();
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				ma.init_2();
-				JOptionPane.showMessageDialog(null, "Todas as features sem�nticas extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Todas as features semanticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

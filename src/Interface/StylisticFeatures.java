@@ -7,8 +7,9 @@ import java.io.IOException;
 import javax.swing.*;
 
 import CapitalLetters.CapitalLetters_Initial;
-import Gazeteers.Initial_Gazeteers;
-import WordsDictionary.WordsDictionary_Initial;
+import CombinedFeatures.CombinedFeatures;
+
+
 @SuppressWarnings("serial")
 public class StylisticFeatures extends JFrame{
 	JPanel panel_stylistic;
@@ -51,7 +52,7 @@ public class StylisticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
-				JOptionPane.showMessageDialog(null, "Features CapitalLetters extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -64,8 +65,8 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
-				JOptionPane.showMessageDialog(null, "Features Slang extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true);
+				JOptionPane.showMessageDialog(null, "Features Slang extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -79,8 +80,8 @@ public class StylisticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
-				WordsDictionary_Initial WordsDictionary_Initial = new WordsDictionary_Initial();
-				JOptionPane.showMessageDialog(null, "Todas features estil�sticas extra�das", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true);
+				JOptionPane.showMessageDialog(null, "Todas features estilisticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

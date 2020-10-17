@@ -1,7 +1,7 @@
 package GI;
 
 import AuxiliarFiles.*;
-import DAL_ANEW.Initial_ANEW;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
