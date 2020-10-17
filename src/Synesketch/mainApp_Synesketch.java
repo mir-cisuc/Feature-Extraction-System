@@ -69,10 +69,11 @@ public class mainApp_Synesketch {
 		
 		String outputFolder = "src/Output/";
 
-		FileWriter fstream = new FileWriter(outputFolder + "Synesketch_M49.txt");
+		FileWriter fstream = new FileWriter(outputFolder + "Synesketch_M49.csv");
 		BufferedWriter out = new BufferedWriter(fstream);
 		
-		
+		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
+		out.newLine();
 
 		while (it.hasNext()) {
 			//idSong e por ex. L001-141
@@ -85,6 +86,8 @@ public class mainApp_Synesketch {
 			System.out.println(state);
 			
 			System.out.println("Song: "+idSong);
+			
+			
 			
 			String line = idSong + "," + state.getGeneralWeight() + ","
 					+ state.getValence() + "," + state.getHappinessWeight()

@@ -167,7 +167,7 @@ public class Initial_GI {
 
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(feature_matrix);
-		wo.writeMatrixInFile(feature_matrix, outputFile);
+		wo.writeMatrixInFile(feature_matrix, outputFile,1); //enviar option para imprimir o header do GI = 1
 
 	}
 

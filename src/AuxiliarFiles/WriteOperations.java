@@ -82,10 +82,10 @@ public class WriteOperations {
 	 * 
 	 * @throws IOException
 	 */
-	public void writeMatrixInFile(String[][] matrix, String filename)
+	public void writeMatrixInFile(String[][] matrix, String filename, int option)
 			throws IOException {
 
-		File file = new File(filename + ".txt");
+		File file = new File(filename + ".csv");
 		System.out.println(file.getAbsolutePath());
 		boolean isFile = file.exists();
 
@@ -94,14 +94,23 @@ public class WriteOperations {
 		if (!isFile) {
 			file.createNewFile();
 		}
-
 		// abre o ficheiro anterior para escrita
 		BufferedWriter out = new BufferedWriter(new FileWriter(file));
+		
+		if(option==2) { 
+			//Capital Letters
+			out.write("Id, cfcl, cacl");
+			out.newLine();
+			
+		}
+		
+
+		
 
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
-					out.write(matrix[i][j] + " ");
+					out.write(matrix[i][j] + ", ");
 				}
 			}
 			out.newLine();
