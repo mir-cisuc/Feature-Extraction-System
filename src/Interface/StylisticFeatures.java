@@ -15,8 +15,10 @@ public class StylisticFeatures extends JFrame{
 	JPanel panel_stylistic;
 	JButton allfeatures, featuresSlang, featuresCL,back;
 	JLabel label;
-	public StylisticFeatures() {
+	String sourceFolder;
+	public StylisticFeatures(String sourceFolder) {
 		super();
+		this.sourceFolder = sourceFolder;
 		panel_stylistic = new JPanel();
 		panel_stylistic.setLayout(null);
 		
@@ -51,7 +53,7 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
+				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(sourceFolder);
 				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
@@ -65,7 +67,7 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true);
+				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true,sourceFolder);
 				JOptionPane.showMessageDialog(null, "Features Slang extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
@@ -79,8 +81,8 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
-				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true);
+				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(sourceFolder);
+				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true,sourceFolder);
 				JOptionPane.showMessageDialog(null, "Todas features estilisticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block

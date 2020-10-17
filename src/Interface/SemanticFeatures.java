@@ -15,8 +15,10 @@ public class SemanticFeatures extends JFrame{
 	JPanel panel_semantic;
 	JButton allfeatures, features_GI, featuresSynesketch, featuresDAL_ANEW, featuresGazeteers, back;
 	JLabel label;
-	public SemanticFeatures() {
+	String sourceFolder;
+	public SemanticFeatures(String sourceFolder) {
 		super();
+		this.sourceFolder = sourceFolder;
 		panel_semantic = new JPanel();
 		panel_semantic.setLayout(null);
 		
@@ -59,7 +61,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CombinedFeatures initial_gazeteers  = new CombinedFeatures(true, false,false); // false true vai ser gazeteers
+				CombinedFeatures initial_gazeteers  = new CombinedFeatures(true, false,false,sourceFolder); // false true vai ser gazeteers
 				JOptionPane.showMessageDialog(null, "Features Gazeteers extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -75,7 +77,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CombinedFeatures initial  = new CombinedFeatures(false, true,false); // false true vai ser gazeteers
+				CombinedFeatures initial  = new CombinedFeatures(false, true,false,sourceFolder); // false true vai ser gazeteers
 				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -91,7 +93,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				Initial_GI initial= new Initial_GI();
+				Initial_GI initial= new Initial_GI(sourceFolder);
 				JOptionPane.showMessageDialog(null, "Features GI extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -108,7 +110,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				try {
-					ma.init_2();
+					ma.init_2(sourceFolder);
 					JOptionPane.showMessageDialog(null, "Features Synesketch extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -121,11 +123,11 @@ public class SemanticFeatures extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				CombinedFeatures initial_GAZ  = new CombinedFeatures(true, false,false);
-				CombinedFeatures initial_ANEW  = new CombinedFeatures(false, true,false);
-				Initial_GI initial_GI = new Initial_GI();
+				CombinedFeatures initial_GAZ  = new CombinedFeatures(true, false,false,sourceFolder);
+				CombinedFeatures initial_ANEW  = new CombinedFeatures(false, true,false,sourceFolder);
+				Initial_GI initial_GI = new Initial_GI(sourceFolder);
 				mainApp_Synesketch ma = new mainApp_Synesketch();
-				ma.init_2();
+				ma.init_2(sourceFolder);
 				JOptionPane.showMessageDialog(null, "Todas as features semanticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block

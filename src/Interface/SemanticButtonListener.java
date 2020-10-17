@@ -16,7 +16,7 @@ public class SemanticButtonListener implements ActionListener {
 		// TODO Auto-generated method stub
 		main_interface.dispose();
 		SemanticFeatures frame_semantica = null;
-		frame_semantica = new SemanticFeatures();
+		frame_semantica = new SemanticFeatures(main_interface.sourceFolder);
 		frame_semantica.setTitle("Selecao de features semanticas");
 		frame_semantica.setSize(400,250);
 		frame_semantica.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -16,11 +16,11 @@ public class BackStylisticButtonListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
         stylistic_panel.dispose();
-		MainInterface main_frame = new MainInterface();
+		MainInterface main_frame = new MainInterface(stylistic_panel.sourceFolder);
 		main_frame.setTitle("Janela principal do programa");
-		main_frame.setSize(400,100);
+		main_frame.setSize(475,175);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main_frame.setVisible(true);
+		main_frame.setVisible(true);	
 
     }
 

@@ -45,9 +45,6 @@ public class CombinedFeatures {
 	
 	// gazeteers
 	static final String Gazeteer_Q1Q2Q3Q4_dal = "Gazeteers.txt";
-	//static final String Gazeteer_Q2_dal = "GazQ2-dal.txt";
-	//static final String Gazeteer_Q3_dal = "GazQ3-dal.txt";
-	//static final String Gazeteer_Q4_dal = "GazQ4-dal.txt";
 
 	//static final String gazeteerFolder = "src/Gazeteers/GazeteersFiles/";
 	static final String gazeteerFile = originFolder + Gazeteer_Q1Q2Q3Q4_dal;
@@ -56,7 +53,7 @@ public class CombinedFeatures {
 
 	static final String dicFile1 = "DAL_ANEW.txt";
 	//static final String dicFile2 = "anew-rsmal.txt";
-	static final String sourceFolder = "src/Origem";
+	static String sourceFolder = "src/Origem";
 	//static final String dalAnewFolder = "src/DAL_ANEW/DAL_ANEWFiles/";
 	
 	//Words Dictionary
@@ -67,17 +64,26 @@ public class CombinedFeatures {
 	static final String outputFolder = "src/Output/";
 	
 	static final String dicFile = originFolder + dicFile1;
-	static final String str = dicFile + " into " + sourceFolder + " - Details";
+	static String str = dicFile + " into " + sourceFolder + " - Details";
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		CombinedFeatures initial_anew  = new CombinedFeatures(false, false,true);
+		CombinedFeatures initial_anew  = new CombinedFeatures(false, false,true,null);
 		// por default vamos buscar as DAL_ANEW
 	}
-	public CombinedFeatures(boolean gazeteersFeatures, boolean DAL_ANEWFeatures, boolean WordsDictionaryFeatures) throws ClassNotFoundException, IOException{	
+	public CombinedFeatures(boolean gazeteersFeatures, boolean DAL_ANEWFeatures, boolean WordsDictionaryFeatures, String sourceFolder1) throws ClassNotFoundException, IOException{	
 
 		// read the names of the files (lyrics) from a folder of lyrics and save
 		// them into a
 		// String[] (files)
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem/";
+		}
+		
+		str = dicFile + " into " + sourceFolder + " - Details";
+		
 		ReadOperations ro = new ReadOperations();
 		String[] files = ro.openDirectory(sourceFolder);
 		int numberFiles = ro.filesLenght(files);

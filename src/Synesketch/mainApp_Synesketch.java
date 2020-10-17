@@ -29,6 +29,7 @@ import Synesketch.Files.Emotion.Empathyscope;
 public class mainApp_Synesketch {
 
 	ArrayList<String> ids = new ArrayList();
+	String sourceFolder;
 
 	/**
 	 * @param args
@@ -38,7 +39,7 @@ public class mainApp_Synesketch {
 		// TODO Auto-generated method stub
 		mainApp_Synesketch ma = new mainApp_Synesketch();
 		// ma.init_1();
-		ma.init_2();
+		ma.init_2(null);
 	}
 
 	/**
@@ -60,7 +61,7 @@ public class mainApp_Synesketch {
 
 	}
 
-	public void init_2() throws IOException {
+	public void init_2(String sourceFolder1) throws IOException {
 		ReadLyricsDirectoryToAString rl = new ReadLyricsDirectoryToAString();
 		ids = rl.openFileOfIDs();
 
@@ -78,9 +79,15 @@ public class mainApp_Synesketch {
 		while (it.hasNext()) {
 			//idSong e por ex. L001-141
 			String idSong = (String) it.next();
+			if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+				sourceFolder = sourceFolder1;				
+			}
+			else {
+				sourceFolder = "src/Origem";
+			}
 			
 			//caminho completo para onde esta a lirica ex. lyrics-180/L001-141.txt
-			String lyric = rl.ler("src/Origem/"+idSong+".txt");
+			String lyric = rl.ler(sourceFolder+"/"+idSong+".txt");
 
 			EmotionalState state = Empathyscope.getInstance().feel(lyric);
 			System.out.println(state);

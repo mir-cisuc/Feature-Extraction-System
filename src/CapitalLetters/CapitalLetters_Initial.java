@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class CapitalLetters_Initial {
 
-	static final String sourceFolder = "src/Origem/"; // pasta onde estao as
+	static String sourceFolder = "src/Origem/"; // pasta onde estao as
 													// liricas
 
 	static final String outputFolder = "src/Output/";
@@ -27,10 +27,17 @@ public class CapitalLetters_Initial {
 	
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException {
-		CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial();
+		CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(null);
 	}
 	
-	public CapitalLetters_Initial() throws ClassNotFoundException, IOException{	
+	public CapitalLetters_Initial(String sourceFolder1) throws ClassNotFoundException, IOException{	
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem/";
+		}
+		
 
 		// read the names of the files from a folder and save them into a
 		// String[] (files)

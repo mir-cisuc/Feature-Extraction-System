@@ -15,7 +15,7 @@ public class StylisticButtonListener implements ActionListener {
 		// TODO Auto-generated method stub
 		main_interface.dispose();
 		StylisticFeatures frame_stylistic = null;
-		frame_stylistic = new StylisticFeatures();
+		frame_stylistic = new StylisticFeatures(main_interface.sourceFolder);
 		frame_stylistic.setTitle("Selecao de features estilisticas");
 		frame_stylistic.setSize(400,220);
 		frame_stylistic.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

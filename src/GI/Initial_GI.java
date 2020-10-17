@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class Initial_GI {
 
 	// pasta das liricas
-	static final String sourceFolder = "src/Origem";
+	static String sourceFolder = "src/Origem";
 	
 	// pasta do gi
 	static final String giFolder = "src/GI/GIFiles/";
@@ -43,10 +43,16 @@ public class Initial_GI {
 	static final String outputFile = outputFolder + "GI_Features-1180";
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		Initial_GI initial_anew  = new Initial_GI();
+		Initial_GI initial_anew  = new Initial_GI(null);
 	}
 	
-	public Initial_GI() throws ClassNotFoundException, IOException{	
+	public Initial_GI(String sourceFolder1) throws ClassNotFoundException, IOException{	
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem/";
+		}
 
 		/**
 		 * 1)copiar o file "gi_dataset_prog_CSV.csv" para uma matriz (gi_matrix)
