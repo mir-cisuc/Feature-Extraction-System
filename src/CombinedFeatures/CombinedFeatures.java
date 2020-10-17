@@ -67,7 +67,6 @@ public class CombinedFeatures {
 	static final String outputFolder = "src/Output/";
 	
 	static final String dicFile = originFolder + dicFile1;
-	static String outputFile = outputFolder;
 	static final String str = dicFile + " into " + sourceFolder + " - Details";
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
@@ -306,14 +305,15 @@ public class CombinedFeatures {
 
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(matrix);
+		String outputFile = "";
 		if (gazeteersFeatures) {
-			outputFile += "Gazeteers";
+			outputFile = outputFolder + "Gazeteers";
 		}
 		if (DAL_ANEWFeatures) {
-			outputFile += "DAL_ANEW";
+			outputFile = outputFolder + "DAL_ANEW";
 		}
 		if (WordsDictionaryFeatures) {
-			outputFile += "WordsDictionary";
+			outputFile = outputFolder + "WordsDictionary";
 		}
 		
 		wo.writeMatrixInFile(matrix, outputFile);
