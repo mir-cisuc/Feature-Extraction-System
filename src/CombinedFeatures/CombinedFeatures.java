@@ -316,7 +316,7 @@ public class CombinedFeatures {
 			outputFile = outputFolder + "WordsDictionary";
 		}
 		
-		wo.writeMatrixInFile(matrix, outputFile);
+		wo.writeMatrixInFile2(matrix, outputFile,WordsDictionaryFeatures,DAL_ANEWFeatures);
 		wo.writeFile(outputFolder + "Combined_Features_outputDetails.txt", outputDetails);
 	}
 

@@ -120,5 +120,49 @@ public class WriteOperations {
 		st = st + "\n";
 		return st;
 	}
+	/**
+	 * escreve a matriz num file .csv
+	 * 
+	 * @throws IOException
+	 */
+	public void writeMatrixInFile2(String[][] matrix, String filename,boolean WordsDictionaryFeatures, boolean DAL_ANEWFeatures)
+			throws IOException {
+
+		File file = new File(filename + ".csv");
+		System.out.println(file.getAbsolutePath());
+		boolean isFile = file.exists();
+		// create CSVWriter object filewriter object as parameter 
+        
+
+		// se o ficheiro nao existir cria um novo, caso contrario
+		// escreve por cima
+		if (!isFile) {
+			file.createNewFile();
+		}
+
+		// abre o ficheiro anterior para escrita
+		BufferedWriter out = new BufferedWriter(new FileWriter(file));
+		if(WordsDictionaryFeatures) {
+			out.write("Id, Count");
+		}else {
+			if(DAL_ANEWFeatures){		
+				out.write("Id, AvgValence, AvgArousal, AvgDominance");
+			}else {
+				out.write("Id, AvgValence, AvgArousal");
+			}
+			
+		}
+		out.newLine();
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[i].length; j++) {
+				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
+					out.write(matrix[i][j] + ", ");
+				}
+			}
+			out.newLine();
+		}
+		out.close();
+	}
+	
 	
 }
