@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="src/AuxiliarFiles/core.jar"/>
 	<classpathentry kind="lib" path="src/AuxiliarFiles/stanford-postagger-2011-04-20.jar"/>
 	<classpathentry kind="lib" path="src/AuxiliarFiles/stanford-postagger.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Red/Desktop/Investigacao2020/FeatureExtractionSystem/src/AuxiliarFiles/mallet-deps.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
