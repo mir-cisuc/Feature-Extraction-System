@@ -38,7 +38,7 @@ public class StylisticFeatures extends JFrame{
 		featuresCL.addActionListener(new StylisticFeatures.CL_ButtonListener());
 		allfeatures.addActionListener(new StylisticFeatures.AllFeaturesButtonListener());
 		featuresSlang.addActionListener(new StylisticFeatures.SlangButtonListener());
-		back.addActionListener(new BackStylisticButtonListener(this));
+		back.addActionListener(new BackButtonListener(this));
 
 		panel_stylistic.add(label);
 		panel_stylistic.add(allfeatures);

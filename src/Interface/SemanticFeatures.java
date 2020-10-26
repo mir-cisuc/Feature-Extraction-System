@@ -44,7 +44,7 @@ public class SemanticFeatures extends JFrame{
 		features_GI.addActionListener(new SemanticFeatures.GI_ButtonListener());
 		featuresSynesketch.addActionListener(new SemanticFeatures.SynesketchButtonListener());
 		allfeatures.addActionListener(new SemanticFeatures.AllFeaturesListener());
-		back.addActionListener(new BackSemanticButtonListener(this));
+		back.addActionListener(new BackButtonListener(this));
  
 		panel_semantic.add(label);
 		panel_semantic.add(allfeatures);

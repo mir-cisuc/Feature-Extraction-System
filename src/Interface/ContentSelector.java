@@ -12,8 +12,7 @@ import CBF.CBF_Initial;
 public class ContentSelector extends JFrame{
 	JPanel panel_content;
 	JRadioButton big,trig,grams4,grams5,nada,st,sw,st_sw,freq,bool,tfidf,norm;
-	//JButton back;
-	JButton confirm;
+	JButton confirm,back;
 	JLabel label;
 	String sourceFolder;
 	public ContentSelector(String sourceFolder,ContentFeatures content_features) {
@@ -75,24 +74,24 @@ public class ContentSelector extends JFrame{
 		bg3.add(freq);bg3.add(bool);bg3.add(tfidf);bg3.add(norm );
 		
 		
-	//	back = new JButton("Back");
+		back = new JButton("Back");
 		
 		label = new JLabel("Quais features de conteudo deseja extrair?");
 		
 		label.setBounds(75,10,300,25);
 
 
-	//	back.setBounds(200,180,160,25);
-		confirm.setBounds(130,150,120,25);
+		back.setBounds(200,150,120,25);
+		confirm.setBounds(50,150,120,25);
 		
-		//back.addActionListener(new BackContentButtonListener(this));
+		back.addActionListener(new BackButtonListener(this));
  
 		panel_content.add(label);
 		panel_content.add(big);panel_content.add(trig);panel_content.add(grams4);panel_content.add(grams5);
 		panel_content.add(nada);panel_content.add(st);panel_content.add(sw);panel_content.add(st_sw);
 		panel_content.add(freq);panel_content.add(bool);panel_content.add(tfidf);panel_content.add(norm);
 		panel_content.add(confirm);
-	//	panel_content.add(back);
+		panel_content.add(back);
 		
 		this.add(panel_content);
 		
@@ -114,6 +113,7 @@ public class ContentSelector extends JFrame{
 			
 			try {
 				CBF_Initial initial = new CBF_Initial(sourceFolder,s_bg1,s_bg2,s_bg3);
+				JOptionPane.showMessageDialog(null, "Todas CBF features extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

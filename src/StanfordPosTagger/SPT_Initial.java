@@ -2,6 +2,7 @@ package StanfordPosTagger;
 
 import AuxiliarFiles.ReadOperations;
 import AuxiliarFiles.WriteOperations;
+import CapitalLetters.CapitalLetters_Initial;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -31,19 +32,28 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
  * @date
  */
 
-public class Initial {
-
+public class SPT_Initial {
 	static final String locTagger = "src/StanfordTaggers/bidirectional-distsim-wsj-0-18.tagger";
-	static final String sourceFolder = "src/Origem"; // pasta onde estao as liricas
+	static String sourceFolder = "src/Origem"; // pasta onde estao as liricas
 													// a processar
 	static final int withTags = 1;
 	static final int onlyTags = 2;
 	
 	//output folder
 	static final String outputFolder  = "src/Output/";
-
-	public static void main(String [] args) throws ClassNotFoundException,
-			IOException {
+	
+	public static void main(String[] args) throws ClassNotFoundException,
+	IOException {
+		SPT_Initial spt_initial = new SPT_Initial(null);
+	}
+	
+	public SPT_Initial(String sourceFolder1) throws ClassNotFoundException,IOException {
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem/";
+		}
 		// TODO Auto-generated method stub
 		int option = withTags;
 

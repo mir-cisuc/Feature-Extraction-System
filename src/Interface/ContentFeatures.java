@@ -7,13 +7,14 @@ import java.io.IOException;
 import javax.swing.*;
 
 import CombinedFeatures.CombinedFeatures;
+import StanfordPosTagger.SPT_Initial;
 import CBF.CBF_Initial;
 import Synesketch.mainApp_Synesketch;
 
 @SuppressWarnings("serial")
 public class ContentFeatures extends JFrame{
 	JPanel panel_content;
-	JButton allfeatures, features_CBF, back;
+	JButton standardpostagger, features_CBF, back;
 	JLabel label;
 	String sourceFolder;
 	public ContentFeatures(String sourceFolder) {
@@ -22,7 +23,7 @@ public class ContentFeatures extends JFrame{
 		panel_content = new JPanel();
 		panel_content.setLayout(null);
 		
-		allfeatures = new JButton("Todas as features");
+		standardpostagger = new JButton("StandardPosTagger");
 		features_CBF = new JButton("CBF Features");
 
 		back = new JButton("Back");
@@ -30,17 +31,17 @@ public class ContentFeatures extends JFrame{
 		label = new JLabel("Quais features de conteudo deseja extrair?");
 		
 		label.setBounds(75,10,300,25);
-		allfeatures.setBounds(25,40,160,25);
+		standardpostagger.setBounds(25,40,160,25);
 		features_CBF.setBounds(200,40,160,25);
 
-		back.setBounds(200,180,160,25);
+		back.setBounds(120,100,160,25);
 
 		features_CBF.addActionListener(new ContentFeatures.CBF_ButtonListener(this));
-	//	allfeatures.addActionListener(new ContentFeatures.AllFeaturesListener());
-		back.addActionListener(new BackContentButtonListener(this));
+		standardpostagger.addActionListener(new ContentFeatures.SPT_ButtonListener());
+		back.addActionListener(new BackButtonListener(this));
  
 		panel_content.add(label);
-		panel_content.add(allfeatures);
+		panel_content.add(standardpostagger);
 		panel_content.add(features_CBF);
 		panel_content.add(back);
 		
@@ -65,18 +66,23 @@ public class ContentFeatures extends JFrame{
 		}
 	}
 
-	/*private class AllFeaturesListener implements ActionListener {	
+	private class SPT_ButtonListener implements ActionListener {	
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
 			try {
-				JOptionPane.showMessageDialog(null, "Todas as features de conteudo extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
-			} catch (ClassNotFoundException | IOException e1) {
+				SPT_Initial initial = new SPT_Initial(sourceFolder);
+				JOptionPane.showMessageDialog(null, "Todas StandardPosTagger features extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}		
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}			
 		}
 	}
-	*/
+	
 	
 	
 }
