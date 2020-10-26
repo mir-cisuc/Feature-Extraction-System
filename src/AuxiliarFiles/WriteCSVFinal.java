@@ -13,9 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class WriteCSVFinal {
-	
-	
-
 	public static void main(String[] args) throws IOException {
 		WriteSemantic();
 		WriteStylistic();

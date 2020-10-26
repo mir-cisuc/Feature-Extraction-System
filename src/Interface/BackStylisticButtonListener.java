@@ -18,7 +18,7 @@ public class BackStylisticButtonListener implements ActionListener {
         stylistic_panel.dispose();
 		MainInterface main_frame = new MainInterface(stylistic_panel.sourceFolder);
 		main_frame.setTitle("Janela principal do programa");
-		main_frame.setSize(475,175);
+		main_frame.setSize(475,225);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main_frame.setVisible(true);	
 

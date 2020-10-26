@@ -8,7 +8,7 @@ import javax.swing.filechooser.FileSystemView;
 
 @SuppressWarnings("serial")
 public class MainInterface extends JFrame{
-	private JButton semantic_button, stylistic_button, directoryButton;
+	private JButton semantic_button, stylistic_button, directoryButton, content_button;
 	JPanel panel;
 	JLabel warning;
 	String sourceFolder;
@@ -18,23 +18,27 @@ public class MainInterface extends JFrame{
 		this.sourceFolder = sourceFolder1;
 		semantic_button = new JButton("Features Semanticas");
 		stylistic_button = new JButton("Features Estilisticas");
+		content_button = new JButton("Content Based Features");
 		directoryButton = new JButton("Escolher pasta");
 		
 		warning = new JLabel("Se nao for escolhida diretoria, vai ser usada a pasta Origem por omissão.");
 		
 		semantic_button.setBounds(50,20,160,25);
 		stylistic_button.setBounds(225,20,160,25);
-		directoryButton.setBounds(150,60,160,25);
-		warning.setBounds(25,100,450,25);
+		content_button.setBounds(130,60,200,25);
+		directoryButton.setBounds(150,110,160,25);
+		warning.setBounds(25,150,450,25);
 		
 		panel = new JPanel();
 		panel.setLayout(null);
 		panel.add(semantic_button);
 		panel.add(stylistic_button);
+		panel.add(content_button);
 		panel.add(directoryButton);
 		panel.add(warning);
 		semantic_button.addActionListener(new SemanticButtonListener(this));
 		stylistic_button.addActionListener(new StylisticButtonListener(this));
+		content_button.addActionListener(new ContentButtonListener(this));
 		directoryButton.addActionListener(new DirectoryButtonListener());
 		
 		this.add(panel);
@@ -43,7 +47,7 @@ public class MainInterface extends JFrame{
 	public static void main(String[] args) {
 		MainInterface main_frame = new MainInterface(null);
 		main_frame.setTitle("Janela principal do programa");
-		main_frame.setSize(475,175);
+		main_frame.setSize(475,225);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main_frame.setVisible(true);	
 

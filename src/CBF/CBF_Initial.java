@@ -37,17 +37,38 @@ import AuxiliarFiles.*;
  */
 
 public class CBF_Initial {
-
+	static String sourceFolder = "src/Origem/";
 	//static final int withTags = 1;
 	//static final int onlyTags = 2;
 	Pipe pipe;
-	String[] args;
+	String arg1,arg2,arg3;
 
-	public CBF_Initial(String[] args) {
-		this.args = args;
+	public CBF_Initial(String sourceFolder1, String arg1, String arg2, String arg3) throws IOException {
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem/";
+		}
+		this.arg1 = arg1;
+		this.arg2 = arg2;
+		this.arg3 = arg3;
 		pipe = buildPipe();
+		System.out.println(sourceFolder);
+		InstanceList instances = readDirectory(new File(sourceFolder));
+		SaveInstancesInFile sinstances = new SaveInstancesInFile(instances, arg3);
+		if (arg3.equals("freq")) {
+			sinstances.execute_freq(arg1,arg2);
+		} else if (arg3.equals("bool")) {
+			sinstances.execute_bool(arg1,arg2);
+		} else if (arg3.equals("tfidf")) {
+			sinstances.execute_tfidf(arg1,arg2);
+		} else if (arg3.equals("norm")) {
+			sinstances.execute_norm(arg1,arg2);
+		}
 	}
 
+	@SuppressWarnings("unchecked")
 	public Pipe buildPipe() {
 		ArrayList pipeList = new ArrayList();
 
@@ -73,7 +94,7 @@ public class CBF_Initial {
 		
 		// Remove stopwords from a standard English stoplist.
 		// options: [case sensitive] [mark deletions]
-		if ((args[2].equals("sw")) || (args[2].equals("st+sw"))) {
+		if ((this.arg2.equals("sw")) || (this.arg2.equals("st_sw"))) {
 			pipeList.add(new TokenSequenceRemoveStopwords(false, false));
 
 		}
@@ -81,18 +102,18 @@ public class CBF_Initial {
 		//pipeList.add(new TokenSequenceRemoveStopwords(false, false));
 		//pipeList.add(new TokenSequenceStemming());
 		// stemming
-		if ((args[2].equals("st")) || (args[2].equals("st+sw"))) {
+		if ((this.arg2.equals("st")) || (this.arg2.equals("st_sw"))) {
 			pipeList.add(new TokenSequenceStemming());
 		}
 
 		// n-gramas
-		if (args[1].equals("big")) {
+		if (this.arg1.equals("big")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 2 }));
-		} else if (args[1].equals("trig")) {
+		} else if (this.arg1.equals("trig")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 3 }));
-		} else if (args[1].equals("4grams")) {
+		} else if (this.arg1.equals("4grams")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 4 }));
-		} else if (args[1].equals("5grams")) {
+		} else if (this.arg1.equals("5grams")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 5 }));
 		}
 
@@ -141,25 +162,7 @@ public class CBF_Initial {
 		return instances;
 	}
 
-	public static void main(String[] args) throws IOException {
 
-		CBF_Initial importer = new CBF_Initial(args);
-		InstanceList instances = importer.readDirectory(new File(args[0]));
-		SaveInstancesInFile sinstances = new SaveInstancesInFile(instances, args);
-		if (args[3].equals("freq")) {
-			sinstances.execute_freq(args);
-		} else if (args[3].equals("bool")) {
-			sinstances.execute_bool(args);
-		} else if (args[3].equals("tfidf")) {
-			sinstances.execute_tfidf(args);
-		} else if (args[3].equals("norm")) {
-			sinstances.execute_norm(args);
-		}
-		// System.out.println(instances.size());
-		// instances.save(new File(args[1]));
-		
-
-	}
 
 	/** This class illustrates how to build a simple file filter */
 	class TxtFilter implements FileFilter {

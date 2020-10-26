@@ -5,18 +5,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-public class BackSemanticButtonListener implements ActionListener {
+public class BackContentButtonListener implements ActionListener {
     MainInterface main_interface;
-    SemanticFeatures semantic_panel;
+    ContentFeatures content_panel;
 	
-	public BackSemanticButtonListener(SemanticFeatures semantic_panel) {
-		this.semantic_panel = semantic_panel;
+	public BackContentButtonListener(ContentFeatures content_panel) {
+		this.content_panel = content_panel;
     }
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-        semantic_panel.dispose();
-		MainInterface main_frame = new MainInterface(semantic_panel.sourceFolder);
+		content_panel.dispose();
+		MainInterface main_frame = new MainInterface(content_panel.sourceFolder);
 		main_frame.setTitle("Janela principal do programa");
 		main_frame.setSize(475,225);
 		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

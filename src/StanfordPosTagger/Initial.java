@@ -42,10 +42,9 @@ public class Initial {
 	//output folder
 	static final String outputFolder  = "src/Output/";
 
-	public static void main(String[] args) throws ClassNotFoundException,
+	public static void main(String [] args) throws ClassNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-
 		int option = withTags;
 
 		// le os nomes dos ficheiros de uma pasta e guarda-os numa String[]

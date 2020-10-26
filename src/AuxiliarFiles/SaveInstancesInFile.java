@@ -31,19 +31,19 @@ public class SaveInstancesInFile {
 	String strAlphabet; //O alfabeto todo numa string
 	String[] strWords; //lista de palavras do alfabeto
 
-	public SaveInstancesInFile(InstanceList instances, String[] args) {
+	public SaveInstancesInFile(InstanceList instances, String arg3) {
 
 		this.instances = instances;
 		col = getSizeAlphabet() + 2;
 		lin = getNumberOfInstances();
 		
-		if (args[3].equals("freq")) {
+		if (arg3.equals("freq")) {
 			matrix = new String[lin+1][col];
-		} else if (args[3].equals("bool")) {
+		} else if (arg3.equals("bool")) {
 			matrix = new String[lin+1][col];
-		} else if (args[3].equals("tfidf")) {
+		} else if (arg3.equals("tfidf")) {
 			matrix = new String[lin+1][col];
-		} else if (args[3].equals("norm")) {
+		} else if (arg3.equals("norm")) {
 			matrix = new String[lin+1][col];
 		}
 		
@@ -58,7 +58,7 @@ public class SaveInstancesInFile {
 	 * @param args
 	 * @throws IOException
 	 */
-	public void execute_freq(String[] args) throws IOException {
+	public void execute_freq(String arg1, String arg2) throws IOException {
 
 		int i = 0;
 		this.initializeMatrix(matrix);
@@ -86,7 +86,7 @@ public class SaveInstancesInFile {
 		 */
 		
 		this.writeMatrixInConsole(matrix);
-		String nameFile1 = "CBF_" + args[1] + "_" + args[2] + "_" + FREQ;
+		String nameFile1 = "CBF_" + arg1 + "_" + arg2 + "_" + FREQ;
 		
 		File file2 = new File("src/Output/" + nameFile1 + ".csv");
 		this.writeMatrixInFile(matrix, file2);
@@ -108,7 +108,7 @@ public class SaveInstancesInFile {
 	 * @throws IOException
 	 */
 	
-	public void execute_bool(String[] args) throws IOException {
+	public void execute_bool(String arg1, String arg2) throws IOException {
 
 		int i = 0;
 		this.initializeMatrix(matrix);
@@ -130,7 +130,7 @@ public class SaveInstancesInFile {
 		 */
 		this.calculateBoolValues();
 		this.writeMatrixInConsole(matrix);
-		String nameFile2 = args[1] + "_" + args[2] + "_" + BOOL;
+		String nameFile2 = "CBF_" + arg1 + "_" + arg2 + "_" + BOOL;
 		//File file3 = new File(nameFile2 + "F.txt");
 		//this.writeNamesOfFeaturesNames(file3);
 		File file4 = new File(nameFile2 + ".csv");
@@ -148,7 +148,7 @@ public class SaveInstancesInFile {
 	 */
 	
 	
-	public void execute_norm(String[] args) throws IOException {
+	public void execute_norm(String arg1, String arg2) throws IOException {
 		int i = 0;
 		this.initializeMatrix(matrix);
 		while (i < lin) {
@@ -173,7 +173,7 @@ public class SaveInstancesInFile {
 		 */
 		this.calculatenormValues();
 		this.writeMatrixInConsole(matrix);
-		String nameFile2 = args[1] + "_" + args[2] + "_" + NORM;
+		String nameFile2 = "CBF_" + arg1 + "_" + arg2 + "_" + NORM;
 		//File file3 = new File(nameFile2 + "F.txt");
 		//this.writeNamesOfFeaturesNames(file3);
 		File file4 = new File(nameFile2 + ".csv");
@@ -271,7 +271,7 @@ public class SaveInstancesInFile {
 	 */
 	
 	
-	public void execute_tfidf(String[] args) throws IOException {
+	public void execute_tfidf(String arg1, String arg2) throws IOException {
 
 		int i = 0;
 		this.initializeMatrix(matrix);
@@ -297,7 +297,7 @@ public class SaveInstancesInFile {
 		 */
 		this.calculatetfidfValues();
 		this.writeMatrixInConsole(matrix);
-		String nameFile2 = args[1] + "_" + args[2] + "_" + TFIDF;
+		String nameFile2 = "CBF_" + arg1 + "_" + arg2 + "_" + TFIDF;
 		//File file3 = new File(nameFile2 + "F.txt");
 		//this.writeNamesOfFeaturesNames(file3);
 		File file4 = new File(nameFile2 + ".csv");
