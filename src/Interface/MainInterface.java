@@ -12,7 +12,7 @@ import AuxiliarFiles.WriteCSVFinal;
 
 @SuppressWarnings("serial")
 public class MainInterface extends JFrame{
-	private JButton semantic_button, stylistic_button, directoryButton, content_button;
+	private JButton semantic_button, stylistic_button, directoryButton, content_button, structural_button;
 	JPanel panel;
 	JLabel warning;
 	String sourceFolder;
@@ -22,15 +22,18 @@ public class MainInterface extends JFrame{
 		this.sourceFolder = sourceFolder1;
 		semantic_button = new JButton("Features Semanticas");
 		stylistic_button = new JButton("Features Estilisticas");
-		content_button = new JButton("Content Based Features");
+		content_button = new JButton("Content-Based Features");
+		structural_button = new JButton("Structural Based Features");
+		
 		directoryButton = new JButton("Escolher pasta");
 		
 		warning = new JLabel("Se nao for escolhida diretoria, vai ser usada a pasta Origem por omissão.");
 		
-		semantic_button.setBounds(50,20,160,25);
-		stylistic_button.setBounds(225,20,160,25);
-		content_button.setBounds(130,60,200,25);
+		semantic_button.setBounds(30,20,200,25);
+		stylistic_button.setBounds(240,20,200,25);
+		content_button.setBounds(30,60,200,25);
 		directoryButton.setBounds(150,110,160,25);
+		structural_button.setBounds(240,60,200,25);
 		warning.setBounds(25,150,450,25);
 		
 		panel = new JPanel();
@@ -38,11 +41,13 @@ public class MainInterface extends JFrame{
 		panel.add(semantic_button);
 		panel.add(stylistic_button);
 		panel.add(content_button);
+		panel.add(structural_button);
 		panel.add(directoryButton);
 		panel.add(warning);
 		semantic_button.addActionListener(new SemanticButtonListener(this));
 		stylistic_button.addActionListener(new StylisticButtonListener(this));
 		content_button.addActionListener(new ContentButtonListener(this));
+		structural_button.addActionListener(new StructuralButtonListener(this));
 		directoryButton.addActionListener(new DirectoryButtonListener());
 		
 		this.add(panel);

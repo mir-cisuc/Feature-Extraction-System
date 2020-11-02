@@ -15,6 +15,7 @@ public class BackButtonListener implements ActionListener {
     ContentSelector content_selector;
     SemanticFeatures semantic_panel;
     StylisticFeatures stylistic_panel;
+    StructuralFeatures structural_panel;
     boolean backtoMain = false;
     boolean backtoCBF = false;
     
@@ -42,6 +43,12 @@ public class BackButtonListener implements ActionListener {
 		this.backtoCBF = false;
     }
 	
+	public BackButtonListener(StructuralFeatures structural_panel) {
+		this.structural_panel = structural_panel;
+		this.backtoMain = true;
+		this.backtoCBF = false;
+    }
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -59,6 +66,10 @@ public class BackButtonListener implements ActionListener {
 				stylistic_panel.dispose();
 				main_frame = new MainInterface(stylistic_panel.sourceFolder);
 			}	
+			else if (structural_panel!=null) {
+				structural_panel.dispose();
+				main_frame = new MainInterface(structural_panel.sourceFolder);
+			}
 			main_frame.setTitle("Janela principal do programa");
 			main_frame.setSize(475,225);
 			main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
