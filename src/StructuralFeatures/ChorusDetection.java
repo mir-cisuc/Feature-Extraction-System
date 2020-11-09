@@ -2,12 +2,15 @@ package StructuralFeatures;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import AuxiliarFiles.MinimumEditDistance;
+
 
 
 public class ChorusDetection {
@@ -17,14 +20,13 @@ public class ChorusDetection {
 		Path path = Paths.get(sourceFile);
 		String content = null;
 		try {
-			content = Files.readString(path, StandardCharsets.US_ASCII).toLowerCase();
+			content = Files.readString(path, StandardCharsets.ISO_8859_1).toLowerCase();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
-		String [] lista_string = content.split("\n");
+		String [] lista_string = content.split("\\r?\\n");
 				
 		System.out.println("----------------------------------------");
 		
@@ -64,14 +66,23 @@ public class ChorusDetection {
 			}
 		}
 		
-		
+		int numero_refroes = 0;
+		int i_antigo = 0;
 		for (int i = 0; i < letra.size(); i++) {
 			if (letra.get(i).getCanBeChorus()) {
 				System.out.println("i "  + i  + " com frase - " + letra.get(i).getLetra());
+				if (i-i_antigo > 1) {
+					numero_refroes++;
+				}					
+				i_antigo = i;
 			}
+			
 		}
+		System.out.println("Existem " + numero_refroes + " refroes");
 		
-		printLetra();
+		
+		
+		//printLetra();
 	}
 	
 	public int getMax() {
@@ -88,14 +99,20 @@ public class ChorusDetection {
 		int indice_inicio = getStartingBlockIndex(indice);
 		int indice_fim = getFinalBlockIndex(indice);
 		
-		System.out.printf("ISBG %d %d\n", indice_inicio, indice_fim);
+		int contador_maximos = 0;
+		
+		//System.out.printf("ISBG %d %d\n", indice_inicio, indice_fim);
 		for (int i = indice_inicio; i < indice_fim; i++) {
 			if (letra.get(i).getOcorrencias() == maximo) {
-				return true;
+				contador_maximos++;
 			}
 		}
-		return false;
-		
+		if (contador_maximos >= 2) {
+			return true;
+		}
+		else {
+			return false;
+		}	
 	}
 	
 	public int getFinalBlockIndex(int indice) {
@@ -134,7 +151,7 @@ public class ChorusDetection {
 	}
 	
 	public void updateBlock(int indice_inicio, int indice_fim) {
-		System.out.printf("Vou dar update a %d, %d\n",indice_inicio, indice_fim);
+		//System.out.printf("Vou dar update a %d, %d\n",indice_inicio, indice_fim);
 		if (indice_inicio == 0) {
 			letra.get(0).setCanBeChorus();
 		}
@@ -191,8 +208,8 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String folder = "src/Origem/teste.txt";
-		ChorusDetection chorusDetection = new ChorusDetection(folder);	
+		String file = "src/Origem/teste2.txt";
+		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 	
 	

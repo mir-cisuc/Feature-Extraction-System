@@ -9,6 +9,7 @@ import javax.swing.filechooser.FileSystemView;
 
 import CombinedFeatures.CombinedFeatures;
 import StanfordPosTagger.SPT_Initial;
+import StructuralFeatures.ChorusDetection;
 import StructuralFeatures.countTitle;
 import CBF.CBF_Initial;
 import Synesketch.mainApp_Synesketch;
@@ -16,7 +17,7 @@ import Synesketch.mainApp_Synesketch;
 @SuppressWarnings("serial")
 public class StructuralFeatures extends JFrame{
 	JPanel panel_content;
-	JButton numberOfTitle, back;
+	JButton numberOfTitle, back, chorusDetection;
 	JLabel label;
 	String sourceFolder;
 	boolean hasTitle = false;
@@ -27,21 +28,25 @@ public class StructuralFeatures extends JFrame{
 		panel_content.setLayout(null);
 		
 		numberOfTitle = new JButton("Número de repetições do título");
+		chorusDetection = new JButton("Deteçao do refrao");
 		back = new JButton("Back");
 		
 		label = new JLabel("Quais features de conteudo deseja extrair?");
 		
 		label.setBounds(75,10,300,25);
 		numberOfTitle.setBounds(60,40,250,25);
+		chorusDetection.setBounds(60,80,250,25);
 
-		back.setBounds(120,100,160,25);
+		back.setBounds(100,130,160,25);
 
 		
 		numberOfTitle.addActionListener(new StructuralFeatures.numberOfTitleButtonListener());
+		chorusDetection.addActionListener(new StructuralFeatures.chorusDetectionListener());
 		back.addActionListener(new BackButtonListener(this));
  
 		panel_content.add(label);
 		panel_content.add(numberOfTitle);
+		panel_content.add(chorusDetection);
 		panel_content.add(back);
 		
 		
@@ -84,8 +89,24 @@ public class StructuralFeatures extends JFrame{
 		    	countTitle titulo = new countTitle(this.titulo_inserido,this.sourceFile);
 		    	JOptionPane.showMessageDialog(null, "Numero de repetiçoes do titulo calculado", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 		    }						
-		}
+		}	
+		
 	}
+	
+	private class chorusDetectionListener implements ActionListener{
+		String sourceFile;
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			this.sourceFile = chooseFile();
+			if (this.sourceFile != null) {
+				ChorusDetection chorusDetection = new ChorusDetection(this.sourceFile);
+				JOptionPane.showMessageDialog(null, "Deteçao do refrao feita", "Mensagem", JOptionPane.PLAIN_MESSAGE);
+			}
+		}
+		
+		
+	}
+	
 	
 	public static String chooseFile() {
 		boolean flag = true;
