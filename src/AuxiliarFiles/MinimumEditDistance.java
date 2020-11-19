@@ -3,7 +3,7 @@ package AuxiliarFiles;
 import java.util.Arrays;
 
 public class MinimumEditDistance {
-	static int calculate(String x, String y) {
+	public static int calculateEditDistance(String x, String y) {
 	    int[][] dp = new int[x.length() + 1][y.length() + 1];
 	 
 	    for (int i = 0; i <= x.length(); i++) {

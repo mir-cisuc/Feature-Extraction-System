@@ -2,20 +2,27 @@ package StructuralFeatures;
 
 public class FraseLetra {
 	private String letra;
-	private boolean canBeChorus;
 	private int ocorrencias;
+	private int posicaoLetra;
+	private double ChorusProbability;
 
-	public FraseLetra(String letra) {
+	public FraseLetra(String letra, int posicaoLetra) {
 		// TODO Auto-generated constructor stub
 		this.letra = letra;
-		this.canBeChorus = true;
 		this.ocorrencias = 0;
+		this.posicaoLetra = posicaoLetra;
+		this.ChorusProbability = 50;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "FraseLetra [letra=" + letra + ", canBeChorus=" + canBeChorus + ", ocorrencias=" + ocorrencias + "]";
+		return "FraseLetra [letra=" + letra + ", ocorrencias=" + ocorrencias + ", posicaoLetra=" + posicaoLetra
+				+ ", ChorusProbability=" + ChorusProbability + "]";
 	}
+
+
 
 	public String getLetra() {
 		return letra;
@@ -23,14 +30,6 @@ public class FraseLetra {
 
 	public void setLetra(String letra) {
 		this.letra = letra;
-	}
-
-	public boolean getCanBeChorus() {
-		return canBeChorus;
-	}
-
-	public void setCanBeChorus() {
-		this.canBeChorus = false;
 	}
 
 	public int getOcorrencias() {
@@ -41,5 +40,21 @@ public class FraseLetra {
 		this.ocorrencias = ocorrencias;
 	}
 
+	public int getPosicaoLetra() {
+		return posicaoLetra;
+	}
+
+	public void setPosicaoLetra(int posicaoLetra) {
+		this.posicaoLetra = posicaoLetra;
+	}
+
+	public double getChorusProbability() {
+		return ChorusProbability;
+	}
+
+	public void setChorusProbability(double chorusProbability) {
+		ChorusProbability = chorusProbability;
+	}
+	
 
 }
