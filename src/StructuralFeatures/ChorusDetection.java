@@ -91,6 +91,8 @@ public class ChorusDetection {
 	public void removeBadChorusBasedOnEditDistance() {	
 		ArrayList<FraseLetra> blocoPrincipal = new ArrayList<>();
 		float media_maxima = 0;
+		int indice_melhor = -1;
+		int contador = 0;
 		for (ArrayList<FraseLetra> bloco_frases : array_blocos) {
 			float media = 0;
 			for (FraseLetra fl : bloco_frases) {
@@ -100,37 +102,37 @@ public class ChorusDetection {
 			if (media > media_maxima) {
 				media_maxima = media;
 				blocoPrincipal = bloco_frases;
+				indice_melhor = contador;	
 			}
+			contador++;
 		}
 		
 		
 		int threshold = getThreshHold(blocoPrincipal);
 		for (int i = 0; i< array_blocos.size(); i++) {
-			ArrayList <Integer> lista_edit_distances = new ArrayList <Integer>();
-			for (int j = 0; j< array_blocos.get(i).size(); j++) {
-				FraseLetra fl = array_blocos.get(i).get(j);
-				// caso em  que os tamanhos sao iguais			
-				if (blocoPrincipal.size() == array_blocos.get(i).size() ) {
-					lista_edit_distances = getMinList(array_blocos.get(i), blocoPrincipal, 2);
-				}
-				else {	
-					lista_edit_distances = getMinList(array_blocos.get(i), blocoPrincipal, 1);	
-				}			
-				float media = 0;
-				for (int a : lista_edit_distances) {
-					media += a;
-				}
-				media /= lista_edit_distances.size();
-				//System.out.printf("%f %d\n",media,threshold);
-				if (media > threshold) {
-					updateBlock(array_blocos.get(i),-10);
-					
-				}	
-				else {
-					updateBlock(array_blocos.get(i),+10);
-					updateBlock(blocoPrincipal,+10);
-				}				
-				break;	
+			if (i!=indice_melhor) {
+				ArrayList <Integer> lista_edit_distances = new ArrayList <Integer>();
+					// caso em  que os tamanhos sao iguais			
+					if (blocoPrincipal.size() == array_blocos.get(i).size() ) {
+						lista_edit_distances = getMinList(array_blocos.get(i), blocoPrincipal, 2);
+					}
+					else {	
+						lista_edit_distances = getMinList(array_blocos.get(i), blocoPrincipal, 1);	
+					}			
+					float media = 0;
+					for (int a : lista_edit_distances) {
+						media += a;
+					}
+					media /= lista_edit_distances.size();
+					//System.out.printf("%f %d\n",media,threshold);
+					if (media > threshold) {
+						updateBlock(array_blocos.get(i),-10);
+						
+					}	
+					else {
+						updateBlock(array_blocos.get(i),+10);
+						updateBlock(blocoPrincipal,+10);
+					}	
 			}
 		}  
 	}
@@ -310,7 +312,7 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file = "src/Origem/teste8.txt";
+		String file = "src/Origem/mc_ai.txt";
 		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 
