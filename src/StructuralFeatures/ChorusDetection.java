@@ -312,7 +312,7 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file = "src/Origem/mc_ai.txt";
+		String file = "src/Origem/nf_ti.txt";
 		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 
