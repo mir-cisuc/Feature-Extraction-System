@@ -17,7 +17,8 @@ import AuxiliarFiles.MinimumEditDistance;
 public class ChorusDetection {
 	ArrayList<FraseLetra> bloco = new ArrayList<>();
 	ArrayList <ArrayList<FraseLetra>> array_blocos = new ArrayList <ArrayList<FraseLetra>> ();
-	final int threshold = 3;
+	final double threshold = 0.3;
+	public int nrBlocoAtual = 0;
 	public ChorusDetection(String sourceFile) {
 		// TODO Auto-generated constructor stub
 		Path path = Paths.get(sourceFile);
@@ -48,34 +49,42 @@ public class ChorusDetection {
 				}
 			}	
 		}
+		
+		System.out.println("OLAAAAAAAAAAAAAAAAAAAAAAAAAA");
+		
 		countOccorencesOfEachSentence();
-
 		
 		
+		
+		/*
 		for (ArrayList<FraseLetra> bloco_frases : array_blocos) {
 			for (FraseLetra fl: bloco_frases) { // isto aqui permite-nos livrarmo-nos de alguns versos
 				if (fl.getOcorrencias() == 1) { 
-					/* se for igual a 1, vamos ver se todas a frases que estao contidas neste bloco sao 1,
-					 * se forem, nao e refrao, se nao forem, podera ser*/
+					 // se for igual a 1, vamos ver se todas a frases que estao contidas neste bloco sao 1,
+					 // se forem, nao e refrao, se nao forem, podera ser 
 					checkBlock(bloco_frases);
 					break;
 				}
 			}
+			nrBlocoAtual++;
 		}
-		
-		int maximo_ocorrencias = getMaxOcorrences();
+		nrBlocoAtual = 0;
 		
 		ArrayList<Float> lista_medias = getAverageBlocks();
 
 		int contador = 0;
 		for (ArrayList<FraseLetra> bloco_frases : array_blocos) {
+			System.out.printf("Para o bloco %d foi adicionado %f na segunda verificação\n",nrBlocoAtual,lista_medias.get(contador) * 10);
 			updateBlock(bloco_frases,lista_medias.get(contador++) * 10);
+			nrBlocoAtual++;
 		}
 		
+		
+		nrBlocoAtual = 0;
 		removeBadChorusBasedOnEditDistance();
+		*/
 		
-		
-		printLetra(true);
+		//printLetra(true);
 	}
 	
 	public void countOccorencesOfEachSentence() {
@@ -126,10 +135,11 @@ public class ChorusDetection {
 					media /= lista_edit_distances.size();
 					//System.out.printf("%f %d\n",media,threshold);
 					if (media > threshold) {
-						updateBlock(array_blocos.get(i),-10);
-						
+						System.out.printf("Para o bloco %d foi retirado -10 na terceira verificação\n",i);
+						updateBlock(array_blocos.get(i),-10);						
 					}	
 					else {
+						System.out.printf("Para o bloco %d foi adicionado +10 na terceira verificação\nBem Como ao bloco principal (%d)\n",i,indice_melhor);
 						updateBlock(array_blocos.get(i),+10);
 						updateBlock(blocoPrincipal,+10);
 					}	
@@ -143,7 +153,7 @@ public class ChorusDetection {
 			tamanho += fl.getLetra().length();
 		}
 		tamanho /= blocoPrincipal.size();
-		tamanho /= this.threshold;
+		tamanho *= this.threshold;
 		return tamanho;
 	}
 	
@@ -178,21 +188,6 @@ public class ChorusDetection {
 	}
 	
 	
-	/*public void removeBadChorusBasedOnMaxOcorr(){
-		ArrayList<Float> lista_medias = getAverageBlocks();
-		/*for (Float wtf : lista_medias) {
-			System.out.println(wtf);
-		}
-		float maximo = Collections.max(lista_medias);
-		for (int i = 0; i< array_blocos.size(); i++) {
-			for (int j = 0; j< array_blocos.get(i).size(); j++) {
-				if (lista_medias.get(i) == maximo) {
-					updateBlock(array_blocos.get(i),true);
-					break;
-				}
-			}
-		}
-	}*/
 	
 	
 	public ArrayList<Float> getAverageBlocks() {
@@ -242,6 +237,7 @@ public class ChorusDetection {
 			}
 		}
 		if (!canBlockBeChorus) {
+			System.out.printf("Para o bloco %d foi retirado -20 na primeira verificação\n" ,nrBlocoAtual);
 			updateBlock(bloco_frases,-20);
 		}
 	}
@@ -271,12 +267,26 @@ public class ChorusDetection {
 	
 	public int countOcorrencesofString(String s) {
 		int ocorrencias = 0;
+		int editDistance = 0;
+		double limite = 0;
+		
 		for (ArrayList<FraseLetra> bloco_frases : array_blocos) {
 			for (FraseLetra frase_letra : bloco_frases) {
-				if (frase_letra.getLetra().equals(s)) {
-					ocorrencias++;
+				//if (frase_letra.getLetra().equals(s)) {
+				//	ocorrencias++;
+				//}
+				editDistance = MinimumEditDistance.calculateEditDistance(frase_letra.getLetra(), s);
+				//System.out.printf("Edit distance entre %s e %s é %d \n",frase_letra.getLetra(),s,editDistance);
+				limite = s.length() * this.threshold;
+				if (editDistance <= limite) {
+					System.out.printf("%s e %s sao iguais\n",frase_letra.getLetra(),s);
+					//ocorrencias++;
+				}
+				else {
+					System.out.printf("%s e %s sao \"diferentes\"\n",frase_letra.getLetra(),s);
 				}
 			}
+			System.out.println("-----------------------------");
 		}
 		return ocorrencias;
 	}
@@ -292,9 +302,7 @@ public class ChorusDetection {
 			fileWriter2.write("\n");
 			fileWriter2.write(titulo);
 			fileWriter2.write(", ");
-			fileWriter2.write(String.valueOf(value));
-			
-			
+			fileWriter2.write(String.valueOf(value));		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -312,7 +320,7 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file = "src/Origem/nf_ti.txt";
+		String file = "src/Origem/tw_bl.txt";
 		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 
