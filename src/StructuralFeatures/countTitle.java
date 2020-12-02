@@ -61,7 +61,7 @@ public class countTitle {
 		Path path = Paths.get("src/Origem/teste.txt");
 		String content = Files.readString(path, StandardCharsets.US_ASCII).toLowerCase();
 		
-		String titulo = "blinded by the lights".toLowerCase();	
+		String titulo = "di da dam".toLowerCase();	
 				
 		
 		int occurences= content.split(titulo, -1).length-1;

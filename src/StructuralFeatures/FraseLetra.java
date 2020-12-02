@@ -1,5 +1,7 @@
 package StructuralFeatures;
 
+import java.util.ArrayList;
+
 public class FraseLetra {
 	private String letra;
 	private int ocorrencias;
@@ -55,6 +57,39 @@ public class FraseLetra {
 	public void setChorusProbability(double chorusProbability) {
 		ChorusProbability = chorusProbability;
 	}
+}
+
+class Bloco{
+	private ArrayList<FraseLetra> lista_frases;
+
+	public Bloco() {
+		this.lista_frases = new ArrayList <> ();
+	}
+
+	public ArrayList<FraseLetra> getBloco() {
+		return lista_frases;
+	}
+	
+	public void adicionarFrase(FraseLetra frase) {
+		this.lista_frases.add(frase);
+	}
 	
 
+	public void setFrasesBloco(ArrayList<FraseLetra> lista_frases) {
+		this.lista_frases = lista_frases;
+	}
+	
+	public int getTamanho() {
+		return this.lista_frases.size();
+	}
+	
+	public FraseLetra getFraseByIndex(int index) {
+		return this.lista_frases.get(index);
+	}
+	
+	
 }
+
+
+
+
