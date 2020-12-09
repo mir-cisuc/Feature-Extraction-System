@@ -61,9 +61,27 @@ public class FraseLetra {
 
 class Bloco{
 	private ArrayList<FraseLetra> lista_frases;
+	private double mainBlockprobability;
+	private double mediaOcorrencias;
 
 	public Bloco() {
 		this.lista_frases = new ArrayList <> ();
+		this.mainBlockprobability = 0;
+		this.mediaOcorrencias = 0;
+	}
+	
+	public void addProbability (double probability) {
+		this.mainBlockprobability += probability;
+	}
+	
+	public void setMediaOcorrencias(double media) {
+		this.mediaOcorrencias = media;
+	}
+	
+	
+
+	public double getMediaOcorrencias() {
+		return mediaOcorrencias;
 	}
 
 	public ArrayList<FraseLetra> getBloco() {
@@ -85,6 +103,13 @@ class Bloco{
 	
 	public FraseLetra getFraseByIndex(int index) {
 		return this.lista_frases.get(index);
+	}
+
+	public void printBloco() {
+		for (FraseLetra fl: this.lista_frases) {
+			System.out.println(fl);
+		}
+		System.out.println("---------------");
 	}
 	
 	

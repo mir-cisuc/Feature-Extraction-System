@@ -28,6 +28,10 @@ public class countTitle {
 		writeCSV(titulo,occurences);
 	}
 	
+
+	
+	
+	
 	public static void writeCSV(String titulo, int value) {
 		String outputFolder  = "src/Output/";
 		FileWriter fileWriter2 = null;

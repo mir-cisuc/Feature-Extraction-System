@@ -7,6 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+
 import AuxiliarFiles.MinimumEditDistance;
 
 public class ChorusDetection {
@@ -73,7 +75,8 @@ public class ChorusDetection {
 		
 		
 		nrBlocoAtual = 0;
-		removeBadChorusBasedOnEditDistance();
+		//removeBadChorusBasedOnEditDistance();
+		//getMainBlock();
 		
 		
 		printLetra(true);
@@ -90,12 +93,74 @@ public class ChorusDetection {
 		}		
 	}
 	
+	public void getMainBlock() {
+		ArrayList<Bloco> listaPotenciaisBlocos = new ArrayList<> (array_blocos);
+		
+		ArrayList<Float> lista_medias = getAverageBlocks(); 
+		
+		double maximo = Collections.max(lista_medias);
+		double minimo = Collections.min(lista_medias);
+		
+		double diferenca = maximo / minimo;
+		
+		if (diferenca > 2) { // se houver uma descrepancia na media de ocorrencias, vamos remover
+			for (Bloco bloco : array_blocos) {
+				if (bloco.getMediaOcorrencias() == minimo) {
+					listaPotenciaisBlocos.remove(bloco);
+				}
+			}							
+		}
+		
+		for (Bloco bloco : array_blocos) {
+			if (listaPotenciaisBlocos.contains(bloco)) {
+				if (isBlockSeparate(bloco) || bloco.getMediaOcorrencias() == maximo) {
+					listaPotenciaisBlocos.remove(bloco);
+				}
+			}
+		}
+		
+		
+		for (Bloco bloco : listaPotenciaisBlocos) {
+			bloco.printBloco();
+		}
+		
+		
+		
+	}
+	
+	public boolean isBlockSeparate(Bloco blocoComparar) {
+		for (Bloco bloco: array_blocos) {
+			if (blocoComparar != bloco) {
+				ArrayList <Integer> lista_edit_distances = new ArrayList <Integer>();
+				// caso em  que os tamanhos sao iguais			
+				if (blocoComparar.getTamanho() == bloco.getTamanho() ) {
+					lista_edit_distances = getMinList(bloco, blocoComparar, 2);
+				}
+				else {	
+					lista_edit_distances = getMinList(bloco, blocoComparar, 1);	
+				}			
+				float media = 0;
+				for (int a : lista_edit_distances) {
+					media += a;
+				}
+				media /= lista_edit_distances.size();
+				//System.out.printf("%f %d\n",media,threshold);
+				if (media < threshold) {	
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	
+	
 	public void removeBadChorusBasedOnEditDistance() {	
 		Bloco blocoPrincipal = new Bloco();
 		float media_maxima = 0;
 		int indice_melhor = -1;
 		int contador = 0;
-		for (Bloco bloco_frases : array_blocos) {
+		/*for (Bloco bloco_frases : array_blocos) {
 			float media = 0;
 			for (FraseLetra fl : bloco_frases.getBloco()) {
 					media += fl.getOcorrencias();
@@ -108,6 +173,8 @@ public class ChorusDetection {
 			}
 			contador++;
 		}
+		*/
+		//blocoPrincipal = getMainBlock();
 		
 		
 		int threshold = getThreshHold(blocoPrincipal);
@@ -190,7 +257,8 @@ public class ChorusDetection {
 			for (FraseLetra fl : bloco_frases.getBloco()) {
 				media += fl.getOcorrencias();
 			}
-			lista_float.add(media/bloco_frases.getTamanho());		
+			lista_float.add(media/bloco_frases.getTamanho());	
+			bloco_frases.setMediaOcorrencias(media);
 		}						
 		return lista_float;		
 	}
@@ -313,7 +381,7 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file = "src/Origem/teste.txt";
+		String file = "src/Origem/ma_og.txt";
 		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 
