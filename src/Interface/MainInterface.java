@@ -5,10 +5,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import AuxiliarFiles.WriteCSVFinal;
+import GI.Initial_GI;
 
 @SuppressWarnings("serial")
 public class MainInterface extends JFrame{
@@ -54,18 +56,27 @@ public class MainInterface extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		MainInterface main_frame = new MainInterface(null);
-		main_frame.setTitle("Janela principal do programa");
-		main_frame.setSize(475,225);
-		main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main_frame.setVisible(true);
-		main_frame.addWindowListener((WindowListener) new WindowAdapter()  
-	    {  
-			public void windowClosing(WindowEvent e) {  
-				WriteCSVFinal.WriteSemantic();
-				WriteCSVFinal.WriteStylistic();
-	    	}
-	    });
+		if (args.length == 3) {
+			String tipoExtracao = args[0];
+			String inputFile = args[1];
+			String outputFile = args[2];	
+			HandleRequest(tipoExtracao,inputFile,outputFile);
+		}
+		else {
+			System.out.println("correr normal!");
+			MainInterface main_frame = new MainInterface(null);
+			main_frame.setTitle("Janela principal do programa");
+			main_frame.setSize(475,225);
+			main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			main_frame.setVisible(true);
+			main_frame.addWindowListener((WindowListener) new WindowAdapter()  
+		    {  
+				public void windowClosing(WindowEvent e) {  
+					WriteCSVFinal.WriteSemantic();
+					WriteCSVFinal.WriteStylistic();
+		    	}
+		    });
+		}
 	}
 	
 	private class DirectoryButtonListener implements ActionListener {
@@ -95,8 +106,48 @@ public class MainInterface extends JFrame{
 				}
 			}
 			
+		}		
+	}
+	
+	public static void HandleRequest(String tipoExtracao, String inputFile, String outputFile) {
+		String [] listaOpcoes= {"features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalleters","features_standardPOS","features_CBF","titulo"};
+		switch(tipoExtracao) {
+			case "features_gi":
+			try {
+				Initial_GI initial= new Initial_GI(inputFile,outputFile);
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
+			case "features_synesktech":
+				
+				break;
+			case "features_dal_anew":
+				
+				break;
+			case "features_gazeteers":
+				break;
+			case "features_slang":
+				break;
+			case "features_capitalleters":
+				break;
+			case "features_standardPOS":
+				break;
+			case "features_CBF":
+				break;
+			case "titulo":
+				break;
+			default:
+				System.out.println("Opcao errada! As opcoes sao as seguintes");
+				for (String s : listaOpcoes) {
+					System.out.println(s);
+				}
+				break;
 		}
-		
 	}
 	
 

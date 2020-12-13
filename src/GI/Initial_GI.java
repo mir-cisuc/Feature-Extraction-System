@@ -34,26 +34,36 @@ public class Initial_GI {
 	// pasta do gi
 	static final String giFolder = "src/GI/GIFiles/";
 	// file gi
-	static final String gi = giFolder + "gi-11788.csv";
+	static String gi = giFolder + "gi-11788.csv";
 	
 	//output folder
 	static final String outputFolder  = "src/Output/";
 
 	// file output das features
-	static final String outputFile = outputFolder + "GI_Features-1180";
+	static String outputFile = outputFolder + "GI_Features-1180";
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
 		Initial_GI initial_anew  = new Initial_GI(null);
 	}
 	
-	public Initial_GI(String sourceFolder1) throws ClassNotFoundException, IOException{	
+	public Initial_GI(String inputFile, String outputFile) throws ClassNotFoundException, IOException {
+		gi = inputFile;
+		this.outputFile = outputFile;
+		mainCode();
+	}
+	
+	
+	public Initial_GI(String sourceFolder1) throws ClassNotFoundException, IOException {	
 		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
 			sourceFolder = sourceFolder1;				
 		}
 		else {
 			sourceFolder = "src/Origem/";
 		}
+		mainCode();
+	}
 
+	public void mainCode() throws ClassNotFoundException, IOException{
 		/**
 		 * 1)copiar o file "gi_dataset_prog_CSV.csv" para uma matriz (gi_matrix)
 		 * 11788 * 183;

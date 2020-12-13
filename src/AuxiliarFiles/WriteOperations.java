@@ -84,8 +84,10 @@ public class WriteOperations {
 	 */
 	public void writeMatrixInFile(String[][] matrix, String filename, int option)
 			throws IOException {
-
-		File file = new File(filename + ".csv");
+		if (!filename.endsWith(".csv")) {
+			filename = filename + ".csv";
+		}
+		File file = new File(filename);
 		System.out.println(file.getAbsolutePath());
 		boolean isFile = file.exists();
 
