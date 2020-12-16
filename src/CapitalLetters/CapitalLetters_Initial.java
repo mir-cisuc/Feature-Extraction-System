@@ -19,113 +19,67 @@ import java.util.ArrayList;
  */
 public class CapitalLetters_Initial {
 
-	static String sourceFolder = "src/Origem/"; // pasta onde estao as
-													// liricas
-
-	static final String outputFolder = "src/Output/";
-	static final String outputFile = outputFolder + "CapitalLetters_M45";
+	String sourceFolder; // pasta onde estao as liricas
+	static String outputFolder = "src/Output/";
+	String outputFile;
 	
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException {
-		CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(null);
+		CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(true,"src/Origem/L001-141.txt",null);
 	}
 	
-	public CapitalLetters_Initial(String inputFile, String outputFile) throws ClassNotFoundException, IOException{
-		String[][] matrix = new String[1][3];
-
-		// for each file...
-			String[] data = inputFile.split("\\.");
-			matrix[0][0] = data[0];
-
-			System.out.println("Ficheiro - "+inputFile);
-			
-			
-			// location of the file
-			String filename_path = inputFile;
-
-			boolean fcl = false;
-			boolean acl = false;
-			int cfcl = 0;
-			int cacl = 0;
-
-			// open the file for reading
-			FileReader fileReader = new FileReader(filename_path);
-			BufferedReader in = new BufferedReader(fileReader);
-			String thisLine;
-
-			//CapitalLetters_Initial ini = new CapitalLetters_Initial();
-			while ((thisLine = in.readLine()) != null) {
-				// Ignore empty lines.
-				if (thisLine.equals(""))
-					continue;
-
-				thisLine = thisLine.replace("\'", "");
-				// remover punctuation marks
-				thisLine = thisLine.replaceAll("[^a-zA-Z0-9-]", " ");
-				
-				//System.out.println("AAAA --> "+thisLine);
-
-				String[] words = thisLine.split(" ");
-
-				int numberWordsPerLine = words.length;
-
-				for (int j = 0; j < numberWordsPerLine; j++) {
-
-					if (words[j].equals("")) {
-						continue;
-					}
-					fcl = this.firstCapitalLetter(words[j]);
-					acl = this.allCapitalLetters(words[j]);
-
-					if (fcl) {
-						cfcl++;
-					}
-
-					if (acl) {
-						cacl++;
-					}
-
-					//System.out.println("AAAA --> " + words[j]);
-					//System.out.println("BBBB --> " + acl);
-
-				}
-
-			} // end while
-		matrix[0][1] = Integer.toString(cfcl);
-		matrix[0][2] = Integer.toString(cacl);
-		in.close();
-		WriteOperations wo = new WriteOperations();
-		wo.writeMatrixInConsole(matrix);
-		wo.writeMatrixInFile(matrix, outputFile,2); //enviar option para imprimir o header para Capital Letters = 2		
-	}
 	
-	public CapitalLetters_Initial(String sourceFolder1) throws ClassNotFoundException, IOException{	
-		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
-			sourceFolder = sourceFolder1;				
+	public CapitalLetters_Initial(boolean onlyOneFile, String input, String outputFile) throws ClassNotFoundException, IOException{	
+		if(input != null && !input.isEmpty()) {
+			this.sourceFolder = input;				
 		}
 		else {
-			sourceFolder = "src/Origem/";
+			this.sourceFolder = "src/Origem/";
 		}
 		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;			
+		}
+		else {
+			this.outputFile = outputFolder + "CapitalLetters_M45";
+		}
 
 		// read the names of the files from a folder and save them into a
 		// String[] (files)
-		ReadOperations ro = new ReadOperations();
-		String[] files = ro.openDirectory(sourceFolder);
-		int numberFiles = ro.filesLength(files);
+		int numberFiles = 0;
+		String [] files = null;
+		if (!onlyOneFile) {
+			ReadOperations ro = new ReadOperations();
+			files = ro.openDirectory(sourceFolder);
+			numberFiles = ro.filesLength(files);			
+		}
+		else {
+			files = new String [] {input};
+			numberFiles = 1;
+		}
 
 		String[][] matrix = new String[numberFiles][3];
 
 		// for each file...
 		for (int i = 0; i < numberFiles; i++) {
 			String[] data = files[i].split("\\.");
+			if (data[0].contains("/")) {
+				String [] nome = data[0].split("/");
+				data[0] = nome[nome.length-1];
+			}
 			matrix[i][0] = data[0];
 
 			System.out.println("Ficheiro - "+i);
 			
 			
 			// location of the file
-			String filename_path = sourceFolder + "/" + files[i];
+			String filename_path = new String();
+			if (onlyOneFile) {
+				filename_path = input;
+			}
+			else {
+				filename_path = sourceFolder + "/" + files[i];
+			}
 
 			boolean fcl = false;
 			boolean acl = false;
@@ -168,9 +122,6 @@ public class CapitalLetters_Initial {
 					if (acl) {
 						cacl++;
 					}
-
-					//System.out.println("AAAA --> " + words[j]);
-					//System.out.println("BBBB --> " + acl);
 
 				}
 
@@ -181,7 +132,7 @@ public class CapitalLetters_Initial {
 		} // end for
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(matrix);
-		wo.writeMatrixInFile(matrix, outputFile,2); //enviar option para imprimir o header para Capital Letters = 2
+		wo.writeMatrixInFile(matrix, this.outputFile,2); //enviar option para imprimir o header para Capital Letters = 2
 
 	}
 

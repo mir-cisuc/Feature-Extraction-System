@@ -53,7 +53,7 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(sourceFolder);
+				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,sourceFolder,null);
 				JOptionPane.showMessageDialog(null, "Features CapitalLetters extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
@@ -81,7 +81,7 @@ public class StylisticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(sourceFolder);
+				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,sourceFolder,null);
 				CombinedFeatures initial_WD  = new CombinedFeatures(false, false,true,sourceFolder);
 				JOptionPane.showMessageDialog(null, "Todas features estilisticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {

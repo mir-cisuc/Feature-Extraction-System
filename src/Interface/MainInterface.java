@@ -168,13 +168,28 @@ public class MainInterface extends JFrame{
 				break;
 			case "features_slang":
 				break;
-			case "features_capitalleters":
-				try {
-					CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(inputFile,outputFile);
-				} catch (ClassNotFoundException | IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			case "features_capitalleters":				
+				File file1 = new File(inputFile);
+				if (file1.exists()){
+					if (file1.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file1.isFile()) {
+						//System.out.println("File");
+						try {
+							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(true,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}			
 				break;
 			case "features_standardPOS":
 				try {
