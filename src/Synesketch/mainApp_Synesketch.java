@@ -41,7 +41,7 @@ public class mainApp_Synesketch {
 		// TODO Auto-generated method stub
 		mainApp_Synesketch ma = new mainApp_Synesketch();
 		// ma.init_1();
-		ma.init_2(null);
+		ma.readDirectory(null,null);
 	}
 
 	/**
@@ -63,31 +63,43 @@ public class mainApp_Synesketch {
 
 	}
 
-	public void init_2(String sourceFolder1) throws IOException {
+	public void readDirectory(String sourceFolder1, String outputFile) throws IOException {		
+		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
+			sourceFolder = sourceFolder1;				
+		}
+		else {
+			sourceFolder = "src/Origem";
+		}
+		
+		String outputFolder = "";
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
+		else {
+			outputFolder = "src/Output/";
+		}
+	
 		ReadLyricsDirectoryToAString rl = new ReadLyricsDirectoryToAString();
 		ids = rl.openFileOfIDs();
 
 		//ids contem os nomes dos files (liricas) sem o .txt
 		Iterator it = ids.iterator();
 		
-		String outputFolder = "src/Output/";
+			
+		String output = outputFolder + this.outputFile;
 		
-
-		FileWriter fstream = new FileWriter(outputFolder + this.outputFile);
+		FileWriter fstream = new FileWriter(output);
 		BufferedWriter out = new BufferedWriter(fstream);
 		
 		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
 		out.newLine();
-
+		
+				
 		while (it.hasNext()) {
 			//idSong e por ex. L001-141
 			String idSong = (String) it.next();
-			if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
-				sourceFolder = sourceFolder1;				
-			}
-			else {
-				sourceFolder = "src/Origem";
-			}
+
+			String inputFile = sourceFolder+"/"+idSong+ ".txt";
 			
 			//caminho completo para onde esta a lirica ex. lyrics-180/L001-141.txt
 			String lyric = rl.ler(sourceFolder+"/"+idSong+".txt");
@@ -96,8 +108,7 @@ public class mainApp_Synesketch {
 			System.out.println(state);
 			
 			System.out.println("Song: "+idSong);
-			
-			
+					
 			
 			String line = idSong + "," + state.getGeneralWeight() + ","
 					+ state.getValence() + "," + state.getHappinessWeight()
@@ -106,13 +117,9 @@ public class mainApp_Synesketch {
 					+ "," + state.getDisgustWeight() + ","
 					+ state.getSurpriseWeight();
 			out.write(line);
-			out.write("\n");
-			
+			out.write("\n");		
 		}
-
-		// Close the output stream
 		out.close();
-
 	}
 	
 	public void readFile(String inputFile,String outputFile) throws IOException {
@@ -140,7 +147,6 @@ public class mainApp_Synesketch {
 		out.write(line);
 		out.write("\n");
 			
-	
 		// Close the output stream
 		out.close();		
 	}

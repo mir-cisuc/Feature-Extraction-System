@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
@@ -129,11 +130,26 @@ public class MainInterface extends JFrame{
 				break;
 			case "features_synesktech":
 				mainApp_Synesketch ma = new mainApp_Synesketch();
-				try {
-					ma.readFile(inputFile, outputFile);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				File file = new File(inputFile);
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							ma.readDirectory(inputFile, outputFile);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							ma.readFile(inputFile, outputFile);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}				
 				break;
 			case "features_dal_anew":

@@ -52,12 +52,12 @@ public class Initial_GI {
 		File file = new File(input);		
 		if (file.exists()){
 			if (file.isDirectory()) {
-				System.out.println("Directory");
+				 //System.out.println("Directory");
 				this.sourceFolder = input;			
 				mainCode(false, input);
 			}
 			else if (file.isFile()) {
-				System.out.println("File");
+				//System.out.println("File");
 				mainCode(true,input);
 			}
 		}

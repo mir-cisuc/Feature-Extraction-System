@@ -110,7 +110,7 @@ public class SemanticFeatures extends JFrame{
 			// TODO Auto-generated method stub
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				try {
-					ma.init_2(sourceFolder);
+					ma.readDirectory(sourceFolder,null);
 					JOptionPane.showMessageDialog(null, "Features Synesketch extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 				} catch (IOException e1) {
 					// TODO Auto-generated catch block
@@ -127,7 +127,7 @@ public class SemanticFeatures extends JFrame{
 				CombinedFeatures initial_ANEW  = new CombinedFeatures(false, true,false,sourceFolder);
 				Initial_GI initial_GI = new Initial_GI(sourceFolder);
 				mainApp_Synesketch ma = new mainApp_Synesketch();
-				ma.init_2(sourceFolder);
+				ma.readDirectory(sourceFolder,null);
 				JOptionPane.showMessageDialog(null, "Todas as features semanticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block
