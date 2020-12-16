@@ -30,6 +30,8 @@ public class mainApp_Synesketch {
 
 	ArrayList<String> ids = new ArrayList();
 	String sourceFolder;
+	
+	String outputFile = "Synesketch_M49.csv";
 
 	/**
 	 * @param args
@@ -69,8 +71,9 @@ public class mainApp_Synesketch {
 		Iterator it = ids.iterator();
 		
 		String outputFolder = "src/Output/";
+		
 
-		FileWriter fstream = new FileWriter(outputFolder + "Synesketch_M49.csv");
+		FileWriter fstream = new FileWriter(outputFolder + this.outputFile);
 		BufferedWriter out = new BufferedWriter(fstream);
 		
 		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
@@ -110,6 +113,36 @@ public class mainApp_Synesketch {
 		// Close the output stream
 		out.close();
 
+	}
+	
+	public void readFile(String inputFile,String outputFile) throws IOException {
+		ReadLyricsDirectoryToAString rl = new ReadLyricsDirectoryToAString();
+
+		FileWriter fstream = new FileWriter(outputFile);
+		BufferedWriter out = new BufferedWriter(fstream);
+		
+		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
+		out.newLine();
+		
+		//caminho completo para onde esta a lirica ex. lyrics-180/L001-141.txt
+		String lyric = rl.ler(inputFile);
+
+		EmotionalState state = Empathyscope.getInstance().feel(lyric);
+		System.out.println(state);
+		
+		
+		String line = inputFile.replace(".txt","") + "," + state.getGeneralWeight() + ","
+				+ state.getValence() + "," + state.getHappinessWeight()
+				+ "," + state.getSadnessWeight() + ","
+				+ state.getAngerWeight() + "," + state.getFearWeight()
+				+ "," + state.getDisgustWeight() + ","
+				+ state.getSurpriseWeight();
+		out.write(line);
+		out.write("\n");
+			
+	
+		// Close the output stream
+		out.close();		
 	}
 
 }

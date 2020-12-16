@@ -10,7 +10,11 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import AuxiliarFiles.WriteCSVFinal;
+import CapitalLetters.CapitalLetters_Initial;
+import CombinedFeatures.CombinedFeatures;
 import GI.Initial_GI;
+import StanfordPosTagger.SPT_Initial;
+import Synesketch.mainApp_Synesketch;
 
 @SuppressWarnings("serial")
 public class MainInterface extends JFrame{
@@ -124,20 +128,51 @@ public class MainInterface extends JFrame{
 				}
 				break;
 			case "features_synesktech":
-				
+				mainApp_Synesketch ma = new mainApp_Synesketch();
+				try {
+					ma.readFile(inputFile, outputFile);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}				
 				break;
 			case "features_dal_anew":
-				
+				/*try {
+					CombinedFeatures initial  = new CombinedFeatures(false, true,false,sourceFolder); // false true vai ser gazeteers
+					
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}	*/			
 				break;
 			case "features_gazeteers":
 				break;
 			case "features_slang":
 				break;
 			case "features_capitalleters":
+				try {
+					CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(inputFile,outputFile);
+				} catch (ClassNotFoundException | IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "features_standardPOS":
+				try {
+					SPT_Initial initial = new SPT_Initial(inputFile,outputFile);
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				break;
 			case "features_CBF":
+				
 				break;
 			case "titulo":
 				break;

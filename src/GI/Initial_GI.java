@@ -40,7 +40,7 @@ public class Initial_GI {
 	static final String outputFolder  = "src/Output/";
 
 	// file output das features
-	static String outputFile = outputFolder + "GI_Features-1180";
+	String outputFile = outputFolder + "GI_Features-1180";
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
 		Initial_GI initial_anew  = new Initial_GI(null);

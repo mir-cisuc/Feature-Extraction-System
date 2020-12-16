@@ -30,6 +30,75 @@ public class CapitalLetters_Initial {
 		CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(null);
 	}
 	
+	public CapitalLetters_Initial(String inputFile, String outputFile) throws ClassNotFoundException, IOException{
+		String[][] matrix = new String[1][3];
+
+		// for each file...
+			String[] data = inputFile.split("\\.");
+			matrix[0][0] = data[0];
+
+			System.out.println("Ficheiro - "+inputFile);
+			
+			
+			// location of the file
+			String filename_path = inputFile;
+
+			boolean fcl = false;
+			boolean acl = false;
+			int cfcl = 0;
+			int cacl = 0;
+
+			// open the file for reading
+			FileReader fileReader = new FileReader(filename_path);
+			BufferedReader in = new BufferedReader(fileReader);
+			String thisLine;
+
+			//CapitalLetters_Initial ini = new CapitalLetters_Initial();
+			while ((thisLine = in.readLine()) != null) {
+				// Ignore empty lines.
+				if (thisLine.equals(""))
+					continue;
+
+				thisLine = thisLine.replace("\'", "");
+				// remover punctuation marks
+				thisLine = thisLine.replaceAll("[^a-zA-Z0-9-]", " ");
+				
+				//System.out.println("AAAA --> "+thisLine);
+
+				String[] words = thisLine.split(" ");
+
+				int numberWordsPerLine = words.length;
+
+				for (int j = 0; j < numberWordsPerLine; j++) {
+
+					if (words[j].equals("")) {
+						continue;
+					}
+					fcl = this.firstCapitalLetter(words[j]);
+					acl = this.allCapitalLetters(words[j]);
+
+					if (fcl) {
+						cfcl++;
+					}
+
+					if (acl) {
+						cacl++;
+					}
+
+					//System.out.println("AAAA --> " + words[j]);
+					//System.out.println("BBBB --> " + acl);
+
+				}
+
+			} // end while
+		matrix[0][1] = Integer.toString(cfcl);
+		matrix[0][2] = Integer.toString(cacl);
+		in.close();
+		WriteOperations wo = new WriteOperations();
+		wo.writeMatrixInConsole(matrix);
+		wo.writeMatrixInFile(matrix, outputFile,2); //enviar option para imprimir o header para Capital Letters = 2		
+	}
+	
 	public CapitalLetters_Initial(String sourceFolder1) throws ClassNotFoundException, IOException{	
 		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
 			sourceFolder = sourceFolder1;				

@@ -381,7 +381,7 @@ public class ChorusDetection {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		String file = "src/Origem/ma_og.txt";
+		String file = "src/Lirica/ma_og.txt";
 		ChorusDetection chorusDetection = new ChorusDetection(file);	
 	}
 

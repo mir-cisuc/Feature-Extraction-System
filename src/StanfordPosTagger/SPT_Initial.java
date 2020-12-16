@@ -47,6 +47,67 @@ public class SPT_Initial {
 		SPT_Initial spt_initial = new SPT_Initial(null);
 	}
 	
+	public SPT_Initial(String inputFile, String outputFile) throws ClassNotFoundException,IOException{
+			// TODO Auto-generated method stub
+			int option = withTags;
+			
+			// calcula as postags linha a linha e guarda em tagger
+			PosTags postags = new PosTags();
+			MaxentTagger tagger = postags.initialize(locTagger);
+			
+			// abrir o file para leitura
+			FileReader fileReader = new FileReader(inputFile);
+			BufferedReader in = new BufferedReader(fileReader);
+
+			String thisLine;
+			String lyric_text = "";
+
+			// guarda cada linha de file (thisLine) numa string linha por linha
+			// (lyric_text)
+			while ((thisLine = in.readLine()) != null) {
+				lyric_text = lyric_text + "\n" + thisLine;
+			}
+
+			String[] lyric_line; // array que guarda em cada posicao uma linha
+									// completa
+			lyric_line = lyric_text.split("\n");
+
+			// calcula as postags linha a linha e guarda em tagger
+			//PosTags postags = new PosTags();
+			//MaxentTagger tagger = postags.initialize(locTagger);
+
+			String textTags = "";
+
+			if (option == withTags) {
+				// para cada frase em lyric_line calcula a frase com tags
+				for (int j = 0; j < lyric_line.length; j++) {
+					String tagged = postags.tagString(tagger, lyric_line[j]);
+					textTags = textTags + "\n" + tagged;
+				}
+			} else {
+				for (int j = 0; j < lyric_line.length; j++) {
+					String tagged = postags.tagString(tagger, lyric_line[j]);
+					String taggedOnlyTags = postags.convertToOnlyTags(tagged);
+					textTags = textTags + "\n" + taggedOnlyTags;
+				}
+			}
+
+			// System.out.println(textWithTags);
+			String[] filename;
+			filename = inputFile.toString().split("\\.");
+			// System.out.println(filename[0].toString());
+
+			// guarda em file os fich de texto com postags
+			WriteOperations wf = new WriteOperations();
+			//if (option == withTags) {
+			wf.writeFile(outputFile,textTags);
+			//} else {
+			//	wf.writeFile(outputFolder "_onlyPosTags.txt", textTags);
+			//}
+	}
+	
+	
+	
 	public SPT_Initial(String sourceFolder1) throws ClassNotFoundException,IOException {
 		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
 			sourceFolder = sourceFolder1;				
