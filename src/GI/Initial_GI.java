@@ -4,6 +4,7 @@ import AuxiliarFiles.*;
 
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,12 +30,12 @@ import java.util.ArrayList;
 public class Initial_GI {
 
 	// pasta das liricas
-	static String sourceFolder = "src/Origem";
+	String sourceFolder = "src/Origem";
 	
 	// pasta do gi
 	static final String giFolder = "src/GI/GIFiles/";
 	// file gi
-	static String gi = giFolder + "gi-11788.csv";
+	static final String gi = giFolder + "gi-11788.csv";
 	
 	//output folder
 	static final String outputFolder  = "src/Output/";
@@ -43,16 +44,29 @@ public class Initial_GI {
 	String outputFile = outputFolder + "GI_Features-1180";
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		Initial_GI initial_anew  = new Initial_GI(null);
+		Initial_GI initial_gi  = new Initial_GI(null);
 	}
 	
-	public Initial_GI(String inputFile, String outputFile) throws ClassNotFoundException, IOException {
-		gi = inputFile;
+	public Initial_GI(String input, String outputFile) throws ClassNotFoundException, IOException {
 		this.outputFile = outputFile;
-		mainCode();
+		File file = new File(input);		
+		if (file.exists()){
+			if (file.isDirectory()) {
+				System.out.println("Directory");
+				this.sourceFolder = input;			
+				mainCode(false, input);
+			}
+			else if (file.isFile()) {
+				System.out.println("File");
+				mainCode(true,input);
+			}
+		}
+		else {
+			System.out.println("Input file/directory does not exist!");
+		}
+	
 	}
-	
-	
+		
 	public Initial_GI(String sourceFolder1) throws ClassNotFoundException, IOException {	
 		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
 			sourceFolder = sourceFolder1;				
@@ -60,10 +74,10 @@ public class Initial_GI {
 		else {
 			sourceFolder = "src/Origem/";
 		}
-		mainCode();
+		mainCode(false,"");
 	}
 
-	public void mainCode() throws ClassNotFoundException, IOException{
+	public void mainCode(boolean onlyOneFile, String input) throws ClassNotFoundException, IOException{
 		/**
 		 * 1)copiar o file "gi_dataset_prog_CSV.csv" para uma matriz (gi_matrix)
 		 * 11788 * 183;
@@ -94,16 +108,24 @@ public class Initial_GI {
 
 		/**
 		 * 3)ler liricas 1 a 1 e para cada ler frase a frase; 4)verificar se
-		 * cada palavra das frases estÃ¡ no GI (matriz anterior - 1Âª coluna);
+		 * cada palavra das frases está no GI (matriz anterior - 1ª coluna);
 		 * 5)para cada palavra copiar as colunas preenchidas de gi_matrix para
 		 * feature_matrix (incrementando o num de ocorrencias dessa feature;
 		 */
 
 		// read the names of the files (lyrics) from a folder of lyrics and save
 		// them into a String[] (files)
-		ReadOperations ro = new ReadOperations();
-		String[] files = ro.openDirectory(sourceFolder);
-		int numberFiles = ro.filesLenght(files);
+		int numberFiles = 0;
+		String [] files = null;
+		if (!onlyOneFile) {
+			ReadOperations ro = new ReadOperations();
+			files = ro.openDirectory(sourceFolder);
+			numberFiles = ro.filesLength(files);			
+		}
+		else {
+			files = new String [] {input};
+			numberFiles = 1;
+		}
 
 		/**
 		 * 2)
@@ -122,12 +144,22 @@ public class Initial_GI {
 			}
 			
 			System.out.println("File num : "+i);
-			// guarda na feature_matrix o nome da lirica na 1Âª coluna
+			// guarda na feature_matrix o nome da lirica na 1ª coluna
 			String[] data = files[i].split("\\.");
+			if (data[0].contains("/")) {
+				String [] nome = data[0].split("/");
+				data[0] = nome[nome.length-1];
+			}
 			feature_matrix[i+1][0] = data[0];
 
 			// location of the file
-			String filename_path = sourceFolder + "/" + files[i];
+			String filename_path = new String();
+			if (onlyOneFile) {
+				filename_path = input;
+			}
+			else {
+				filename_path = sourceFolder + "/" + files[i];
+			}
 
 			// open the file (lyric) for reading
 			FileReader fileReader = new FileReader(filename_path);
@@ -184,7 +216,6 @@ public class Initial_GI {
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(feature_matrix);
 		wo.writeMatrixInFile(feature_matrix, outputFile,1); //enviar option para imprimir o header do GI = 1
-
 	}
 
 }

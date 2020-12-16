@@ -86,7 +86,7 @@ public class CombinedFeatures {
 		
 		ReadOperations ro = new ReadOperations();
 		String[] files = ro.openDirectory(sourceFolder);
-		int numberFiles = ro.filesLenght(files);
+		int numberFiles = ro.filesLength(files);
 
 		// ArrayList<String> listOfLinesFromTextFile = new ArrayList<String>();
 		// listOfLinesFromTextFile = ro.openTxtFile(dicFile); //the lines of dal

@@ -112,7 +112,7 @@ public class CapitalLetters_Initial {
 		// String[] (files)
 		ReadOperations ro = new ReadOperations();
 		String[] files = ro.openDirectory(sourceFolder);
-		int numberFiles = ro.filesLenght(files);
+		int numberFiles = ro.filesLength(files);
 
 		String[][] matrix = new String[numberFiles][3];
 

@@ -73,7 +73,7 @@ public class ReadOperations {
 		return linesOfTheFile;
 	}
 
-	public int filesLenght(String[] files) {
+	public int filesLength(String[] files) {
 		// TODO Auto-generated method stub
 		return files.length;
 	}
