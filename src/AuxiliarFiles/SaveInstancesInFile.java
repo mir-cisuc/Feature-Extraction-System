@@ -88,7 +88,7 @@ public class SaveInstancesInFile {
 		this.writeMatrixInConsole(matrix);
 		String nameFile1 = "CBF_" + arg1 + "_" + arg2 + "_" + FREQ;
 		
-		File file2 = new File("src/Output/" + nameFile1 + ".csv");
+		File file2 = new File(nameFile1 + ".csv");
 		this.writeMatrixInFile(matrix, file2);
 
 		
@@ -505,6 +505,7 @@ public class SaveInstancesInFile {
 			file.createNewFile();
 		}
 
+		System.out.println(file.getAbsolutePath());
 		// abre o ficheiro anterior para escrita
 		BufferedWriter out = new BufferedWriter(new FileWriter(file));
 

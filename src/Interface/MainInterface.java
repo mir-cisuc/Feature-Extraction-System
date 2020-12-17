@@ -7,10 +7,13 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import AuxiliarFiles.WriteCSVFinal;
+import CBF.CBF_Initial;
 import CapitalLetters.CapitalLetters_Initial;
 import CombinedFeatures.CombinedFeatures;
 import GI.Initial_GI;
@@ -74,11 +77,52 @@ public class MainInterface extends JFrame{
 				System.out.println("Uso: \"features_titulo\" inputFile outputFile tituloMusica");
 			}
 			else {
-				String tipoExtracao = args[0];
 				String inputFile = args[1];
 				String outputFile = args[2];
 				String titulo = args[3];
 				countTitle numero_titulo = new countTitle(titulo,inputFile,outputFile);
+			}
+		}
+		else if (args.length == 5) {
+			if (!args[0].equals("features_cbf")) {
+				System.out.println("O metodo de extracao com 5 argumentos tem que ser \"features_cbf\"");
+				System.out.println("Uso: \"features_cbf\" inputFile arg1 arg2 arg3");
+				System.out.println("arg1 pode ser: 'unig', 'big', 'trig'");
+				System.out.println("arg2 pode ser: 'nada', 'st', 'sw', 'st+sw'");
+				System.out.println("arg3 pode ser: 'freq', 'bool', 'tfidf', 'norm'");
+				System.out.println("O output file vai ser a combinacao, por exemplo 'unig_nada_freq.csv'");
+			}
+			else {
+				String inputFolder = args[1];
+				ArrayList<String> lista_arg3 = new ArrayList<String> (Arrays.asList("unig","big","trig"));
+				ArrayList<String> lista_arg4 = new ArrayList<String> (Arrays.asList("nada","st","sw","st+sw"));
+				ArrayList<String> lista_arg5 = new ArrayList<String> (Arrays.asList("freq","bool","tfidf","norm"));
+
+				String arg3 = args[2];
+				String arg4 = args[3];
+				String arg5 = args[4];
+				if (!lista_arg3.contains(arg3) || !lista_arg4.contains(arg4) || !lista_arg5.contains(arg5)) {
+					if (!lista_arg3.contains(arg3)) {
+						System.out.println("Argumento 1 incorreto.");
+						System.out.println("arg1 pode ser: 'unig', 'big', 'trig'");
+					}
+					if (!lista_arg4.contains(arg4)) {
+						System.out.println("Argumento 2 incorreto.");
+						System.out.println("arg2 pode ser: 'nada', 'st', 'sw', 'st+sw'");
+					}
+					if (!lista_arg5.contains(arg5)) {
+						System.out.println("Argumento 3 incorreto.");
+						System.out.println("arg3 pode ser: 'freq', 'bool', 'tfidf', 'norm'");
+					}														
+				}				
+				else {
+					try {
+						CBF_Initial initial = new CBF_Initial(inputFolder,arg3,arg4,arg5);				
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}	
+				}
 			}
 		}
 		else {
@@ -277,7 +321,13 @@ public class MainInterface extends JFrame{
 					}
 				}
 				break;
-			case "features_CBF":				
+			case "features_cbf":	
+				System.out.println("Para usar \"features_cbf\" tem que fazer o seguinte:");
+				System.out.println("Uso: \"features_cbf\" inputFile arg1 arg2 arg3");
+				System.out.println("arg1 pode ser: 'unig', 'big', 'trig'");
+				System.out.println("arg2 pode ser: 'nada', 'st', 'sw', 'st+sw'");
+				System.out.println("arg3 pode ser: 'freq', 'bool', 'tfidf', 'norm'");
+				System.out.println("O output file vai ser a combinacao, por exemplo 'unig_nada_freq.csv'");
 				break;
 			case "features_titulo":
 				System.out.println("O titulo tem o seguinte uso: \nUso: \"features_titulo\" inputFile outputFile tituloMusica");
