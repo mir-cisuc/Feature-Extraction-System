@@ -9,9 +9,9 @@ import java.nio.file.Paths;
 
 
 public class countTitle {
-	public countTitle(String titulo, String sourceFile) {
+	public countTitle(String titulo, String inputFile, String outputFile) {
 		// TODO Auto-generated constructor stub
-		Path path = Paths.get(sourceFile);
+		Path path = Paths.get(inputFile);
 		String content = null;
 		try {
 			content = Files.readString(path, StandardCharsets.US_ASCII).toLowerCase();
@@ -21,30 +21,38 @@ public class countTitle {
 		}
 		
 		titulo = titulo.toLowerCase();
-				
-		
+						
 		int occurences= content.split(titulo, -1).length-1;
-		System.out.println(occurences);
-		writeCSV(titulo,occurences);
+		System.out.printf("%s,%s,%s\n",occurences,titulo,inputFile);
+		writeCSV(titulo,occurences, outputFile, inputFile);
 	}
 	
-
 	
-	
-	
-	public static void writeCSV(String titulo, int value) {
+	public static void writeCSV(String titulo, int value, String outputFile, String inputFile) {
+		String[] data = inputFile.split("\\.");
+		if (data[0].contains("/")) {
+			String [] nome = data[0].split("/");
+			data[0] = nome[nome.length-1];
+		}
+		
 		String outputFolder  = "src/Output/";
+		String output = new String();
+		if(outputFile != null && !outputFile.isEmpty()) {
+			output = outputFile;	
+		}
+		else {
+			output = outputFolder+"Titles.csv";
+		}
 		FileWriter fileWriter2 = null;
 		try {
-			fileWriter2 = new FileWriter(outputFolder+"Titles.csv");
+			fileWriter2 = new FileWriter(output);
 			
-			fileWriter2.write("title, count");
+			fileWriter2.write("filenane,title, count");
 			fileWriter2.write("\n");
+			fileWriter2.write(data[0]);
 			fileWriter2.write(titulo);
 			fileWriter2.write(", ");
-			fileWriter2.write(String.valueOf(value));
-			
-			
+			fileWriter2.write(String.valueOf(value));			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -58,22 +66,6 @@ public class countTitle {
 			}
 		}
 		
-	}
-
-	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		Path path = Paths.get("src/Origem/teste.txt");
-		String content = Files.readString(path, StandardCharsets.US_ASCII).toLowerCase();
-		
-		String titulo = "di da dam".toLowerCase();	
-				
-		
-		int occurences= content.split(titulo, -1).length-1;
-		System.out.println(occurences);
-		writeCSV(titulo,occurences);
-			
-	}
-
-	
+	}	
 	
 }

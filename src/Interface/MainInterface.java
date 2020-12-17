@@ -15,6 +15,7 @@ import CapitalLetters.CapitalLetters_Initial;
 import CombinedFeatures.CombinedFeatures;
 import GI.Initial_GI;
 import StanfordPosTagger.SPT_Initial;
+import StructuralFeatures.countTitle;
 import Synesketch.mainApp_Synesketch;
 
 @SuppressWarnings("serial")
@@ -67,8 +68,21 @@ public class MainInterface extends JFrame{
 			String outputFile = args[2];	
 			HandleRequest(tipoExtracao,inputFile,outputFile);
 		}
+		else if (args.length == 4) {
+			if (!args[0].equals("features_titulo")) {
+				System.out.println("O metodo de extracao com 4 argumentos tem que ser \"features_titulo\"");
+				System.out.println("Uso: \"features_titulo\" inputFile outputFile tituloMusica");
+			}
+			else {
+				String tipoExtracao = args[0];
+				String inputFile = args[1];
+				String outputFile = args[2];
+				String titulo = args[3];
+				countTitle numero_titulo = new countTitle(titulo,inputFile,outputFile);
+			}
+		}
 		else {
-			System.out.println("correr normal!");
+			//System.out.println("correr normal!");
 			MainInterface main_frame = new MainInterface(null);
 			main_frame.setTitle("Janela principal do programa");
 			main_frame.setSize(475,225);
@@ -265,7 +279,8 @@ public class MainInterface extends JFrame{
 				break;
 			case "features_CBF":				
 				break;
-			case "titulo":
+			case "features_titulo":
+				System.out.println("O titulo tem o seguinte uso: \nUso: \"features_titulo\" inputFile outputFile tituloMusica");
 				break;
 			default:
 				System.out.println("Opcao errada! As opcoes sao as seguintes");
@@ -276,7 +291,7 @@ public class MainInterface extends JFrame{
 		}
 	}
 	
-
+}
 	
 
-}
+	

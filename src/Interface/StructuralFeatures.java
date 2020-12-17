@@ -86,7 +86,7 @@ public class StructuralFeatures extends JFrame{
 		    }
 	    
 		    if (hasTitle && hasSourceFile) {
-		    	countTitle titulo = new countTitle(this.titulo_inserido,this.sourceFile);
+		    	countTitle titulo = new countTitle(this.titulo_inserido,this.sourceFile,null);
 		    	JOptionPane.showMessageDialog(null, "Numero de repetiçoes do titulo calculado", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 		    }						
 		}	
