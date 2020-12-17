@@ -65,18 +65,21 @@ public class CombinedFeatures {
 	
 	static final String dicFile = originFolder + dicFile1;
 	static String str = dicFile + " into " + sourceFolder + " - Details";
+	
+	String outputFile;
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException  {
-		CombinedFeatures initial_anew  = new CombinedFeatures(false, false,true,null);
+		//CombinedFeatures initial_anew  = new CombinedFeatures(false,false, false,true,null);
+		CombinedFeatures initial_anew  = new CombinedFeatures(true,false, false,true,"src/Origem/L002-157.txt","output.csv");
 		// por default vamos buscar as DAL_ANEW
 	}
-	public CombinedFeatures(boolean gazeteersFeatures, boolean DAL_ANEWFeatures, boolean WordsDictionaryFeatures, String sourceFolder1) throws ClassNotFoundException, IOException{	
+	public CombinedFeatures(boolean onlyOneFile, boolean gazeteersFeatures, boolean DAL_ANEWFeatures, boolean WordsDictionaryFeatures, String input, String outputFile) throws ClassNotFoundException, IOException{	
 
 		// read the names of the files (lyrics) from a folder of lyrics and save
 		// them into a
 		// String[] (files)
-		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
-			sourceFolder = sourceFolder1;				
+		if(input != null && !input.isEmpty()) {
+			sourceFolder = input;				
 		}
 		else {
 			sourceFolder = "src/Origem/";
@@ -84,9 +87,17 @@ public class CombinedFeatures {
 		
 		str = dicFile + " into " + sourceFolder + " - Details";
 		
-		ReadOperations ro = new ReadOperations();
-		String[] files = ro.openDirectory(sourceFolder);
-		int numberFiles = ro.filesLength(files);
+		int numberFiles = 0;
+		String [] files = null;
+		if (!onlyOneFile) {
+			ReadOperations ro = new ReadOperations();
+			files = ro.openDirectory(sourceFolder);
+			numberFiles = ro.filesLength(files);			
+		}
+		else {
+			files = new String [] {input};
+			numberFiles = 1;
+		}
 
 		// ArrayList<String> listOfLinesFromTextFile = new ArrayList<String>();
 		// listOfLinesFromTextFile = ro.openTxtFile(dicFile); //the lines of dal
@@ -123,11 +134,20 @@ public class CombinedFeatures {
 			
 			
 			String[] data = files[i].split("\\.");
+			if (data[0].contains("/")) {
+				String [] nome = data[0].split("/");
+				data[0] = nome[nome.length-1];
+			}	
 			matrix[i][0] = data[0];
 
 			// location of the file
-			String filename_path = sourceFolder + "/" + files[i];
-
+			String filename_path = new String();
+			if (onlyOneFile) {
+				filename_path = input;
+			}
+			else {
+				filename_path = sourceFolder + "/" + files[i];
+			}
 			outputDetails = woDetails.writeLinesInList(outputDetails, "\n");
 			outputDetails = woDetails.writeLinesInList(outputDetails,
 					"###############################################");
@@ -309,20 +329,27 @@ public class CombinedFeatures {
 			// ConvertToTFIDF ct = new ConvertToTFIDF();
 			// ct.convertTfidf(matrix);
 
+		
 		WriteOperations wo = new WriteOperations();
 		wo.writeMatrixInConsole(matrix);
-		String outputFile = "";
-		if (gazeteersFeatures) {
-			outputFile = outputFolder + "Gazeteers";
+		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;			
 		}
-		if (DAL_ANEWFeatures) {
-			outputFile = outputFolder + "DAL_ANEW";
-		}
-		if (WordsDictionaryFeatures) {
-			outputFile = outputFolder + "WordsDictionary";
+		else {
+			if (gazeteersFeatures) {
+				this.outputFile = outputFolder + "Gazeteers";
+			}
+			if (DAL_ANEWFeatures) {
+				this.outputFile = outputFolder + "DAL_ANEW";
+			}
+			if (WordsDictionaryFeatures) {
+				this.outputFile = outputFolder + "WordsDictionary";
+			}
 		}
 		
-		wo.writeMatrixInFile2(matrix, outputFile,WordsDictionaryFeatures,DAL_ANEWFeatures);
+	
+		wo.writeMatrixInFile2(matrix, this.outputFile,WordsDictionaryFeatures,DAL_ANEWFeatures);
 		wo.writeFile(outputFolder + "Combined_Features_outputDetails.txt", outputDetails);
 	}
 

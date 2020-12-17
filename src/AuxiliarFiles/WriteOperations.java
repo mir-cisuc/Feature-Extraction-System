@@ -139,7 +139,11 @@ public class WriteOperations {
 	public void writeMatrixInFile2(String[][] matrix, String filename,boolean WordsDictionaryFeatures, boolean DAL_ANEWFeatures)
 			throws IOException {
 
-		File file = new File(filename + ".csv");
+		if (!filename.endsWith(".csv")) {
+			filename = filename + ".csv";
+		}
+		
+		File file = new File(filename);
 		System.out.println(file.getAbsolutePath());
 		boolean isFile = file.exists();
 		// create CSVWriter object filewriter object as parameter 

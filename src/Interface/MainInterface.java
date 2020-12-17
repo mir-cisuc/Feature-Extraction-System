@@ -116,6 +116,8 @@ public class MainInterface extends JFrame{
 	
 	public static void HandleRequest(String tipoExtracao, String inputFile, String outputFile) {
 		String [] listaOpcoes= {"features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalleters","features_standardPOS","features_CBF","titulo"};
+		File file = new File(inputFile);
+			
 		switch(tipoExtracao) {
 			case "features_gi":
 			try {
@@ -130,7 +132,6 @@ public class MainInterface extends JFrame{
 				break;
 			case "features_synesktech":
 				mainApp_Synesketch ma = new mainApp_Synesketch();
-				File file = new File(inputFile);
 				if (file.exists()){
 					if (file.isDirectory()) {
 						// System.out.println("Directory");
@@ -153,25 +154,74 @@ public class MainInterface extends JFrame{
 				}				
 				break;
 			case "features_dal_anew":
-				/*try {
-					CombinedFeatures initial  = new CombinedFeatures(false, true,false,sourceFolder); // false true vai ser gazeteers
-					
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}	*/			
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CombinedFeatures capitalLetters = new CombinedFeatures(false,false,true,false,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							CombinedFeatures capitalLetters = new CombinedFeatures(true,false,true,false,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}							
 				break;
 			case "features_gazeteers":
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CombinedFeatures capitalLetters = new CombinedFeatures(false,true,false,false,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							CombinedFeatures capitalLetters = new CombinedFeatures(true,true,false,false,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
 				break;
 			case "features_slang":
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CombinedFeatures initial_WD  = new CombinedFeatures(false,false,false,true,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							CombinedFeatures initial_WD  = new CombinedFeatures(true,false,false,true,inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}			
 				break;
 			case "features_capitalleters":				
-				File file1 = new File(inputFile);
-				if (file1.exists()){
-					if (file1.isDirectory()) {
+				if (file.exists()){
+					if (file.isDirectory()) {
 						// System.out.println("Directory");
 						try {
 							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,inputFile,outputFile);
@@ -180,7 +230,7 @@ public class MainInterface extends JFrame{
 							e.printStackTrace();
 						}
 					}
-					else if (file1.isFile()) {
+					else if (file.isFile()) {
 						//System.out.println("File");
 						try {
 							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(true,inputFile,outputFile);
@@ -192,18 +242,28 @@ public class MainInterface extends JFrame{
 				}			
 				break;
 			case "features_standardPOS":
-				try {
-					SPT_Initial initial = new SPT_Initial(inputFile,outputFile);
-				} catch (ClassNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							SPT_Initial spt_initial = new SPT_Initial(false,inputFile,outputFile,1);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							SPT_Initial spt_initial = new SPT_Initial(true,inputFile,outputFile,1);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
 				}
 				break;
-			case "features_CBF":
-				
+			case "features_CBF":				
 				break;
 			case "titulo":
 				break;

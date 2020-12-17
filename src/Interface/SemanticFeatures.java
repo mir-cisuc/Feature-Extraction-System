@@ -61,7 +61,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CombinedFeatures initial_gazeteers  = new CombinedFeatures(true, false,false,sourceFolder); // false true vai ser gazeteers
+				CombinedFeatures initial_gazeteers = new CombinedFeatures(false,true,false,false,sourceFolder,null); // false true vai ser gazeteers
 				JOptionPane.showMessageDialog(null, "Features Gazeteers extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -77,7 +77,7 @@ public class SemanticFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				CombinedFeatures initial  = new CombinedFeatures(false, true,false,sourceFolder); // false true vai ser gazeteers
+				CombinedFeatures initial  = new CombinedFeatures(false,false,true,false,sourceFolder,null); // false true vai ser gazeteers
 				JOptionPane.showMessageDialog(null, "Features DAL_ANEW extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block
@@ -123,8 +123,8 @@ public class SemanticFeatures extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			try {
-				CombinedFeatures initial_GAZ  = new CombinedFeatures(true, false,false,sourceFolder);
-				CombinedFeatures initial_ANEW  = new CombinedFeatures(false, true,false,sourceFolder);
+				CombinedFeatures initial_GAZ  = new CombinedFeatures(false,true,false,false,sourceFolder,null);
+				CombinedFeatures initial_ANEW  = new CombinedFeatures(false,false,true,false,sourceFolder,null);
 				Initial_GI initial_GI = new Initial_GI(sourceFolder);
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				ma.readDirectory(sourceFolder,null);

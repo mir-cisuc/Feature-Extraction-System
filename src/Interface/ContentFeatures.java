@@ -71,7 +71,7 @@ public class ContentFeatures extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			try {
-				SPT_Initial initial = new SPT_Initial(sourceFolder);
+				SPT_Initial initial = new SPT_Initial(false,sourceFolder,null,1);
 				JOptionPane.showMessageDialog(null, "Todas StandardPosTagger features extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException e1) {
 				// TODO Auto-generated catch block

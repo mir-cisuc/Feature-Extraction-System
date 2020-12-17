@@ -34,94 +34,53 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
 
 public class SPT_Initial {
 	static final String locTagger = "src/StanfordTaggers/bidirectional-distsim-wsj-0-18.tagger";
-	static String sourceFolder = "src/Origem"; // pasta onde estao as liricas
+	String sourceFolder; // pasta onde estao as liricas
 													// a processar
 	static final int withTags = 1;
 	static final int onlyTags = 2;
 	
+	int option;
+	
 	//output folder
-	static final String outputFolder  = "src/Output/";
+	String outputFolder  = "src/Output/";
+	
+	String outputFile;
 	
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException {
-		SPT_Initial spt_initial = new SPT_Initial(null);
+		SPT_Initial spt_initial = new SPT_Initial(true,"src/Origem/L001-141.txt","teste.txt",1);
 	}
 	
-	public SPT_Initial(String inputFile, String outputFile) throws ClassNotFoundException,IOException{
-			// TODO Auto-generated method stub
-			int option = withTags;
-			
-			// calcula as postags linha a linha e guarda em tagger
-			PosTags postags = new PosTags();
-			MaxentTagger tagger = postags.initialize(locTagger);
-			
-			// abrir o file para leitura
-			FileReader fileReader = new FileReader(inputFile);
-			BufferedReader in = new BufferedReader(fileReader);
-
-			String thisLine;
-			String lyric_text = "";
-
-			// guarda cada linha de file (thisLine) numa string linha por linha
-			// (lyric_text)
-			while ((thisLine = in.readLine()) != null) {
-				lyric_text = lyric_text + "\n" + thisLine;
-			}
-
-			String[] lyric_line; // array que guarda em cada posicao uma linha
-									// completa
-			lyric_line = lyric_text.split("\n");
-
-			// calcula as postags linha a linha e guarda em tagger
-			//PosTags postags = new PosTags();
-			//MaxentTagger tagger = postags.initialize(locTagger);
-
-			String textTags = "";
-
-			if (option == withTags) {
-				// para cada frase em lyric_line calcula a frase com tags
-				for (int j = 0; j < lyric_line.length; j++) {
-					String tagged = postags.tagString(tagger, lyric_line[j]);
-					textTags = textTags + "\n" + tagged;
-				}
-			} else {
-				for (int j = 0; j < lyric_line.length; j++) {
-					String tagged = postags.tagString(tagger, lyric_line[j]);
-					String taggedOnlyTags = postags.convertToOnlyTags(tagged);
-					textTags = textTags + "\n" + taggedOnlyTags;
-				}
-			}
-
-			// System.out.println(textWithTags);
-			String[] filename;
-			filename = inputFile.toString().split("\\.");
-			// System.out.println(filename[0].toString());
-
-			// guarda em file os fich de texto com postags
-			WriteOperations wf = new WriteOperations();
-			//if (option == withTags) {
-			wf.writeFile(outputFile,textTags);
-			//} else {
-			//	wf.writeFile(outputFolder "_onlyPosTags.txt", textTags);
-			//}
-	}
-	
-	
-	
-	public SPT_Initial(String sourceFolder1) throws ClassNotFoundException,IOException {
-		if(sourceFolder1 != null && !sourceFolder1.isEmpty()) {
-			sourceFolder = sourceFolder1;				
+	public SPT_Initial(boolean onlyOneFile, String input, String outputFile, int option) throws ClassNotFoundException,IOException {
+		if(input != null && !input.isEmpty()) {
+			this.sourceFolder = input;				
 		}
 		else {
-			sourceFolder = "src/Origem/";
+			this.sourceFolder = "src/Origem/";
 		}
+		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;			
+		}
+		else {
+			this.outputFile = outputFolder + "CapitalLetters_M45.txt";
+		}
+		
+		
 		// TODO Auto-generated method stub
-		int option = withTags;
+		this.option = option;
 
-		// le os nomes dos ficheiros de uma pasta e guarda-os numa String[]
-		// (files)
-		ReadOperations rf = new ReadOperations();
-		String[] files = rf.openDirectory(sourceFolder);
+		int numberFiles = 0;
+		String [] files = null;
+		if (!onlyOneFile) {
+			ReadOperations rf = new ReadOperations();
+			files = rf.openDirectory(sourceFolder);
+			numberFiles = rf.filesLength(files);			
+		}
+		else {
+			files = new String [] {input};
+			numberFiles = 1;
+		}
 
 		// calcula as postags linha a linha e guarda em tagger
 		PosTags postags = new PosTags();
@@ -130,7 +89,14 @@ public class SPT_Initial {
 		// para cada file...
 		for (int i = 0; i < files.length; i++) {
 			// localizacao dos files
-			String filename_path = sourceFolder + "/" + files[i];
+			// location of the file
+			String filename_path = new String();
+			if (onlyOneFile) {
+				filename_path = input;
+			}
+			else {
+				filename_path = sourceFolder + "/" + files[i];
+			}
 			System.out.println("i = "+i);
 			
 			// abrir o file para leitura
@@ -170,19 +136,24 @@ public class SPT_Initial {
 				}
 			}
 
-			// System.out.println(textWithTags);
 			String[] filename;
 			filename = files[i].toString().split("\\.");
-			// System.out.println(filename[0].toString());
-
+			if (filename[0].contains("/")) {
+				String [] nome = filename[0].split("/");
+				filename[0] = nome[nome.length-1];
+			}		
+			
 			// guarda em file os fich de texto com postags
 			WriteOperations wf = new WriteOperations();
-			if (option == withTags) {
-				wf.writeFile(outputFolder+ filename[0] + "_WithPosTags.txt", textTags);
-			} else {
-				wf.writeFile(outputFolder+ filename[0] + "_onlyPosTags.txt", textTags);
+			if (onlyOneFile) {
+				System.out.println(this.outputFile);
+				wf.writeFile(this.outputFile, textTags);
 			}
-
+			else {
+				System.out.println(this.outputFile.replace(".txt", "") + filename[0] + ".txt");
+				wf.writeFile(this.outputFile.replace(".txt", "") + filename[0]+ ".txt", textTags);
+			
+			}
 		}
 	}
 

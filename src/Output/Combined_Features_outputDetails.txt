@@ -1,10 +1,10 @@
-src/CombinedFeatures/DAL_ANEW.txt into src/Origem/ - Details
+src/CombinedFeatures/DAL_ANEW.txt into src/Origem - Details
 
 
 
 
 ###############################################
-src/Origem//L001-141.txt
+src/Origem/L001-141.txt
 ###############################################
 
 
@@ -356,7 +356,7 @@ Dominance File 1.8707070707070705
 
 
 ###############################################
-src/Origem//L002-157.txt
+src/Origem/L002-157.txt
 ###############################################
 
 
