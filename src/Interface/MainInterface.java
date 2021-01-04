@@ -173,7 +173,7 @@ public class MainInterface extends JFrame{
 	}
 	
 	public static void HandleRequest(String tipoExtracao, String inputFile, String outputFile) {
-		String [] listaOpcoes= {"features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalleters","features_standardPOS","features_CBF","titulo"};
+		String [] listaOpcoes= {"features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalletters","features_standardPOS","features_cbf","features_titulo"};
 		File file = new File(inputFile);
 			
 		switch(tipoExtracao) {
@@ -277,7 +277,7 @@ public class MainInterface extends JFrame{
 					}
 				}			
 				break;
-			case "features_capitalleters":				
+			case "features_capitalletters":				
 				if (file.exists()){
 					if (file.isDirectory()) {
 						// System.out.println("Directory");

@@ -1,7 +1,0 @@
-v2
-- numero de frases comparativamente ao numero de bloco
-- numero de repetiçoes do titulo no refrao (mais concretamente no final do verso)
-- similiradidade entre frases
-
-- ver se tem chorus
-- informaçao mutua entre blocos
