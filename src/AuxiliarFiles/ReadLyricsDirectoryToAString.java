@@ -78,6 +78,7 @@ public class ReadLyricsDirectoryToAString {
 		// percorre linha a linha o file de texto anterior
 		while ((thisLine = in.readLine()) != null) {
 			String data[] = thisLine.split(" ");
+			System.out.printf("Data is %s\n", data[0]);
 			a.add(data[0]);
 
 		}

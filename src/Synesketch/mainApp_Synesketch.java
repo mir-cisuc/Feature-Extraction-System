@@ -7,9 +7,12 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 import AuxiliarFiles.ReadLyricsDirectoryToAString;
+import AuxiliarFiles.ReadOperations;
 import Synesketch.Files.Emotion.EmotionalState;
 import Synesketch.Files.Emotion.Empathyscope;
 
@@ -82,10 +85,27 @@ public class mainApp_Synesketch {
 		}
 	
 		ReadLyricsDirectoryToAString rl = new ReadLyricsDirectoryToAString();
-		ids = rl.openFileOfIDs();
+		//ids = rl.openFileOfIDs(); 
 
+		
+		String [] files = null;
+		
+		ReadOperations ro = new ReadOperations();
+		files = ro.openDirectory(sourceFolder);
+		
+		for(int i = 0; i < files.length; i++) {
+			files[i] = files[i].replace(".txt", "");
+		}
+		
+		List<String> ids = new ArrayList<String>(Arrays.asList(files));
+		
+		for (String s : ids) {
+			System.out.println(s);
+		}
+		
 		//ids contem os nomes dos files (liricas) sem o .txt
 		Iterator it = ids.iterator();
+		
 		
 			
 		String output = outputFolder + this.outputFile;
