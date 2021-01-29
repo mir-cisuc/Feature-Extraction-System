@@ -71,6 +71,8 @@ public class mainApp_Synesketch {
 			sourceFolder = "src/Origem";
 		}
 		
+		System.out.println(sourceFolder);
+		
 		String outputFolder = "";
 		if(outputFile != null && !outputFile.isEmpty()) {
 			this.outputFile = outputFile;				
@@ -97,9 +99,13 @@ public class mainApp_Synesketch {
 				
 		while (it.hasNext()) {
 			//idSong e por ex. L001-141
+			
+			
 			String idSong = (String) it.next();
-
+			
+			System.out.println(idSong);
 			String inputFile = sourceFolder+"/"+idSong+ ".txt";
+			
 			
 			//caminho completo para onde esta a lirica ex. lyrics-180/L001-141.txt
 			String lyric = rl.ler(sourceFolder+"/"+idSong+".txt");
