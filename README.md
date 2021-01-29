@@ -27,7 +27,7 @@ Another way the project can be running is by using the [MainInterface.jar](MainI
 
 In terms of input (it can either be a file or a folder containing only the files with the right structure, the program will determine which one it is).
 
-The type of extraction can be one the following:
+The type of extraction can be one of the following:
 
 - features_gi (for GI features)
 - features_synesktech (for Synesktech features)
