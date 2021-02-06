@@ -14,8 +14,9 @@ import java.io.FileReader;
 
 public class WriteCSVFinal {
 	public static void main(String[] args) throws IOException {
-		WriteSemantic();
-		WriteStylistic();
+		//WriteSemantic();
+		//WriteStylistic();
+		WriteAll();
 		
 	}
 	public static void WriteSemantic() {
@@ -257,5 +258,122 @@ public class WriteCSVFinal {
 		
 		
 	}
+	public static void WriteAll() {
+		ArrayList<String> input = new ArrayList<String>();
+		ArrayList<String> songs  = new ArrayList<String>();
+		input.add("src/Output/Semantic.csv");
+		input.add("src/Output/Stylistic.csv");
+		
+		
+		int firstline;
+		String header ="Id,";
+		boolean firstFile=true;
+		
+		//ler todos os ficheiros com os valores das features 
+		for(int i = 0; i < input.size(); i++)
+		{
+			String line = "";
+		    String cvsSplitBy = ", ";
+		    
+		    File f = new File(input.get(i));
+		    if(f.exists() && !f.isDirectory()) { 
+		
+			    try (BufferedReader br = new BufferedReader(new FileReader(input.get(i)))) {
+			    	firstline=0;
+			        while ((line = br.readLine()) != null) {
+			        				        	
+			            String[] values = line.split(",");			       
+			           
+			            if(firstline==0) {
+			            	//pegar no header das features e adicionar o nome antes
+			            	for(int colunas = 1; colunas < values.length; colunas++) {
+			            		if(i==0)
+			            			header+="Semantic_"+values[colunas]+",";
+			            		else
+			            			header+="Stylistic_"+values[colunas]+",";           		
+			            	}			            	
+			            	 
+			            }else {
+			            	 if(firstFile) {
+			            		 //no primeiro ficheiro que lemos podemos pegar logo no id e valores e adiconar no lugar do array que corresponde a esta musica
+			            		 String song="";
+			            		 
+			            		 for(int colunas = 0; colunas < values.length; colunas++) {
+			            			 song+=values[colunas]+",";  			          		 
+			            		 }
+			            		 
+			            		 songs.add(song);
+			            	 }else {
+			            		//a partir do segundo ficheiro, temos de procurar onde esta a musica no array e juntar os novos valores que lemos 
+			            		 
+			            		 String addValuesToSong="";
+			            		 
+			            		 if(!songs.isEmpty()) {
+			            			
+			            			 addValuesToSong=songs.get(firstline-1);
+			            			 for(int colunas = 1; colunas < values.length; colunas++) {
+				            			 addValuesToSong+=values[colunas]+",";	          		 
+				            		 }
+			            			 songs.set(firstline-1,addValuesToSong);
+			            			 
+			            		 }else {
+			            			 for(int colunas = 0; colunas < values.length; colunas++) {
+			            				 addValuesToSong+=values[colunas]+",";  			          		 
+				            		 }
+			            			 songs.add(addValuesToSong);
+				            		 
+			            		 }
+			            	 }
+			            }
+			           
+			            firstline+=1;
+			        }
+			        br.close();
+			
+			    } catch (IOException e) {
+			        e.printStackTrace();
+			    }
+			    firstFile=false;
+		    }
+		    
+		    
+		}
+		
+		//escrever para um ficheiro todos os valores das features estilisticas das songs analisadas
+		FileWriter fileWriter2 = null;
+		try {
+			fileWriter2 = new FileWriter("src/Output/AllFeastures.csv");
+			
+			fileWriter2.write(header);
+			fileWriter2.write("\n");
+			
+			for(int i = 0; i < songs.size(); i++)
+			{
+				fileWriter2.write(songs.get(i));
+				fileWriter2.write("\n");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (fileWriter2 != null) {
+					fileWriter2.flush();
+					fileWriter2.close();					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+	}
 	
 }
+
+	
+	
+
