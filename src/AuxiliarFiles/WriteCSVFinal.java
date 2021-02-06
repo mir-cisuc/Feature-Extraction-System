@@ -14,8 +14,8 @@ import java.io.FileReader;
 
 public class WriteCSVFinal {
 	public static void main(String[] args) throws IOException {
-		//WriteSemantic();
-		//WriteStylistic();
+		WriteSemantic();
+		WriteStylistic();
 		WriteAll();
 		
 	}
