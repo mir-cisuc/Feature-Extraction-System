@@ -1,4 +1,4 @@
--Verse-
+[Verse]
 Blue light guitars
 And tropical breeze
 Hummingbirds mime the words
@@ -8,13 +8,13 @@ It's a cabaret sound
 There's still some magic left
 In this tourist town
 
--Chorus-
+[Chorus]
 Those crazy days and crazy ways
-We never want to un-do
+We never want to un]do
 We'll be together now and forever
 At the Blue Heaven rendezvous
 
--Verse-
+[Verse]
 We were weird roman candles
 Burning bright at both ends
 At the end of the road
@@ -24,9 +24,14 @@ Meets the blue of the sea
 What makes it all happen
 Still a mystery to me
 
--Repeat Chorus-
+[Chorus]
+Those crazy days and crazy ways
+We never want to un]do
+We'll be together now and forever
+At the Blue Heaven rendezvous
 
--Bridge-
+
+[Bridge]
 If these walls could talk
 I don't know what they'd say
 They've seen some accidental masquerades
@@ -34,7 +39,12 @@ But it's no surprise
 Dances till dawn, heroes long gone
 Just let that guitar play
 
--Repeat Chorus-
+[Chorus]
+Those crazy days and crazy ways
+We never want to un]do
+We'll be together now and forever
+At the Blue Heaven rendezvous
+
 
 We'll be together now and forever
 At the Blue Heaven rendezvous
