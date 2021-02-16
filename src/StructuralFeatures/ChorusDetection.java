@@ -1,5 +1,6 @@
 package StructuralFeatures;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -13,15 +14,18 @@ import AuxiliarFiles.MinimumEditDistance;
 
 public class ChorusDetection {
 	Bloco bloco = new Bloco();
-	ArrayList <Bloco> array_blocos = new ArrayList <> ();
+	static ArrayList <Bloco> array_blocos = new ArrayList <> ();
 	final double threshold = 0.2;
 	public int nrBlocoAtual = 0;
+	final static String path_musicas = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\400_sem_anotacao";
+	final static String path_final = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\script_400";
 	public ChorusDetection(String sourceFile) {
+		
 		// TODO Auto-generated constructor stub
 		Path path = Paths.get(sourceFile);
 		String content = null;
 		try {
-			content = Files.readString(path, StandardCharsets.UTF_8).toLowerCase();
+			content = Files.readString(path, StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,6 +51,7 @@ public class ChorusDetection {
 			}	
 		}
 		
+		//System.out.println(content);
 		
 		countOccorencesOfEachSentence();
 		
@@ -68,18 +73,20 @@ public class ChorusDetection {
 
 		int contador = 0;
 		for (Bloco bloco_frases : array_blocos) {
-			System.out.printf("Para o bloco %d foi adicionado %f na segunda verificação\n",nrBlocoAtual,lista_medias.get(contador) * 10);
+			//System.out.printf("Para o bloco %d foi adicionado %f na segunda verificação\n",nrBlocoAtual,lista_medias.get(contador) * 10);
 			updateBlock(bloco_frases,lista_medias.get(contador++) * 10);
 			nrBlocoAtual++;
 		}
 		
 		
 		nrBlocoAtual = 0;
-		//removeBadChorusBasedOnEditDistance();
+		removeBadChorusBasedOnEditDistance();
 		//getMainBlock();
 		
 		
-		printLetra(true);
+		//printLetra(true);
+		
+		writeExpectedChorusToFile(sourceFile);
 		
 	}
 	
@@ -160,7 +167,7 @@ public class ChorusDetection {
 		float media_maxima = 0;
 		int indice_melhor = -1;
 		int contador = 0;
-		/*for (Bloco bloco_frases : array_blocos) {
+		for (Bloco bloco_frases : array_blocos) {
 			float media = 0;
 			for (FraseLetra fl : bloco_frases.getBloco()) {
 					media += fl.getOcorrencias();
@@ -173,7 +180,7 @@ public class ChorusDetection {
 			}
 			contador++;
 		}
-		*/
+		
 		//blocoPrincipal = getMainBlock();
 		
 		
@@ -195,11 +202,11 @@ public class ChorusDetection {
 					media /= lista_edit_distances.size();
 					//System.out.printf("%f %d\n",media,threshold);
 					if (media > threshold) {
-						System.out.printf("Para o bloco %d foi retirado -10 na terceira verificação\n",i);
+						//System.out.printf("Para o bloco %d foi retirado -10 na terceira verificação\n",i);
 						updateBlock(array_blocos.get(i),-10);						
 					}	
 					else {
-						System.out.printf("Para o bloco %d foi adicionado +10 na terceira verificação\nBem Como ao bloco principal (%d)\n",i,indice_melhor);
+						//System.out.printf("Para o bloco %d foi adicionado +10 na terceira verificação\nBem Como ao bloco principal (%d)\n",i,indice_melhor);
 						updateBlock(array_blocos.get(i),+10);
 						updateBlock(blocoPrincipal,+10);
 					}	
@@ -250,7 +257,7 @@ public class ChorusDetection {
 	
 	
 	
-	public ArrayList<Float> getAverageBlocks() {
+	public static ArrayList<Float> getAverageBlocks() {
 		ArrayList<Float> lista_float = new ArrayList<>();
 		for (Bloco bloco_frases : array_blocos) {
 			float media = 0;
@@ -258,7 +265,7 @@ public class ChorusDetection {
 				media += fl.getOcorrencias();
 			}
 			lista_float.add(media/bloco_frases.getTamanho());	
-			bloco_frases.setMediaOcorrencias(media);
+			bloco_frases.setMediaOcorrencias(media/bloco_frases.getTamanho());
 		}						
 		return lista_float;		
 	}
@@ -298,7 +305,7 @@ public class ChorusDetection {
 			}
 		}
 		if (!canBlockBeChorus) {
-			System.out.printf("Para o bloco %d foi retirado -20 na primeira verificação\n" ,nrBlocoAtual);
+			//System.out.printf("Para o bloco %d foi retirado -20 na primeira verificação\n" ,nrBlocoAtual);
 			updateBlock(bloco_frases,-20);
 		}
 	}
@@ -352,6 +359,86 @@ public class ChorusDetection {
 		return ocorrencias;
 	}
 	
+	public static void writeExpectedChorusToFile(String sourceFile) {
+		ArrayList<Double> listaPercentagensChorus = getChorusPercentage();
+		ArrayList<Bloco> listaPotenciaisBlocos = new ArrayList<> (array_blocos);
+		double maximo = Collections.max(listaPercentagensChorus);
+		double minimo = Collections.min(listaPercentagensChorus);
+		
+		ArrayList<Float> mediaOcorrencias = getAverageBlocks();
+		
+		double maximo_ocorr = Collections.max(mediaOcorrencias);
+		
+		// first we remove the blocks with low %
+		for(Bloco bloco  : array_blocos) {
+			if (bloco.getProbability() == minimo) {
+				listaPotenciaisBlocos.remove(bloco);
+			}
+			else if (bloco.getProbability() < 0.60 * maximo) {
+				if (bloco.getMediaOcorrencias() < 0.70 * maximo_ocorr) {
+					listaPotenciaisBlocos.remove(bloco);
+				}
+			}
+		}	
+		
+		
+		String filename = sourceFile.split("desanotated_")[1];
+		
+		String file_path = path_final + "\\script_chorus_" + filename;
+		
+		
+		FileWriter myWriter = null;
+		try {
+			myWriter = new FileWriter(file_path);
+
+			int contador = 0;
+			
+			for (Bloco b : listaPotenciaisBlocos) {
+				for (FraseLetra f : b.getBloco()) {
+					try {					
+						myWriter.write(f.getLetra() + "\n");
+					} catch (IOException e) {
+					    System.out.println("An error occurred.");
+					    e.printStackTrace();
+					}
+				}
+				if (contador +1 != listaPotenciaisBlocos.size()) {
+					try {					
+						myWriter.write("\n");
+					} catch (IOException e) {
+					    System.out.println("An error occurred.");
+					    e.printStackTrace();
+					}	
+				}
+				contador ++;
+				//System.out.println();
+			}
+					
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+		}finally {
+			try {
+				if (myWriter != null) {
+					myWriter.flush();
+					myWriter.close();					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}		
+	}
+	
+	
+	public static ArrayList<Double> getChorusPercentage(){
+		ArrayList<Double> lista_double = new ArrayList<>();
+		for (Bloco bloco_frases : array_blocos) {
+			bloco_frases.setProbability(bloco_frases.getBloco().get(0).getChorusProbability());
+			lista_double.add(bloco_frases.getProbability());
+		}						
+		return lista_double;		
+		
+	}
 	
 	public static void writeCSV(String titulo, int value) {
 		String outputFolder  = "src/Output/";
@@ -378,11 +465,24 @@ public class ChorusDetection {
 		}
 		
 	}
+	
+	
 
 	public static void main(String[] args) throws IOException {
+		
+		File folder = new File(path_musicas);
+				
+		for (File fileEntry : folder.listFiles()) {
+			//System.out.println(fileEntry.getName());
+			System.out.println(fileEntry.getAbsolutePath());
+			ChorusDetection chorusDetection = new ChorusDetection(fileEntry.getAbsolutePath());
+			array_blocos.clear();
+			
+		}
+		
 		// TODO Auto-generated method stub
-		String file = "src/Lirica/ma_og.txt";
-		ChorusDetection chorusDetection = new ChorusDetection(file);	
+		//String file = "src/Lirica/rh_ot.txt";
+			
 	}
 
 }

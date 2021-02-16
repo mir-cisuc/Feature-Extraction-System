@@ -31,31 +31,5 @@ def juntar():
     print(contador)
 
 
-    ''' quadrant=[]
-
-    for element in dataset_total_mt:
-        contador=0
-        verificou=False
-        for element1 in data_id:
-            if element == element1:
-                quadrant.append(data_quadrant[contador])
-                verificou=True
-                break
-            contador+=1
-        if(verificou==False):
-            quadrant.append("Q0")
-
-    print(quadrant)
-
-    data_total['Quadrant']=quadrant
-
-    for i in range(len(quadrant)):
-        if(quadrant[i]=="Q0"):
-            data_total.drop(index=[i], inplace=True)
-
-    print(data_total)
-
-    data_total.to_csv('D:/rpp_mer/semantics_with_quadrant.csv',index=False)'''
-
 if __name__ == '__main__':
     juntar()

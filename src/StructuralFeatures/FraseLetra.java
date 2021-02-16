@@ -61,24 +61,26 @@ public class FraseLetra {
 
 class Bloco{
 	private ArrayList<FraseLetra> lista_frases;
-	private double mainBlockprobability;
+	private double mainBlockProbability;
 	private double mediaOcorrencias;
 
 	public Bloco() {
 		this.lista_frases = new ArrayList <> ();
-		this.mainBlockprobability = 0;
+		this.mainBlockProbability = 0;
 		this.mediaOcorrencias = 0;
 	}
 	
-	public void addProbability (double probability) {
-		this.mainBlockprobability += probability;
+	public void setProbability(double probability) {
+		this.mainBlockProbability = probability;
 	}
 	
 	public void setMediaOcorrencias(double media) {
 		this.mediaOcorrencias = media;
 	}
 	
-	
+	public double getProbability() {
+		return this.mainBlockProbability;
+	}
 
 	public double getMediaOcorrencias() {
 		return mediaOcorrencias;
