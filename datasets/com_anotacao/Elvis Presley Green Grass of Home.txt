@@ -1,4 +1,4 @@
-[Verse 1: Elvis Presley]
+[Verse 1]
 The old hometown looks the same
 As I step down from the train
 And there to meet me is my Mama and Papa
@@ -6,12 +6,12 @@ Down the road I look and there runs Mary
 Hair of gold and lips like cherries
 It's good to touch the green, green grass of home
 
-[Chorus:  Elvis Presley]
+[Chorus]
 Yes, they'll all come to meet me
 All creatures smiling sweetly
 It's good to touch the green, green grass of home
 
-[Verse 2:  Elvis Presley]
+[Verse 2]
 The old house is still standing
 Though the paint is cracked and dry
 And there's that old oak tree that I used to play on
@@ -19,12 +19,12 @@ Down the lane I'll walk with my sweet Mary
 Hair of gold and lips like cherries
 It's good to touch the green, green grass of home
 
-[Chorus:  Elvis Presley]
+[Chorus]
 Yes, they'll all come to meet me
 Arms reaching, smiling sweetly
 It's good to touch the green, green grass of home
 
-[Verse 3:  Elvis Presley]
+[Verse 3]
 Then I awake and look around me
 Four gray walls surround me
 And I realize I was only dreaming
@@ -32,7 +32,7 @@ There's a guard and there's a sad old padre
 Arm and arm we'll walk at daybreak
 Again I'll touch the green, green grass of home
 
-[Chorus:  Elvis Presley]
+[Chorus]
 Yes, they'll all come to meet me
 In the shade of that old oak tree
 As they lay me 'neath the green, green grass of home
