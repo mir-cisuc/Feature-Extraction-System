@@ -6,7 +6,7 @@ CLIENT_SECRET = '3ZyQIm4qz0DMI7ifc4fmqWcmI4R2JtYq2JfqTclcWImx0SRvuPmsIklSiTJ6wIA
 
 ACCESS_TOKEN = 'OEc2PR7u9yuG6dLJEVVB0J1qYyUbT97l0gGxYomMaOT8QhZHvvfkS24y05RWWAlG'
 
-FICHEIRO_INPUT = 'lista_musicas.csv'
+FICHEIRO_INPUT = '180_information_lyrics.csv'
 
 DIRETORIA_BOA = 'com_anotacao/'
 DIRETORIA_SEM_LETRA = 'sem_letra/'
@@ -42,15 +42,17 @@ def ler_musica_genius(nome_musica):
 
 def ler():
     data_total = pd.read_csv(FICHEIRO_INPUT,sep=',', encoding='utf-8')
-    
+
+
     for i in range(0,len(data_total)):
-        if i!= 334 and i != 476 and i!= 598 and i!=707: 
-            string = data_total['Artist'][i] + " " + data_total['Title'][i]
-            string = string.replace("_"," ")
-            string = string.replace("/"," ")
-            string = string.replace("?"," ")
-            ler_musica_genius(string)
-            print(i)
+       #if i!= 334 and i != 476 and i!= 598 and i!=707: 
+        if i > 104:
+        	string = data_total['Song'][i] + " " + data_total['Artist'][i]
+        	string = string.replace("_"," ")
+        	string = string.replace("/"," ")
+        	string = string.replace("?"," ")
+        	ler_musica_genius(string)
+        	print(i)
 
 if __name__ == '__main__':
     genius = lyricsgenius.Genius(ACCESS_TOKEN)
