@@ -19,6 +19,7 @@ public class ChorusDetection {
 	public int nrBlocoAtual = 0;
 	final static String path_musicas = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\400_sem_anotacao";
 	final static String path_final = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\script_400";
+	final static String file_indexs = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\file_indexs_script_chorus.txt";
 	public ChorusDetection(String sourceFile) {
 		
 		// TODO Auto-generated constructor stub
@@ -86,7 +87,7 @@ public class ChorusDetection {
 		
 		//printLetra(true);
 		
-		writeExpectedChorusToFile(sourceFile);
+		writeExpectedChorusToFile(sourceFile, true);
 		
 	}
 	
@@ -359,7 +360,7 @@ public class ChorusDetection {
 		return ocorrencias;
 	}
 	
-	public static void writeExpectedChorusToFile(String sourceFile) {
+	public static void writeExpectedChorusToFile(String sourceFile, boolean writeToIndexFile) {
 		ArrayList<Double> listaPercentagensChorus = getChorusPercentage();
 		ArrayList<Bloco> listaPotenciaisBlocos = new ArrayList<> (array_blocos);
 		double maximo = Collections.max(listaPercentagensChorus);
@@ -369,16 +370,23 @@ public class ChorusDetection {
 		
 		double maximo_ocorr = Collections.max(mediaOcorrencias);
 		
+		ArrayList<Integer> listaIndexsRemovidos = new ArrayList<>();
+		
+		int contador_blocos = 0;
+		
 		// first we remove the blocks with low %
 		for(Bloco bloco  : array_blocos) {
 			if (bloco.getProbability() == minimo) {
 				listaPotenciaisBlocos.remove(bloco);
+				listaIndexsRemovidos.add(contador_blocos);
 			}
 			else if (bloco.getProbability() < 0.60 * maximo) {
 				if (bloco.getMediaOcorrencias() < 0.70 * maximo_ocorr) {
 					listaPotenciaisBlocos.remove(bloco);
+					listaIndexsRemovidos.add(contador_blocos);
 				}
 			}
+			contador_blocos++;
 		}	
 		
 		
@@ -426,7 +434,49 @@ public class ChorusDetection {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}		
+		}	
+		
+		if (writeToIndexFile) {
+			FileWriter writerIndexs = null;
+			try {
+				writerIndexs = new FileWriter(file_indexs , true);
+				int numeros_added = 0;
+				for (int i = 0; i < array_blocos.size(); i++) {
+					if (!listaIndexsRemovidos.contains(i)) { // se nao tiver sido removido, ou seja, se for refrao
+						numeros_added++;
+						System.out.print(i + ",");
+						try {					
+							writerIndexs.write(String.valueOf(i));
+							if (numeros_added != array_blocos.size() - listaIndexsRemovidos.size()) {
+								writerIndexs.write(',');
+							}
+						
+						}
+						catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+				writerIndexs.write('\n');
+					
+			}catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+		}finally {
+			try {
+				if (writerIndexs != null) {
+					writerIndexs.flush();
+					writerIndexs.close();					
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		}
+		
+	
+		
 	}
 	
 	
