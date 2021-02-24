@@ -19,7 +19,11 @@ Days fade to black
 In the light of what they lack
 Nothing's measured by what it needs
 
+<<<<<<< HEAD
+[Chorus]
+=======
 [Chorus]
 Already dead to me now
 Already dead to me now
 Cause it feels like I'm watching something die
+>>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
