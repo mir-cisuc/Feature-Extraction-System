@@ -31,6 +31,19 @@ Twin Bentleys matching beamers on a couple beams
 Try my sentencing
 
 [Hook]
+<<<<<<< HEAD
+=======
+Yeah they see me moving
+They gonna need to stop, drop
+Off the face of Earth but, I'mma make it pop, hot
+These niggas are not, now
+Watch me take my spot
+Got money got power and respect baby
+I just hope times on my side
+I've been trying all my life
+Every block someones dying
+Always high, here's our life, come inside
+>>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 
 [Verse 2]
 Murdered half of y'all on my mixtapes
@@ -56,4 +69,18 @@ Metaphors will tackle you, these niggas ain't half as nice
 Playboy in my afterlife, real nigga with cash and ice
 Drop the bread pass the dice, hope I crack twice
 
+<<<<<<< HEAD
 [Hook]
+=======
+[Hook]
+Yeah they see me moving
+They gonna need to stop, drop
+Off the face of Earth but, I'mma make it pop, hot
+These niggas are not, now
+Watch me take my spot
+Got money got power and respect baby
+I just hope times on my side
+I've been trying all my life
+Every block someones dying
+Always high, here's our life, come inside
+>>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
