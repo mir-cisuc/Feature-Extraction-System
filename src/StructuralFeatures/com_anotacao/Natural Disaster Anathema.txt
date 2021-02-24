@@ -34,12 +34,8 @@ No matter what I do
 I can't change what happened
 No no I can't change
 
-<<<<<<< HEAD
-[Chorus]
-=======
 [Chorus]
 You just slipped through my fingers
 And I feel so ashamed
 You just slipped through my fingers
 And I have paid
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09

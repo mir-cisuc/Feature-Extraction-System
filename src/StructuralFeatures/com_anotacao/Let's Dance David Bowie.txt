@@ -1,11 +1,7 @@
 [Intro]
 Ah, ah, ah, ah
 
-<<<<<<< HEAD
-[Refrain]
-=======
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 (Let's dance)
 (Let's dance)
 
@@ -23,11 +19,7 @@ And if you say hide, we'll hide
 Because my love for you would break my heart in two
 If you should fall, into my arms and tremble like a flower
 
-<<<<<<< HEAD
-[Refrain]
-=======
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 (Let's dance)
 (Let's dance)
 
@@ -43,11 +35,7 @@ And if you say hide, we'll hide
 Because my love for you would break my heart in two
 If you should fall, into my arms and tremble like a flower
 
-<<<<<<< HEAD
-[Refrain]
-=======
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 (Let's dance)
 (Let's dance)
 

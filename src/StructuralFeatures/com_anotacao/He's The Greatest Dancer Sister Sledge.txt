@@ -36,9 +36,6 @@ Oooh, from his head down to his toes
 Halston, Gucci, Fiorucci, he looks like a still
 That man is dressed to kill
 
-<<<<<<< HEAD
-[Chorus x4]
-=======
 [Chorus]
 Oh what, wow
 He's the greatest dancer
@@ -58,16 +55,12 @@ He's the greatest dancer
 Oh what, wow
 
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Oh what, wow
 He's the greatest dancer
 Oh what, wow
 That I've ever seen
 Oh what, wow
 He's the greatest dancer
-<<<<<<< HEAD
-Oh what, wow
-=======
 Oh what, wow
 
 [Chorus]
@@ -79,4 +72,3 @@ Oh what, wow
 He's the greatest dancer
 Oh what, wow
 
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09

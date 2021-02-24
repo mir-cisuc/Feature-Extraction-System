@@ -4,11 +4,7 @@ Ra-pa-pum-pum
 Ra-pa-pum-pum
 Ra-pa-pum-pum
 
-<<<<<<< HEAD
-[Refrain: Lady Gaga]
-=======
 [Chorus: Lady Gaga]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Light me up, put me on top
 Let's fa la la la la, la la la la
 Light me up, put me on top
@@ -40,11 +36,7 @@ My Christmas tree's delicious
 Oh-oh, a Christmas
 My Christmas tree's delicious
 
-<<<<<<< HEAD
-[Refrain: Space Cowboy]
-=======
 [Chorus: Space Cowboy]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Light you up, put you on top
 Let's fa la la la la, la la la la (let's go!)
 Light you up, put you on top

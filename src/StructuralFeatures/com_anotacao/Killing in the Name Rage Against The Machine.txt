@@ -12,11 +12,7 @@ Some of those that work forces
 Are the same that burn crosses
 Uh!
 
-<<<<<<< HEAD
-[Refrain]
-=======
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Killing in the name of
 Killing in the name of
 
@@ -55,11 +51,7 @@ Some of those that work forces
 Are the same that burn crosses
 Uh!
 
-<<<<<<< HEAD
-[Refrain]
-=======
 [Chorus]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Killing in the name of
 Killing in the name of
 
