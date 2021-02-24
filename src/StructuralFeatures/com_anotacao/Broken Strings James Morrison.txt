@@ -21,13 +21,7 @@ Oh, the truth hurts and lies worse
 How can I give anymore
 When I love you a little less than before?
 
-<<<<<<< HEAD
-[Verse 2: Nelly Furtado, 
-Both
-]
-=======
 [Verse 2: Nelly Furtado, Both]
->>>>>>> 2cda597d1e06c970ef6f4f5b40089f878e267e09
 Oh, what are we doing?
 We are turning into dust
 Playing house in the ruins of us
