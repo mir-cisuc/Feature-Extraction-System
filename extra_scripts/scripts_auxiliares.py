@@ -289,11 +289,18 @@ def juntar_ids(): # funcao para reduzirmos as 1180 para as 771 que queremos
                 break
     
 
-def get_names_for_excel():
-    files = [f for f in listdir(PATH_FINAL_SCRIPT_CHORUS) if isfile(join(PATH_FINAL_SCRIPT_CHORUS, f))]
+def get_names_for_excel(path):
+    files = [f for f in listdir(path) if isfile(join(path, f))]
 
     for f in files:
         print(f.split("script_chorus_")[1].replace(".txt",""))
+
+
+def print_file_names(path):
+    files = [f for f in listdir(path) if isfile(join(path, f))]
+
+    for f in files:
+        print(f.replace(".txt",""))   
 
 
 def print_block(lista):
@@ -323,8 +330,36 @@ def compare_block(bloco_1,bloco_2):
                 return False
     return True
 
+def ver_musicas_mas():
+    #path = r'C:\Users\Red\Desktop\Investigacao2020\FeatureExtractionSystem\src\StructuralFeatures\com_anotacao'
+    #path= r'C:\Users\Red\Desktop\Investigacao2020\FeatureExtractionSystem\src\StructuralFeatures\sem_anotacao'
+    path = r'C:\Users\Red\Desktop\Investigacao2020\FeatureExtractionSystem\datasets\dataset_771 (400)\com_anotacao'
+    files = [f for f in listdir(path) if isfile(join(path, f))]
+
+    for f in files:
+        simulated_path = path + "\\" + f
+        with open(simulated_path,"r", encoding="utf-8") as f_r:
+            lines = f_r.read()
+            '''if "Chorus" in lines or "Hook" in lines:
+                pass
+            else:
+                print(f)'''
+            if "Refrain" in lines:
+                print(f)
+           # if "Chorus" in lines or "Hook" in lines or "Refrain" in lines:
+                #print(f)
+       
+            #return
+
+
 
 if __name__ == '__main__':
     #get_indices()
+    #path= r'C:\Users\Red\Desktop\Investigacao2020\FeatureExtractionSystem\src\StructuralFeatures\sem_anotacao'
     #get_chorus_of_song()
-    compare_index_files()
+    #compare_index_files()
+    #get_names_for_excel()
+    #ver_musicas_mas()
+    #print_file_names(path)
+    lista = list()
+
