@@ -41,7 +41,7 @@ public class CombinedFeatures {
 	boolean DAL_ANEWFeatures;
 	boolean WordsDictionaryFeatures;
 	
-	static final String originFolder = "src/CombinedFeatures/";
+	static final String originFolder = "src/AuxiliarFiles/";
 	
 	// gazeteers
 	static final String Gazeteer_Q1Q2Q3Q4_dal = "Gazeteers.txt";

@@ -33,7 +33,7 @@ public class Initial_GI {
 	String sourceFolder = "src/Origem";
 	
 	// pasta do gi
-	static final String giFolder = "src/GI/GIFiles/";
+	static final String giFolder = "src/AuxiliarFiles/";
 	// file gi
 	static final String gi = giFolder + "gi-11788.csv";
 	

@@ -33,7 +33,7 @@ import edu.stanford.nlp.tagger.maxent.MaxentTagger;
  */
 
 public class SPT_Initial {
-	static final String locTagger = "src/StanfordTaggers/bidirectional-distsim-wsj-0-18.tagger";
+	static final String locTagger = "src/AuxiliarFiles/bidirectional-distsim-wsj-0-18.tagger";
 	String sourceFolder; // pasta onde estao as liricas
 													// a processar
 	static final int withTags = 1;
