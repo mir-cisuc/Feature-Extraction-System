@@ -13,8 +13,9 @@ public class countTitle {
 		// TODO Auto-generated constructor stub
 		Path path = Paths.get(inputFile);
 		String content = null;
+		System.out.println(path);
 		try {
-			content = Files.readString(path, StandardCharsets.US_ASCII).toLowerCase();
+			content = Files.readString(path, StandardCharsets.UTF_8).toLowerCase();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

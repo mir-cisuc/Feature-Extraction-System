@@ -13,19 +13,63 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 
 public class WriteCSVFinal {
+	String inputGaz, inputDAL, inputSynesk, inputGI, outputFile;
+	
+	String inputSlang, inputCL;
+	
+	
 	public static void main(String[] args) throws IOException {
-		WriteSemantic();
-		WriteStylistic();
-		WriteAll();
+		WriteCSVFinal writecsv = new WriteCSVFinal();
+		writecsv.WriteSemantic(null,null,null,null,null);
+		writecsv.WriteStylistic(null,null,null);
+		//WriteAll();
 		
 	}
-	public static void WriteSemantic() {
+	public void WriteSemantic(String inputGaz, String inputDAL, String inputSynesk, String inputGI, String outputFile) {
 		ArrayList<String> inputSemantic = new ArrayList<String>();
 		ArrayList<String> songsSemantic = new ArrayList<String>();
-		inputSemantic.add("src/Output/Gazeteers.csv");
-		inputSemantic.add("src/Output/DAL_ANEW.csv");
-		inputSemantic.add("src/Output/Synesketch_M49.csv");
-		inputSemantic.add("src/Output/GI_Features-1180.csv");
+		
+		if(inputGaz != null && !inputGaz.isEmpty()) {
+			this.inputGaz = inputGaz;				
+		}
+		else {
+			this.inputGaz = "src/Output/Gazeteers.csv";
+		}
+		
+		if(inputDAL != null && !inputDAL.isEmpty()) {
+			this.inputDAL = inputDAL;				
+		}
+		else {
+			this.inputDAL = "src/Output/DAL_ANEW.csv";
+		}
+		
+		if(inputSynesk != null && !inputSynesk.isEmpty()) {
+			this.inputSynesk = inputSynesk;				
+		}
+		else {
+			this.inputSynesk = "src/Output/Synesketch_M49.csv";
+		}
+		
+		if(inputGI != null && !inputGI.isEmpty()) {
+			this.inputGI = inputGI;				
+		}
+		else {
+			this.inputGI = "src/Output/GI_Features-1180.csv";
+		}
+		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
+		else {
+			this.outputFile = "src/Output/Semantic.csv";
+		}
+		
+
+			
+		inputSemantic.add(this.inputGaz);
+		inputSemantic.add(this.inputDAL);
+		inputSemantic.add(this.inputSynesk);
+		inputSemantic.add(this.inputGI);
 		
 		int firstline;
 		String headerSemantic="Id,";
@@ -36,7 +80,9 @@ public class WriteCSVFinal {
 		{
 			String line = "";
 			// use comma as separator
-		    String cvsSplitBy = ", ";
+		    String cvsSplitBy = ",";
+		    
+		    System.out.println(i);
 		    
 		    File f = new File(inputSemantic.get(i));
 		    if(f.exists() && !f.isDirectory()) { 
@@ -55,17 +101,21 @@ public class WriteCSVFinal {
 				            	//pegar no header das features e adicionar o nome antes
 				            	for(int colunas = 1; colunas < values.length; colunas++) {
 				            		if(i==0)
-				            			headerSemantic+="Gazeteers_"+values[colunas]+",";
+				            			headerSemantic+="Gazeteers_"+values[colunas]+ ",";
 				            		else
 				            			if (i==1)
-				            				headerSemantic+="DAL_ANEW_"+values[colunas]+",";
+				            				headerSemantic+="DAL_ANEW_"+values[colunas]+ ",";
 			            			else
 				            			if (i==2)
-				            				headerSemantic+="Synesktech_"+values[colunas]+",";
-			            			else
-				            			if (i==3)
-				            				headerSemantic+="GI_"+values[colunas]+",";
-				            		
+				            				headerSemantic+="Synesktech_"+values[colunas] + ",";
+			            			else {
+				            			if (i==3) {
+				            				headerSemantic+="GI_"+values[colunas];
+					            			if (colunas +1 != values.length) {
+					            				headerSemantic += ",";
+					            			}
+				            			}
+			            			}
 				            	}
 				            	 
 				            }else {
@@ -75,7 +125,10 @@ public class WriteCSVFinal {
 				            		 String song="";
 				            		 
 				            		 for(int colunas = 0; colunas < values.length; colunas++) {
-				            			 song+=values[colunas]+",";  			          		 
+				            			 song+=values[colunas];
+				            			 if (colunas +1 != values.length) {
+				            				 song += ",";
+				            			 }
 				            		 }
 				            		
 				            		 songsSemantic.add(song);
@@ -90,13 +143,19 @@ public class WriteCSVFinal {
 				            			
 				            			 addValuesToSong=songsSemantic.get(firstline-1);
 				            			 for(int colunas = 1; colunas < values.length; colunas++) {
-					            			 addValuesToSong+=values[colunas]+",";	          		 
+					            			 addValuesToSong+=values[colunas];	
+					            			 if (colunas +1 != values.length) {
+					            				 addValuesToSong += ",";
+					            			 }
 					            		 }
 				            			 songsSemantic.set(firstline-1,addValuesToSong);
 				            			 
 				            		 }else {
 				            			 for(int colunas = 0; colunas < values.length; colunas++) {
-				            				 addValuesToSong+=values[colunas]+",";  			          		 
+				            				 addValuesToSong+=values[colunas];
+					            			 if (colunas +1 != values.length) {
+					            				 addValuesToSong += ",";
+					            			 }
 					            		 }
 				            			 songsSemantic.add(addValuesToSong);
 					            		 
@@ -124,7 +183,7 @@ public class WriteCSVFinal {
 		//escrever para um ficheiro todos os valores das features semanticas das songs analisadas
 		FileWriter fileWriter = null;
 		try {
-			fileWriter = new FileWriter("src/Output/Semantic.csv");
+			fileWriter = new FileWriter(this.outputFile);
 			
 			fileWriter.write(headerSemantic);
 			fileWriter.write("\n");
@@ -150,15 +209,40 @@ public class WriteCSVFinal {
 		
 	}
 	
-	public static void WriteStylistic() {
+	public void WriteStylistic(String inputSlang, String inputCL, String outputFile) {
 		ArrayList<String> inputStylistic = new ArrayList<String>();
 		ArrayList<String> songsStylistic  = new ArrayList<String>();
-		inputStylistic.add("src/Output/WordsDictionary.csv");
-		inputStylistic.add("src/Output/CapitalLetters_M45.csv");
+		
+		if(inputSlang != null && !inputSlang.isEmpty()) {
+			this.inputSlang = inputSlang;				
+		}
+		else {
+			this.inputSlang = "src/Output/WordsDictionary.csv";
+		}
+		
+		if(inputCL != null && !inputCL.isEmpty()) {
+			this.inputCL = inputCL;				
+		}
+		else {
+			this.inputCL = "src/Output/CapitalLetters_M45.csv";
+		}
+		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
+		else {
+			this.outputFile = "src/Output/Stylistic.csv";
+		}
+		
+		
+		inputStylistic.add(this.inputSlang);
+		inputStylistic.add(this.inputCL);
 		
 		int firstline;
 		String headerStylistic ="Id,";
 		boolean firstFile=true;
+				
+		
 		//ler todos os ficheiros com os valores das features estilisticas
 		for(int i = 0; i < inputStylistic.size(); i++)
 		{
@@ -179,8 +263,13 @@ public class WriteCSVFinal {
 			            	for(int colunas = 1; colunas < values.length; colunas++) {
 			            		if(i==0)
 			            			headerStylistic+="WordsDictionary_"+values[colunas]+",";
-			            		else
-			            			headerStylistic+="CapitalLetters_"+values[colunas]+",";           		
+			            		else {
+			            			headerStylistic+="CapitalLetters_"+values[colunas];
+			            			if (colunas +1 != values.length) {
+			            				headerStylistic += ",";
+			            			}
+			            		}
+			            			         		
 			            	}
 			            	 
 			            }else {
@@ -189,7 +278,10 @@ public class WriteCSVFinal {
 			            		 String song="";
 			            		 
 			            		 for(int colunas = 0; colunas < values.length; colunas++) {
-			            			 song+=values[colunas]+",";  			          		 
+			            			 song+=values[colunas];
+			            			 if (colunas + 1 != values.length) {
+			            				 song += ",";
+			            			 }
 			            		 }
 			            		 
 			            		 songsStylistic.add(song);
@@ -202,13 +294,19 @@ public class WriteCSVFinal {
 			            			
 			            			 addValuesToSong=songsStylistic.get(firstline-1);
 			            			 for(int colunas = 1; colunas < values.length; colunas++) {
-				            			 addValuesToSong+=values[colunas]+",";	          		 
+				            			 addValuesToSong+=values[colunas];
+				            			 if (colunas +1 != values.length) {
+				            				 addValuesToSong += ",";
+				            			 }
 				            		 }
 			            			 songsStylistic.set(firstline-1,addValuesToSong);
 			            			 
 			            		 }else {
 			            			 for(int colunas = 0; colunas < values.length; colunas++) {
-			            				 addValuesToSong+=values[colunas]+",";  			          		 
+			            				 addValuesToSong+=values[colunas];  	
+				            			 if (colunas +1 != values.length) {
+				            				 addValuesToSong += ",";
+				            			 }
 				            		 }
 			            			 songsStylistic.add(addValuesToSong);
 				            		 
@@ -232,7 +330,7 @@ public class WriteCSVFinal {
 		//escrever para um ficheiro todos os valores das features estilisticas das songs analisadas
 		FileWriter fileWriter2 = null;
 		try {
-			fileWriter2 = new FileWriter("src/Output/Stylistic.csv");
+			fileWriter2 = new FileWriter(this.outputFile);
 			
 			fileWriter2.write(headerStylistic);
 			fileWriter2.write("\n");
@@ -258,11 +356,18 @@ public class WriteCSVFinal {
 		
 		
 	}
-	public static void WriteAll() {
+	public void WriteAll(String outputFile) {
 		ArrayList<String> input = new ArrayList<String>();
 		ArrayList<String> songs  = new ArrayList<String>();
 		input.add("src/Output/Semantic.csv");
 		input.add("src/Output/Stylistic.csv");
+		
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
+		else {
+			this.outputFile = "src/Output/AllFeatures.csv";
+		}
 		
 		
 		int firstline;
@@ -273,7 +378,6 @@ public class WriteCSVFinal {
 		for(int i = 0; i < input.size(); i++)
 		{
 			String line = "";
-		    String cvsSplitBy = ", ";
 		    
 		    File f = new File(input.get(i));
 		    if(f.exists() && !f.isDirectory()) { 
@@ -288,9 +392,14 @@ public class WriteCSVFinal {
 			            	//pegar no header das features e adicionar o nome antes
 			            	for(int colunas = 1; colunas < values.length; colunas++) {
 			            		if(i==0)
-			            			header+="Semantic_"+values[colunas]+",";
-			            		else
-			            			header+="Stylistic_"+values[colunas]+",";           		
+			            			header+="Semantic_"+values[colunas] + ",";
+			            		
+			            		else {
+			            			header+="Stylistic_"+values[colunas];
+			            			if (colunas +1 != values.length) {
+			            				header +=",";
+			            			}
+			            		}
 			            	}			            	
 			            	 
 			            }else {
@@ -299,7 +408,10 @@ public class WriteCSVFinal {
 			            		 String song="";
 			            		 
 			            		 for(int colunas = 0; colunas < values.length; colunas++) {
-			            			 song+=values[colunas]+",";  			          		 
+			            			 song+=values[colunas];
+			            			 if (colunas +1 != values.length) {
+			            				song +=",";
+			            			 }			            			 
 			            		 }
 			            		 
 			            		 songs.add(song);
@@ -312,13 +424,19 @@ public class WriteCSVFinal {
 			            			
 			            			 addValuesToSong=songs.get(firstline-1);
 			            			 for(int colunas = 1; colunas < values.length; colunas++) {
-				            			 addValuesToSong+=values[colunas]+",";	          		 
+				            			 addValuesToSong+=values[colunas];	
+				            			 if (colunas +1 != values.length) {
+				            				 addValuesToSong +=",";
+				            			 }
 				            		 }
 			            			 songs.set(firstline-1,addValuesToSong);
 			            			 
 			            		 }else {
 			            			 for(int colunas = 0; colunas < values.length; colunas++) {
-			            				 addValuesToSong+=values[colunas]+",";  			          		 
+			            				 addValuesToSong+=values[colunas]; 
+				            			 if (colunas +1 != values.length) {
+				            				 addValuesToSong +=",";
+				            			 }
 				            		 }
 			            			 songs.add(addValuesToSong);
 				            		 
@@ -342,7 +460,7 @@ public class WriteCSVFinal {
 		//escrever para um ficheiro todos os valores das features estilisticas das songs analisadas
 		FileWriter fileWriter2 = null;
 		try {
-			fileWriter2 = new FileWriter("src/Output/AllFeastures.csv");
+			fileWriter2 = new FileWriter(this.outputFile);
 			
 			fileWriter2.write(header);
 			fileWriter2.write("\n");

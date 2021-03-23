@@ -56,6 +56,7 @@ public class WriteOperations {
 		data = filecontent.split("\n");
 
 		for (int i = 0; i < data.length; i++) {
+			System.out.println(data[i]);
 			out.write(data[i]);
 			out.newLine();
 		}
@@ -112,7 +113,15 @@ public class WriteOperations {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
-					out.write(matrix[i][j] + ", ");
+					out.write(matrix[i][j]);
+					if(j+2 == matrix[i].length) {
+						if (matrix[i][j+1] != null) {
+							out.write(",");
+						}
+					}
+					else if (j+1 < matrix[i].length) {
+						out.write(",");
+					} 
 				}
 			}
 			out.newLine();
@@ -171,9 +180,23 @@ public class WriteOperations {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
-					out.write(matrix[i][j] + ", ");
+					out.write(matrix[i][j]);
+					if(j+2 == matrix[i].length) {
+						if (matrix[i][j+1] != null) {
+							out.write(",");
+						}
+					}
+					else if (j+1 < matrix[i].length) {
+						out.write(",");
+					} 
+					//System.out.printf(" %s (%d,%d)", matrix[i][j], i, j);
 				}
+				System.out.printf(" %s (%d,%d)\n", matrix[i][j], i, j);
+				/*if (i+1 < matrix.length && j+1 < matrix[i].length) {
+					out.write(",");
+				}*/
 			}
+			System.out.println();
 			out.newLine();
 		}
 		out.close();

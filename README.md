@@ -26,18 +26,28 @@ Another way the project can be running is by using the [MainInterface.jar](MainI
 *java -jar MainInterface.jar typeOfExtraction input outputFile* 
 
 In terms of input (it can either be a file or a folder containing only the files with the right structure, the program will determine which one it is).
+*Note:* Not all feature extraction types will extract to a csv, please look at the list below to see which ones do. 
+
 
 The type of extraction can be one of the following:
-
 - features_gi (for GI features)
+    - Extracts to csv
 - features_synesktech (for Synesktech features)
+    - Extracts to csv
 - features_dal_anew (for DAL & ANEW features)
+    - Extracts to csv & also outputs a .txt with details
 - features_gazeteers (for Gazeteers features)
+    - Extracts to csv
 - features_slang (for Slang features)
+    - Extracts to csv
 - features_capitalltetters (for Capital Letters features)
+    - Extracts to csv
 - features_standardPOS (for standard POS tagger features)
+    - For each input file outputs a .txt with details
 - features_cbf* (for content based features)
+    - Extracts to csv
 - features_titulo* (to extract the number of ocorrences of the title in a song)
+    - Extracts to csv
 
 One example would be: *java -jar MainInterface.jar "features_gi" "src/Origem" "outputFile.csv"*
 

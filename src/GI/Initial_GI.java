@@ -48,7 +48,9 @@ public class Initial_GI {
 	}
 	
 	public Initial_GI(String input, String outputFile) throws ClassNotFoundException, IOException {
-		this.outputFile = outputFile;
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
 		File file = new File(input);		
 		if (file.exists()){
 			if (file.isDirectory()) {

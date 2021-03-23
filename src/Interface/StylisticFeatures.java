@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import javax.swing.*;
 
+import AuxiliarFiles.WriteCSVFinal;
 import CapitalLetters.CapitalLetters_Initial;
 import CombinedFeatures.CombinedFeatures;
 
@@ -83,6 +84,8 @@ public class StylisticFeatures extends JFrame{
 			try {
 				CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,sourceFolder,null);
 				CombinedFeatures initial_WD  = new CombinedFeatures(false,false,false,true,sourceFolder,null);
+				WriteCSVFinal writecsv = new WriteCSVFinal();
+				writecsv.WriteStylistic(null,null,null);
 				JOptionPane.showMessageDialog(null, "Todas features estilisticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block

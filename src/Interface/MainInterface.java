@@ -132,13 +132,6 @@ public class MainInterface extends JFrame{
 			main_frame.setSize(475,225);
 			main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			main_frame.setVisible(true);
-			main_frame.addWindowListener((WindowListener) new WindowAdapter()  
-		    {  
-				public void windowClosing(WindowEvent e) {  
-					WriteCSVFinal.WriteSemantic();
-					WriteCSVFinal.WriteStylistic();
-		    	}
-		    });
 		}
 	}
 	
@@ -173,7 +166,7 @@ public class MainInterface extends JFrame{
 	}
 	
 	public static void HandleRequest(String tipoExtracao, String inputFile, String outputFile) {
-		String [] listaOpcoes= {"features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalletters","features_standardPOS","features_cbf","features_titulo"};
+		String [] listaOpcoes= {"all_features","stylistic_features","semantic_features","features_gi","features_synesktech","features_dal_anew","features_gazeteers","features_slang","features_capitalletters","features_standardPOS","features_cbf","features_titulo"};
 		File file = new File(inputFile);
 			
 		switch(tipoExtracao) {
@@ -331,6 +324,126 @@ public class MainInterface extends JFrame{
 				break;
 			case "features_titulo":
 				System.out.println("O titulo tem o seguinte uso: \nUso: \"features_titulo\" inputFile outputFile tituloMusica");
+				break;
+			case "semantic_features":
+				if (file.exists()){
+					mainApp_Synesketch synesktech = new mainApp_Synesketch();
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CombinedFeatures gaz = new CombinedFeatures(false,true,false,false,inputFile,null); // gazeteers
+							CombinedFeatures dal_anew = new CombinedFeatures(false,false,true,false,inputFile,null); // dal anew
+							synesktech.readDirectory(inputFile, null); // synesktech
+							Initial_GI initial= new Initial_GI(inputFile,null); // features_gi
+							WriteCSVFinal writecsv = new WriteCSVFinal();
+							writecsv.WriteSemantic(null,null,null,null,outputFile); // then we write to output file
+							System.out.printf("All semantic features of folder %s outputed to %s\n",inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block						
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							CombinedFeatures gaz_file = new CombinedFeatures(true,true,false,false,inputFile,null);
+							CombinedFeatures dal_anew_file = new CombinedFeatures(true,false,true,false,inputFile,null);
+							synesktech.readFile(inputFile, null); 
+							Initial_GI initial= new Initial_GI(inputFile,null);
+							WriteCSVFinal writecsv = new WriteCSVFinal();
+							writecsv.WriteSemantic(null,null,null,null,outputFile); // then we write to output file
+							System.out.printf("All semantic features of file %s outputed to %s\n",inputFile,outputFile);													
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}								
+				break;
+			case "stylistic_features":
+				if (file.exists()){
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							CombinedFeatures slang  = new CombinedFeatures(false,false,false,true,inputFile,null); 
+							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,inputFile,null);							
+							WriteCSVFinal writecsv = new WriteCSVFinal();
+							writecsv.WriteStylistic(null,null,outputFile); // then we write to output file
+							System.out.printf("All stylistic features of folder %s outputed to %s\n",inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block						
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							CombinedFeatures slang_file  = new CombinedFeatures(true,false,false,true,inputFile,null);
+							CapitalLetters_Initial capitalLetters_file = new CapitalLetters_Initial(true,inputFile,null);
+							WriteCSVFinal writecsv = new WriteCSVFinal();
+							writecsv.WriteStylistic(null,null,outputFile); // then we write to output file
+							System.out.printf("All stylistic features of file %s outputed to %s\n",inputFile,outputFile);													
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}	
+				break;
+			case "all_features":
+				if (file.exists()){
+					mainApp_Synesketch synesktech = new mainApp_Synesketch();
+					WriteCSVFinal writecsv = new WriteCSVFinal();
+					if (file.isDirectory()) {
+						// System.out.println("Directory");
+						try {
+							// semantic
+							
+							CombinedFeatures gaz = new CombinedFeatures(false,true,false,false,inputFile,null); // gazeteers
+							CombinedFeatures dal_anew = new CombinedFeatures(false,false,true,false,inputFile,null); // dal anew
+							synesktech.readDirectory(inputFile, null); // synesktech
+							Initial_GI initial= new Initial_GI(inputFile,null); // features_gi
+							writecsv.WriteSemantic(null,null,null,null,null); // then we write to output file
+							
+							// stylistic
+							
+							CombinedFeatures slang  = new CombinedFeatures(false,false,false,true,inputFile,null); 
+							CapitalLetters_Initial capitalLetters = new CapitalLetters_Initial(false,inputFile,null);	
+							writecsv.WriteStylistic(null,null,null); // then we write to output file
+							
+							writecsv.WriteAll(outputFile); // then we write to output file
+							System.out.printf("All features of folder %s outputed to %s\n",inputFile,outputFile);
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block						
+							e.printStackTrace();
+						}
+					}
+					else if (file.isFile()) {
+						//System.out.println("File");
+						try {
+							// semantic
+							
+							CombinedFeatures gaz_file = new CombinedFeatures(true,true,false,false,inputFile,null);
+							CombinedFeatures dal_anew_file = new CombinedFeatures(true,false,true,false,inputFile,null);
+							synesktech.readFile(inputFile, null); 
+							Initial_GI initial= new Initial_GI(inputFile,null);
+							writecsv.WriteSemantic(null,null,null,null,null); // then we write to output file
+													
+							
+							// stylistic
+							
+							CombinedFeatures slang_file  = new CombinedFeatures(true,false,false,true,inputFile,null);
+							CapitalLetters_Initial capitalLetters_file = new CapitalLetters_Initial(true,inputFile,null);
+							writecsv.WriteStylistic(null,null,null); // then we write to output file
+							
+							writecsv.WriteAll(outputFile); // then we write to output file
+							System.out.printf("All features of file %s outputed to %s\n",inputFile,outputFile);													
+						} catch (ClassNotFoundException | IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}		
 				break;
 			default:
 				System.out.println("Opcao errada! As opcoes sao as seguintes");
