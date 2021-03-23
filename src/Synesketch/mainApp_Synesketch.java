@@ -151,7 +151,17 @@ public class mainApp_Synesketch {
 	public void readFile(String inputFile,String outputFile) throws IOException {
 		ReadLyricsDirectoryToAString rl = new ReadLyricsDirectoryToAString();
 
-		FileWriter fstream = new FileWriter(outputFile);
+		String outputFolder = "";
+		if(outputFile != null && !outputFile.isEmpty()) {
+			this.outputFile = outputFile;				
+		}
+		else {
+			outputFolder = "src/Output/";
+		}
+		
+		String output = outputFolder + this.outputFile;
+		
+		FileWriter fstream = new FileWriter(output);
 		BufferedWriter out = new BufferedWriter(fstream);
 		
 		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");

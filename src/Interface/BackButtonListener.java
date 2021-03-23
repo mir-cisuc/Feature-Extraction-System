@@ -74,13 +74,6 @@ public class BackButtonListener implements ActionListener {
 			main_frame.setSize(475,225);
 			main_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			main_frame.setVisible(true);	
-			main_frame.addWindowListener((WindowListener) new WindowAdapter()  
-		    {  
-				public void windowClosing(WindowEvent e) {  
-					WriteCSVFinal.WriteSemantic();
-					WriteCSVFinal.WriteStylistic();
-		    	}
-		    });
 		}
 	     else if(backtoCBF) {
 	    	content_selector.dispose();

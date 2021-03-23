@@ -9,6 +9,7 @@ import javax.swing.*;
 import CombinedFeatures.CombinedFeatures;
 import GI.Initial_GI;
 import Synesketch.mainApp_Synesketch;
+import AuxiliarFiles.WriteCSVFinal;
 
 @SuppressWarnings("serial")
 public class SemanticFeatures extends JFrame{
@@ -128,6 +129,8 @@ public class SemanticFeatures extends JFrame{
 				Initial_GI initial_GI = new Initial_GI(sourceFolder);
 				mainApp_Synesketch ma = new mainApp_Synesketch();
 				ma.readDirectory(sourceFolder,null);
+				WriteCSVFinal writecsv = new WriteCSVFinal();
+				writecsv.WriteSemantic(null,null,null,null,null);
 				JOptionPane.showMessageDialog(null, "Todas as features semanticas extraidas", "Mensagem", JOptionPane.PLAIN_MESSAGE);
 			} catch (ClassNotFoundException | IOException e1) {
 				// TODO Auto-generated catch block

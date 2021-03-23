@@ -70,7 +70,7 @@ public class StructuralFeatures extends JFrame{
 		               JOptionPane.PLAIN_MESSAGE,
 		               null,            
 		               null, 
-		               "Red"
+		               ""
 		            );
 		            if(result != null && result.length() > 0){
 		            	this.titulo_inserido = result;
