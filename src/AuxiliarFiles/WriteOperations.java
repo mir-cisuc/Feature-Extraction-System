@@ -102,7 +102,7 @@ public class WriteOperations {
 		
 		if(option==2) { 
 			//Capital Letters
-			out.write("Id, cfcl, cacl");
+			out.write("Id,cfcl,cacl");
 			out.newLine();
 			
 		}
@@ -167,12 +167,12 @@ public class WriteOperations {
 		// abre o ficheiro anterior para escrita
 		BufferedWriter out = new BufferedWriter(new FileWriter(file));
 		if(WordsDictionaryFeatures) {
-			out.write("Id, Count");
+			out.write("Id,Count");
 		}else {
 			if(DAL_ANEWFeatures){		
-				out.write("Id, AvgValence, AvgArousal, AvgDominance");
+				out.write("Id,AvgValence,AvgArousal,AvgDominance");
 			}else {
-				out.write("Id, AvgValence, AvgArousal");
+				out.write("Id,AvgValence,AvgArousal");
 			}
 			
 		}
