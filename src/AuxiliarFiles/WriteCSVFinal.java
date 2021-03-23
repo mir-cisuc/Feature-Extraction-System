@@ -82,7 +82,7 @@ public class WriteCSVFinal {
 			// use comma as separator
 		    String cvsSplitBy = ",";
 		    
-		    System.out.println(i);
+		    //System.out.println(i);
 		    
 		    File f = new File(inputSemantic.get(i));
 		    if(f.exists() && !f.isDirectory()) { 

@@ -113,7 +113,7 @@ public class mainApp_Synesketch {
 		FileWriter fstream = new FileWriter(output);
 		BufferedWriter out = new BufferedWriter(fstream);
 		
-		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
+		out.write("ID,GeneralWeight,Valence,HappinessWeight,SadnessWeight,AngerWeight,FearWeight,DisgustWeight,SurpriseWeight");
 		out.newLine();
 		
 				
@@ -164,7 +164,7 @@ public class mainApp_Synesketch {
 		FileWriter fstream = new FileWriter(output);
 		BufferedWriter out = new BufferedWriter(fstream);
 		
-		out.write("ID, GeneralWeight, Valence, HappinessWeight, SadnessWeight, AngerWeight, FearWeight, DisgustWeight, SurpriseWeight");
+		out.write("ID,GeneralWeight,Valence,HappinessWeight,SadnessWeight,AngerWeight,FearWeight,DisgustWeight,SurpriseWeight");
 		out.newLine();
 		
 		//caminho completo para onde esta a lirica ex. lyrics-180/L001-141.txt
