@@ -48,6 +48,10 @@ The type of extraction can be one of the following:
     - Extracts to csv
 - features_titulo* (to extract the number of ocorrences of the title in a song)
     - Extracts to csv
+- semantic_features (Extracts all semantic features onto a compiled csv file)
+- stylistic_features (Similar to above, but for stylistic features)
+- all_features (Combines the above extractions, also extracting semantic to "Semantic.csv" and stylistic to "Stylistic.csv")
+
 
 One example would be: *java -jar MainInterface.jar "features_gi" "src/Origem" "outputFile.csv"*
 
