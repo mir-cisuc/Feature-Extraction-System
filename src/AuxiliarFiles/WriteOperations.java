@@ -114,13 +114,17 @@ public class WriteOperations {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
 					out.write(matrix[i][j]);
-					if(j+2 == matrix[i].length) {
-						if (matrix[i][j+1] != null) {
+					if (j+1 < matrix[i].length) {
+						boolean isGood = false;
+						for(int aux = j +1; aux<matrix[i].length;aux++) {
+							if (matrix[i][aux] != null) {
+								isGood = true;
+								break;
+							}
+						}
+						if (isGood) {
 							out.write(",");
 						}
-					}
-					else if (j+1 < matrix[i].length) {
-						out.write(",");
 					} 
 				}
 			}
@@ -181,13 +185,17 @@ public class WriteOperations {
 			for (int j = 0; j < matrix[i].length; j++) {
 				if (matrix[i][j] != null && !matrix[i][j].isEmpty()) {
 					out.write(matrix[i][j]);
-					if(j+2 == matrix[i].length) {
-						if (matrix[i][j+1] != null) {
+					if (j+1 < matrix[i].length) {
+						boolean isGood = false;
+						for(int aux = j +1; aux<matrix[i].length;aux++) {
+							if (matrix[i][aux] != null) {
+								isGood = true;
+								break;
+							}
+						}
+						if (isGood) {
 							out.write(",");
 						}
-					}
-					else if (j+1 < matrix[i].length) {
-						out.write(",");
 					} 
 					//System.out.printf(" %s (%d,%d)", matrix[i][j], i, j);
 				}

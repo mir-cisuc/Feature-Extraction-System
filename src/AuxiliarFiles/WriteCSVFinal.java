@@ -82,7 +82,7 @@ public class WriteCSVFinal {
 			// use comma as separator
 		    String cvsSplitBy = ",";
 		    
-		    //System.out.println(i);
+		    System.out.println("Going to write");
 		    
 		    File f = new File(inputSemantic.get(i));
 		    if(f.exists() && !f.isDirectory()) { 
@@ -96,6 +96,7 @@ public class WriteCSVFinal {
 						    	 cvsSplitBy = ",";
 						    }
 				            String[] values = line.split(cvsSplitBy);
+				            
 				          
 				            if(firstline==0) {
 				            	//pegar no header das features e adicionar o nome antes
@@ -126,9 +127,9 @@ public class WriteCSVFinal {
 				            		 
 				            		 for(int colunas = 0; colunas < values.length; colunas++) {
 				            			 song+=values[colunas];
-				            			 if (colunas +1 != values.length) {
+				            		//	 if (colunas +1 != values.length) {
 				            				 song += ",";
-				            			 }
+				            		//	 }
 				            		 }
 				            		
 				            		 songsSemantic.add(song);
@@ -138,26 +139,38 @@ public class WriteCSVFinal {
 				            	 }else {
 				            		 //a partir do segundo ficheiro, temos de procurar onde esta a musica no array e juntar os novos valores que lemos
 				            		 String addValuesToSong="";
+				            		 System.out.println("Ln de baixo");
 				            		 
 				            		 if(!songsSemantic.isEmpty()) {
+				            			 System.out.println("if");
 				            			
 				            			 addValuesToSong=songsSemantic.get(firstline-1);
 				            			 for(int colunas = 1; colunas < values.length; colunas++) {
 					            			 addValuesToSong+=values[colunas];	
-					            			 if (colunas +1 != values.length) {
+					            			 
+					            			 //if (colunas +1 != values.length) {
 					            				 addValuesToSong += ",";
-					            			 }
+					            			// }
 					            		 }
-				            			 songsSemantic.set(firstline-1,addValuesToSong);
+				            			 System.out.printf("Ultimo caracter é  %s (em cima) (%d)\n",addValuesToSong.charAt(addValuesToSong.length()-1),i);
+				            			 if (i+1 == inputSemantic.size()) {
+				            				 StringBuilder sb = new StringBuilder(addValuesToSong);
+			            					 sb.deleteCharAt(addValuesToSong.length()-1);
+			            					 songsSemantic.set(firstline-1,sb.toString());
+				            			 }
+				            			 else {
+				            				 songsSemantic.set(firstline-1,addValuesToSong);
+				            			 }
 				            			 
 				            		 }else {
+				            			 System.out.println("else");
 				            			 for(int colunas = 0; colunas < values.length; colunas++) {
 				            				 addValuesToSong+=values[colunas];
-					            			 if (colunas +1 != values.length) {
+					            			// if (colunas +1 != values.length) {
 					            				 addValuesToSong += ",";
-					            			 }
+					            			// }
 					            		 }
-				            			 songsSemantic.add(addValuesToSong);
+				            			 System.out.println("Ultimo caracter é " + addValuesToSong.charAt(addValuesToSong.length()-1));
 					            		 
 				            		 }
 				            		
@@ -247,7 +260,7 @@ public class WriteCSVFinal {
 		for(int i = 0; i < inputStylistic.size(); i++)
 		{
 			String line = "";
-		    String cvsSplitBy = ", ";
+		    String cvsSplitBy = ",";
 		    
 		    File f = new File(inputStylistic.get(i));
 		    if(f.exists() && !f.isDirectory()) { 
@@ -278,10 +291,10 @@ public class WriteCSVFinal {
 			            		 String song="";
 			            		 
 			            		 for(int colunas = 0; colunas < values.length; colunas++) {
-			            			 song+=values[colunas];
-			            			 if (colunas + 1 != values.length) {
-			            				 song += ",";
-			            			 }
+			            			 song+=values[colunas] +",";
+			            			 //if (colunas + 1 != values.length) {
+			            			//	 song += ",";
+			            			// }
 			            		 }
 			            		 
 			            		 songsStylistic.add(song);
@@ -295,18 +308,23 @@ public class WriteCSVFinal {
 			            			 addValuesToSong=songsStylistic.get(firstline-1);
 			            			 for(int colunas = 1; colunas < values.length; colunas++) {
 				            			 addValuesToSong+=values[colunas];
-				            			 if (colunas +1 != values.length) {
-				            				 addValuesToSong += ",";
-				            			 }
+			            				 addValuesToSong += ",";
 				            		 }
-			            			 songsStylistic.set(firstline-1,addValuesToSong);
+			            			 if (i+1 == inputStylistic.size()) {
+			            				 StringBuilder sb = new StringBuilder(addValuesToSong);
+		            					 sb.deleteCharAt(addValuesToSong.length()-1);
+		            					 songsStylistic.set(firstline-1,sb.toString());
+			            			 }
+			            			 else {
+			            				 songsStylistic.set(firstline-1,addValuesToSong);
+			            			 }
 			            			 
 			            		 }else {
 			            			 for(int colunas = 0; colunas < values.length; colunas++) {
-			            				 addValuesToSong+=values[colunas];  	
-				            			 if (colunas +1 != values.length) {
-				            				 addValuesToSong += ",";
-				            			 }
+			            				 addValuesToSong+=values[colunas]+ ",";
+				            			// if (colunas +1 != values.length) {
+				            			//	 addValuesToSong += ",";
+				            			// }
 				            		 }
 			            			 songsStylistic.add(addValuesToSong);
 				            		 
@@ -409,9 +427,9 @@ public class WriteCSVFinal {
 			            		 
 			            		 for(int colunas = 0; colunas < values.length; colunas++) {
 			            			 song+=values[colunas];
-			            			 if (colunas +1 != values.length) {
+			            			// if (colunas +1 != values.length) {
 			            				song +=",";
-			            			 }			            			 
+			            			// }			            			 
 			            		 }
 			            		 
 			            		 songs.add(song);
@@ -425,18 +443,26 @@ public class WriteCSVFinal {
 			            			 addValuesToSong=songs.get(firstline-1);
 			            			 for(int colunas = 1; colunas < values.length; colunas++) {
 				            			 addValuesToSong+=values[colunas];	
-				            			 if (colunas +1 != values.length) {
+				            			// if (colunas +1 != values.length) {
 				            				 addValuesToSong +=",";
-				            			 }
+				            			// }
 				            		 }
-			            			 songs.set(firstline-1,addValuesToSong);
+			            			 if (i+1 == input.size()) {
+			            				 StringBuilder sb = new StringBuilder(addValuesToSong);
+		            					 sb.deleteCharAt(addValuesToSong.length()-1);
+		            					 songs.set(firstline-1,sb.toString());
+			            			 }
+			            			 else {
+			            				 songs.set(firstline-1,addValuesToSong);
+			            			 }
+			            			 
 			            			 
 			            		 }else {
 			            			 for(int colunas = 0; colunas < values.length; colunas++) {
 			            				 addValuesToSong+=values[colunas]; 
-				            			 if (colunas +1 != values.length) {
+				            			// if (colunas +1 != values.length) {
 				            				 addValuesToSong +=",";
-				            			 }
+				            			// }
 				            		 }
 			            			 songs.add(addValuesToSong);
 				            		 
