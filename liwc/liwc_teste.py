@@ -548,7 +548,7 @@ if __name__ == "__main__":
     new_dic_scores={}
     for key in dic_scores.keys():
         new_key=search(Dictionary._liwc_categories,key)
-        new_dic_scores[new_key] = dic_scores[key]
+        new_dic_scores[new_key] = round(dic_scores[key], 2)
     #print(new_dic)
     
     file_name=filepath.split(".")
