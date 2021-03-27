@@ -10,6 +10,7 @@ import re
 import string
 from collections import Counter, defaultdict
 from string import punctuation
+import csv
 
 # Replace with the path of a liwc (.dic) file
 LIWC_FILEPATH = 'LIWC2007_English080730.dic'
@@ -527,13 +528,46 @@ class Dictionary():
         ('Grooming', None, None, 65, 'groom')]
 
 
+def search(liwc_categories,word):
+    for element in liwc_categories:
+        if word==element[0]:
+            return element[2]
+    return word
+
 if __name__ == "__main__":
     load_dictionary(LIWC_FILEPATH)
     # might be better to split on whatever... but this seems about right
     _liwc_tokenizer = re.compile(r'(\d[^a-z\(\)]*|[a-z](?:[\'\.]?[a-z])*|(?<=[a-z])[^a-z0-9\s\(\)]+|[\(\)][^a-z]*)',re.UNICODE|re.IGNORECASE)
     #print(score_file(filepath))
     #print(type(score_file(filepath)))
-    #print(_dictionary._setup_category_lookup())
+
+    dic_scores=dict(score_file(filepath))
+    #print(dic)
+    #print(search(Dictionary._liwc_categories,"Exclusive"))
+
+    new_dic_scores={}
+    for key in dic_scores.keys():
+        new_key=search(Dictionary._liwc_categories,key)
+        new_dic_scores[new_key] = dic_scores[key]
+    #print(new_dic)
+    
+    file_name=filepath.split(".")
+    complete_dic={"Id":file_name[0]}
+    complete_dic.update(new_dic_scores)
+    #print(complete_dic)
+
+    csv_columns=list(complete_dic.keys())
 
 
+    csv_file = "Teste.csv"
+    try:
+        with open(csv_file, 'w',newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
+            writer.writeheader()
+            writer.writerow(complete_dic)
+    except IOError:
+        print("I/O error")
+    
+
+    
 
