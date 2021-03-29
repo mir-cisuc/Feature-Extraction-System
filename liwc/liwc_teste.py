@@ -11,9 +11,14 @@ import string
 from collections import Counter, defaultdict
 from string import punctuation
 import csv
+from os import listdir
+from os.path import *
+import os.path as path
+
 
 # Replace with the path of a liwc (.dic) file
 LIWC_FILEPATH = 'LIWC2007_English080730.dic'
+MUSICAS_PATH = r'C:\Users\Red\Desktop\Investigacao2020\datasets\dataset_771+180 (400+110)\771'
 
 filepath = 'mt0000022649.txt'
 
@@ -534,40 +539,52 @@ def search(liwc_categories,word):
             return element[2]
     return word
 
+def add_to_file(csv_name,dicionario,colunas):
+    #print(csv_name)
+    if path.exists(csv_name):
+        open_mode = 'a'
+    else:
+        open_mode = 'w'
+        
+    
+    try:
+        with open(csv_name, open_mode ,newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=colunas)
+            if open_mode == 'w':
+                writer.writeheader()
+            writer.writerow(dicionario)
+    except IOError:
+        print("I/O error")
+
+
+def get_features(filepath):
+    dic_scores=dict(score_file(filepath))
+
+    new_dic_scores={}
+    for key in dic_scores.keys():
+        new_key=search(Dictionary._liwc_categories,key)
+        new_dic_scores[new_key] = round(dic_scores[key], 2)
+    
+    file_name=filepath.split("\\")
+    complete_dic={"Id":file_name[-1].replace(".txt","")}
+    complete_dic.update(new_dic_scores)
+    #print(complete_dic)
+
+    csv_columns=list(complete_dic.keys())
+
+    return complete_dic, csv_columns
+
 if __name__ == "__main__":
     load_dictionary(LIWC_FILEPATH)
     # might be better to split on whatever... but this seems about right
     _liwc_tokenizer = re.compile(r'(\d[^a-z\(\)]*|[a-z](?:[\'\.]?[a-z])*|(?<=[a-z])[^a-z0-9\s\(\)]+|[\(\)][^a-z]*)',re.UNICODE|re.IGNORECASE)
     #print(score_file(filepath))
     #print(type(score_file(filepath)))
+   # csv_file = "Teste.csv"
 
-    dic_scores=dict(score_file(filepath))
-    #print(dic)
-    #print(search(Dictionary._liwc_categories,"Exclusive"))
+    files = [f for f in listdir(MUSICAS_PATH) if isfile(join(MUSICAS_PATH, f))]
 
-    new_dic_scores={}
-    for key in dic_scores.keys():
-        new_key=search(Dictionary._liwc_categories,key)
-        new_dic_scores[new_key] = round(dic_scores[key], 2)
-    #print(new_dic)
-    
-    file_name=filepath.split(".")
-    complete_dic={"Id":file_name[0]}
-    complete_dic.update(new_dic_scores)
-    #print(complete_dic)
-
-    csv_columns=list(complete_dic.keys())
-
-
-    csv_file = "Teste.csv"
-    try:
-        with open(csv_file, 'w',newline='') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=csv_columns)
-            writer.writeheader()
-            writer.writerow(complete_dic)
-    except IOError:
-        print("I/O error")
-    
-
-    
-
+    for i, f in enumerate(files):
+        dicionario, colunas = get_features(MUSICAS_PATH + "\\" + f)
+        add_to_file("output.csv",dicionario,colunas)
+        print("%d/%d" % (i+1,len(files)))
