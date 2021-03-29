@@ -18,7 +18,7 @@ import os.path as path
 
 # Replace with the path of a liwc (.dic) file
 LIWC_FILEPATH = 'LIWC2007_English080730.dic'
-MUSICAS_PATH = r'C:\Users\Red\Desktop\Investigacao2020\datasets\dataset_771+180 (400+110)\771'
+MUSICAS_PATH = r'D:\mer\771\771'
 
 filepath = 'mt0000022649.txt'
 
@@ -537,7 +537,6 @@ def search(liwc_categories,word):
     for element in liwc_categories:
         if word==element[0]:
             return element[2]
-    return word
 
 def add_to_file(csv_name,dicionario,colunas):
     #print(csv_name)
@@ -570,9 +569,27 @@ def get_features(filepath):
     complete_dic.update(new_dic_scores)
     #print(complete_dic)
 
-    csv_columns=list(complete_dic.keys())
+    return complete_dic
 
-    return complete_dic, csv_columns
+def create_final_data_dic(complete_dic,header):
+    final_dic={}
+    keys=complete_dic.keys()
+    for element in header:
+        if element not in keys:
+            final_dic[element]=0.0
+        else:
+            final_dic[element]=complete_dic[element]
+
+    return final_dic
+
+
+def header():
+    header=["Id"]
+    for element in Dictionary._liwc_categories:
+        if element[2]!=None:
+            header.append(element[2])
+    return header
+
 
 if __name__ == "__main__":
     load_dictionary(LIWC_FILEPATH)
@@ -581,10 +598,12 @@ if __name__ == "__main__":
     #print(score_file(filepath))
     #print(type(score_file(filepath)))
    # csv_file = "Teste.csv"
-
+    
     files = [f for f in listdir(MUSICAS_PATH) if isfile(join(MUSICAS_PATH, f))]
+    colunas=header()
 
     for i, f in enumerate(files):
-        dicionario, colunas = get_features(MUSICAS_PATH + "\\" + f)
+        dicionario = get_features(MUSICAS_PATH + "\\" + f)
+        dicionario = create_final_data_dic(dicionario,colunas)
         add_to_file("output.csv",dicionario,colunas)
         print("%d/%d" % (i+1,len(files)))
