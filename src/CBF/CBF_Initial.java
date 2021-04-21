@@ -107,7 +107,10 @@ public class CBF_Initial {
 		}
 
 		// n-gramas
-		if (this.arg1.equals("big")) {
+		if (this.arg1.equals("unig")) {
+			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 1 }));
+		}
+		else if (this.arg1.equals("big")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 2 }));
 		} else if (this.arg1.equals("trig")) {
 			pipeList.add(new TokenSequenceNGrams(new int[] { 0, 3 }));

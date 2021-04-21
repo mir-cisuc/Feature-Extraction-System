@@ -48,7 +48,7 @@ public class SPT_Initial {
 	
 	public static void main(String[] args) throws ClassNotFoundException,
 	IOException {
-		SPT_Initial spt_initial = new SPT_Initial(true,"src/Origem/L001-141.txt","teste.txt",1);
+		SPT_Initial spt_initial = new SPT_Initial(true,"src/Origem/L001-141.txt","teste.txt",2);
 	}
 	
 	public SPT_Initial(boolean onlyOneFile, String input, String outputFile, int option) throws ClassNotFoundException,IOException {

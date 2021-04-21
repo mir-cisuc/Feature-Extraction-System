@@ -11,7 +11,7 @@ import CBF.CBF_Initial;
 
 public class ContentSelector extends JFrame{
 	JPanel panel_content;
-	JRadioButton big,trig,grams4,grams5,nada,st,sw,st_sw,freq,bool,tfidf,norm;
+	JRadioButton unig,big,trig,grams4,grams5,nada,st,sw,st_sw,freq,bool,tfidf,norm;
 	JButton confirm,back;
 	JLabel label;
 	String sourceFolder;
@@ -24,20 +24,22 @@ public class ContentSelector extends JFrame{
 		
 		confirm = new JButton("Confirmar");
 		
+		unig = new JRadioButton("unig");
 		big = new JRadioButton("big"); 
 		trig = new JRadioButton("trig"); 
 		grams4 = new JRadioButton("4grams");
 		grams5 = new JRadioButton("5grams");
 		
+		unig.setBounds(50,30,70,25);
 		big.setBounds(50,50,70,25);
 		trig.setBounds(50,70,70,25);
 		grams4.setBounds(50,90,70,25);
 		grams5.setBounds(50,110,70,25);
 		
-		big.setSelected(true);
+		unig.setSelected(true);
 		
 		ButtonGroup bg1 = new ButtonGroup();
-		bg1.add(big);bg1.add(trig);bg1.add(grams4);bg1.add(grams5);
+		bg1.add(unig);bg1.add(big);bg1.add(trig);bg1.add(grams4);bg1.add(grams5);
 		
 		//-----------------------------------
 		
@@ -87,7 +89,7 @@ public class ContentSelector extends JFrame{
 		back.addActionListener(new BackButtonListener(this));
  
 		panel_content.add(label);
-		panel_content.add(big);panel_content.add(trig);panel_content.add(grams4);panel_content.add(grams5);
+		panel_content.add(unig);panel_content.add(big);panel_content.add(trig);panel_content.add(grams4);panel_content.add(grams5);
 		panel_content.add(nada);panel_content.add(st);panel_content.add(sw);panel_content.add(st_sw);
 		panel_content.add(freq);panel_content.add(bool);panel_content.add(tfidf);panel_content.add(norm);
 		panel_content.add(confirm);

@@ -67,10 +67,12 @@ public class SaveInstancesInFile {
 			String name = getNameOfInstance(instances.get(i).getName()
 					.toString());
 			
+			System.out.println("Nome = "  + name);
+			
 			String[] dat = name.split("/");
 			name = dat[1];
 			
-			// System.out.println(name);
+			
 			ArrayList<String> listOfWords = new ArrayList<String>();
 			listOfWords = buildListOfWords(i);
 
@@ -85,7 +87,7 @@ public class SaveInstancesInFile {
 		 * todas as liricas
 		 */
 		
-		this.writeMatrixInConsole(matrix);
+		//this.writeMatrixInConsole(matrix);
 		String nameFile1 = "CBF_" + arg1 + "_" + arg2 + "_" + FREQ;
 		
 		File file2 = new File(nameFile1 + ".csv");
@@ -129,7 +131,7 @@ public class SaveInstancesInFile {
 		 * todas as liricas
 		 */
 		this.calculateBoolValues();
-		this.writeMatrixInConsole(matrix);
+		//this.writeMatrixInConsole(matrix);
 		String nameFile2 = "CBF_" + arg1 + "_" + arg2 + "_" + BOOL;
 		//File file3 = new File(nameFile2 + "F.txt");
 		//this.writeNamesOfFeaturesNames(file3);
@@ -296,7 +298,7 @@ public class SaveInstancesInFile {
 		 * todas as liricas
 		 */
 		this.calculatetfidfValues();
-		this.writeMatrixInConsole(matrix);
+		//this.writeMatrixInConsole(matrix);
 		String nameFile2 = "CBF_" + arg1 + "_" + arg2 + "_" + TFIDF;
 		//File file3 = new File(nameFile2 + "F.txt");
 		//this.writeNamesOfFeaturesNames(file3);
@@ -638,6 +640,7 @@ public class SaveInstancesInFile {
 		// atencao a esta instrucao que so funciona se o file estiver na pasta
 		// origem/
 		String data[] = name.split("Origem");
+		//String data[] = name.split("771");
 		return data[1];
 	}
 

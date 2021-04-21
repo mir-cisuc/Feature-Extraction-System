@@ -64,7 +64,7 @@ For *features_CBF* since it has more arguments, it has to be run in a different 
 Note: There's no outputFile path you can specify, the program makes it based on the arguments, check file [SaveInstancesInFile.java](src/AuxiliarFiles/SaveInstancesInFile.java) for details.
 
 In regards to arg1, arg2 and arg3, they are parameters for the program, and they can be:
-- *arg1*: unig, big, trig
+- *arg1*: unig, big, trig, 4grams, 5grams
 - *arg2*: nada, st, sw, st+sw
 - *arg3*: freq, bool, tfidf, norm
 

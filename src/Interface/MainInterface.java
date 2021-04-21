@@ -94,7 +94,7 @@ public class MainInterface extends JFrame{
 			}
 			else {
 				String inputFolder = args[1];
-				ArrayList<String> lista_arg3 = new ArrayList<String> (Arrays.asList("unig","big","trig"));
+				ArrayList<String> lista_arg3 = new ArrayList<String> (Arrays.asList("unig","big","trig","4grams","5grams"));
 				ArrayList<String> lista_arg4 = new ArrayList<String> (Arrays.asList("nada","st","sw","st+sw"));
 				ArrayList<String> lista_arg5 = new ArrayList<String> (Arrays.asList("freq","bool","tfidf","norm"));
 
@@ -104,7 +104,7 @@ public class MainInterface extends JFrame{
 				if (!lista_arg3.contains(arg3) || !lista_arg4.contains(arg4) || !lista_arg5.contains(arg5)) {
 					if (!lista_arg3.contains(arg3)) {
 						System.out.println("Argumento 1 incorreto.");
-						System.out.println("arg1 pode ser: 'unig', 'big', 'trig'");
+						System.out.println("arg1 pode ser: 'unig', 'big', 'trig','4grams','5grams'");
 					}
 					if (!lista_arg4.contains(arg4)) {
 						System.out.println("Argumento 2 incorreto.");

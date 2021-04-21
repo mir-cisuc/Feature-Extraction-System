@@ -18,7 +18,8 @@ import os.path as path
 
 # Replace with the path of a liwc (.dic) file
 LIWC_FILEPATH = 'LIWC2007_English080730.dic'
-MUSICAS_PATH = r'D:\mer\771\771'
+#MUSICAS_PATH = r'D:\mer\771\771'
+MUSICAS_PATH = r'C:\Users\Red\Desktop\Investigacao2020\datasets\dataset_771+180 (400+110)\771'
 
 filepath = 'mt0000022649.txt'
 
@@ -595,15 +596,17 @@ if __name__ == "__main__":
     load_dictionary(LIWC_FILEPATH)
     # might be better to split on whatever... but this seems about right
     _liwc_tokenizer = re.compile(r'(\d[^a-z\(\)]*|[a-z](?:[\'\.]?[a-z])*|(?<=[a-z])[^a-z0-9\s\(\)]+|[\(\)][^a-z]*)',re.UNICODE|re.IGNORECASE)
-    #print(score_file(filepath))
+    print(score_file(filepath))
     #print(type(score_file(filepath)))
    # csv_file = "Teste.csv"
+
+
     
-    files = [f for f in listdir(MUSICAS_PATH) if isfile(join(MUSICAS_PATH, f))]
+    '''files = [f for f in listdir(MUSICAS_PATH) if isfile(join(MUSICAS_PATH, f))]
     colunas=header()
 
     for i, f in enumerate(files):
         dicionario = get_features(MUSICAS_PATH + "\\" + f)
         dicionario = create_final_data_dic(dicionario,colunas)
         add_to_file("output.csv",dicionario,colunas)
-        print("%d/%d" % (i+1,len(files)))
+        print("%d/%d" % (i+1,len(files)))'''
