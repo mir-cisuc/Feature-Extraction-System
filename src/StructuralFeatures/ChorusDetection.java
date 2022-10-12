@@ -17,9 +17,9 @@ public class ChorusDetection {
 	static ArrayList <Bloco> array_blocos = new ArrayList <> ();
 	final double threshold = 0.2;
 	public int nrBlocoAtual = 0;
-	final static String path_musicas = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\400_sem_anotacao";
-	final static String path_final = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\script_400";
-	final static String file_indexs = "C:\\Users\\Red\\Desktop\\Investigacao2020\\FeatureExtractionSystem\\datasets\\file_indexs_script_chorus.txt";
+	final static String path_musicas = "C:\\Users\\Red\\Desktop\\Investigacao2020\\datasets\\resultados_detecao_chorus_771+180\\771_180_sem_anotacao";
+	final static String path_final = "C:\\Users\\Red\\Desktop\\Investigacao2020\\datasets\\resultados_detecao_chorus_771+180\\script_771_180";
+	final static String file_indexs = "C:\\Users\\Red\\Desktop\\Investigacao2020\\datasets\\resultados_detecao_chorus_771+180\\file_indexs_script_chorus.txt";
 	public ChorusDetection(String sourceFile) {
 		
 		// TODO Auto-generated constructor stub
