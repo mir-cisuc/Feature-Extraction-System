@@ -2,6 +2,9 @@
 
 Project done for CISUC by Hugo Redinho and Carolina Gonçalves.
 
+Article:
+Malheiro, R., Panda, R., Gomes, P., & Paiva, R. P. (2018). Emotionally-Relevant Features for Classification and Regression of Music Lyrics. IEEE Transactions on Affective Computing – TAFFC, 9(2), 240–254. [DOI Link](https://doi.org/10.1109/TAFFC.2016.2598569)
+
 Consists of a feature extractor for song lyrics consisting of:
 - Semantic Features
 - Structural Features
