@@ -1,4 +1,4 @@
-# FeatureExtractionSystem
+# Feature-Extraction-System
 
 Project done for CISUC by Hugo Redinho and Carolina Gonçalves.
 
